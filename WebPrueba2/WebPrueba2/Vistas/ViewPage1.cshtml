@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrapcss" />
+    <link rel="stylesheet" type="text/css" href="../Estilos/EstiloLogin.css" media="screen" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../Estilos/Sweetalert.js"></script>
+    <script type="text/javascript">
+        function completeCampos() {
+            Swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'Complete los campos!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        function datosIncorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'Usuario y/o contraseña incorrectos!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        function datosCorrectos() {
+            if (document.getElementById('user').value != "") {
+                Swal({
+                    position: 'top-end',
+                    type: 'success',
+                    title: 'Datos correctos!!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                document.login.submit();
+            }
+        }
+    </script>
+    <title></title>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="form-heading">Formulario de sesion</h1>
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+                    <h2>iniciar sesion</h2>
+                    <p>Por favor ingrese usuario y contraseña</p>
+                </div>
+                <form id="login" runat="server" method="post">
+
+                    <div class="form-group">
+                        <input id="user" type="text" class="form-control" placeholder="Usuario" />
+
+                    </div>
+                    <div class="form-group">
+                        <input id="pass" type="password" class="form-control" placeholder="Contraseña" />
+
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="datosCorrectos()">Iniciar sesion</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+ 
+@using MySql.Data.MySqlClient;
+@{
+    MySqlConnection con = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
+    var usuario = Request.QueryString["user"];
+    var contra = Html.TextBox("user");
+    var qsd = Request.QueryString["user"];
+
+}
