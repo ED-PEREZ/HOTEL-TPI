@@ -24,7 +24,7 @@ namespace WebPrueba2.Vistas
             {
                 MySqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from usuarios where usuario='" + user.Text + "' and contra='" + pass.Text + "' ";
+                cmd.CommandText = "select * from usuario where usuario='" + user.Text + "' and contra='" + pass.Text + "' ";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 
@@ -32,6 +32,7 @@ namespace WebPrueba2.Vistas
 
                 if (ds.Fill(dt) > 0)
                 {
+                    
                     foreach (DataRow dr in dt.Rows)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
