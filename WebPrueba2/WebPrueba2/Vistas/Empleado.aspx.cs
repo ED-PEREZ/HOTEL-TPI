@@ -253,7 +253,7 @@ namespace WebPrueba2.Vistas
             return false;
         }
 
-        protected void agregarm_Click(object sender, EventArgs e)
+        /*protected void agregarm_Click(object sender, EventArgs e)
         {
             con.Open();
             MySqlCommand cmd = con.CreateCommand();
@@ -269,6 +269,6 @@ namespace WebPrueba2.Vistas
                 esta++;
             if (esta == 5) esta = 1;
         }
-        }
+        }*/
     }
 }

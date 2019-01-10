@@ -7,12 +7,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebPrueba2.Vistas
+namespace WebPrueba2.Vistas.Reportes
 {
-    public partial class Reporte : System.Web.UI.Page
+    public partial class ReporteEmpleado1 : System.Web.UI.Page
     {
         private MySqlConnection sqlCon = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
-        int empleadoID;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             GridFill();
