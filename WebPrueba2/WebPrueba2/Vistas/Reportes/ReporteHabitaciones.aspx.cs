@@ -49,10 +49,6 @@ namespace WebPrueba2.Vistas.Reportes
                 gvTipo.DataBind();
                 gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
 
-
-
-
-
                 // string imagenes="data:image/jpg;base64,"+Convert.ToBase64String();
             }
         }
