@@ -177,7 +177,6 @@
                                     <br>
                                     <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />
                                     <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success" Text="Guardar" OnClick="agregar_Click" />
-                                    <asp:Button ID="agregarm" Visible="false" runat="server" class="btn btn-primary btn-lg btn-success" Text="Guardar" OnClick="agregarm_Click" />
                                 </div>
                             </form>
                         </div>
@@ -187,5 +186,4 @@
             </div>
         </div>
     </div>
-    
 </asp:Content>

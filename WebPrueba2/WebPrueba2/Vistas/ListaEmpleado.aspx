@@ -32,7 +32,7 @@
                     <asp:BoundField DataField="dui" HeaderText="DUI" ItemStyle-Width="10%" />
                     <asp:BoundField DataField="nombre" HeaderText="NOMBRE" ItemStyle-Width="50%" />
                     <asp:BoundField DataField="cargo" HeaderText="CARGO" ItemStyle-Width="10%" />
-                    <asp:TemplateField ItemStyle-Width="10%">
+                    <asp:TemplateField ItemStyle-Width="10%" HeaderText="Opciones">
                         <ItemTemplate>
                             <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idEmpleado") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="Editar_Click" runat="server">
                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>

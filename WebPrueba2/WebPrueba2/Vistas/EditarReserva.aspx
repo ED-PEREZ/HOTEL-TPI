@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="AgregarReserva.aspx.cs" Inherits="WebPrueba2.Vistas.AgregarReserva" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="EditarReserva.aspx.cs" Inherits="WebPrueba2.Vistas.EditarReserva" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Recepcion
+      Recepcion
      <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript" >
         function completeCampos() {
@@ -25,29 +25,31 @@
             Swal({
                 position: 'top-end',
                 type: 'success',
-                title: 'Datos correctos!!',
+                title: 'Datos Modificados!!',
                 showConfirmButton: false,
                 timer: 5000
             });
-             setTimeout ("document.location.href = 'AgregarReserva.aspx'",1500);
+             setTimeout ("document.location.href = 'ListaReserva.aspx'",1500);
         }
-         function abrirVentana(){
+        function abrirVentana(){
         var url = "BuscarHabitacion.aspx";
         window.open(url, "Nuevo","alwaysRaised=no,toolbar=no,menubar=no,status=no,resizable=no,width=500,height=300,location=no");
       }
     </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">      
            <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                        Reserva
+                        Editar Reserva
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form id="registrarReserva" role="form" runat="server">
+                                        <asp:HiddenField ID="hf" runat="server" />
                                         <asp:HiddenField ID="idha" runat="server" />
                                         <div class="form-group">
                                             <label for="nombre">Nombre (*)</label>
@@ -85,7 +87,7 @@
                                         <div class="form-group">
                                             <br>                                                        
                                             <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />   
-                                            <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="agregar_Click" />
+                                            <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Modificar" OnClick="agregar_Click" />
                                         </div>                     
                                     </form>
                                </div>
@@ -96,3 +98,4 @@
              </div>
     </div> 
 </asp:Content>
+

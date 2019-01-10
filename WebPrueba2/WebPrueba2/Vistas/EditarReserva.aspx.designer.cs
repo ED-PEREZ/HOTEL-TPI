@@ -10,43 +10,79 @@
 namespace WebPrueba2.Vistas {
     
     
-    public partial class Agregarhabitacion {
+    public partial class EditarReserva {
         
         /// <summary>
-        /// Control registrarHabitacion.
+        /// Control registrarReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm registrarHabitacion;
+        protected global::System.Web.UI.HtmlControls.HtmlForm registrarReserva;
         
         /// <summary>
-        /// Control idth.
+        /// Control hf.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField idth;
+        protected global::System.Web.UI.WebControls.HiddenField hf;
         
         /// <summary>
-        /// Control numero.
+        /// Control idha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numero;
+        protected global::System.Web.UI.WebControls.HiddenField idha;
         
         /// <summary>
-        /// Control tipo.
+        /// Control nombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tipo;
+        protected global::System.Web.UI.WebControls.TextBox nombre;
+        
+        /// <summary>
+        /// Control codigo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox codigo;
+        
+        /// <summary>
+        /// Control adelanto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox adelanto;
+        
+        /// <summary>
+        /// Control habitacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox habitacion;
+        
+        /// <summary>
+        /// Control fecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox fecha;
         
         /// <summary>
         /// Control cancelar.

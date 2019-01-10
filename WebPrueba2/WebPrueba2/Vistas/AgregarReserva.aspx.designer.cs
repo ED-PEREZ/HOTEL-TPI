@@ -22,6 +22,15 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.HtmlControls.HtmlForm registrarReserva;
         
         /// <summary>
+        /// Control idha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idha;
+        
+        /// <summary>
         /// Control nombre.
         /// </summary>
         /// <remarks>
@@ -65,24 +74,6 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox fecha;
-        
-        /// <summary>
-        /// Control imagen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imagen;
-        
-        /// <summary>
-        /// Control calendar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendar;
         
         /// <summary>
         /// Control cancelar.

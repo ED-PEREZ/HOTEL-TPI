@@ -57,7 +57,7 @@
         
         <div class="form-group">
 
-            <asp:TextBox ID="user" runat="server" class="form-control" placeholder="Usuario-git"></asp:TextBox>
+            <asp:TextBox ID="user" runat="server" class="form-control" placeholder="Usuario"></asp:TextBox>
 
         </div>
 

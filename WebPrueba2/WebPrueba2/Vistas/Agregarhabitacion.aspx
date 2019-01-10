@@ -29,12 +29,12 @@
                 showConfirmButton: false,
                 timer: 5000
             });
-            document.location.href = 'AgregarCatalogo.aspx';
+            setTimeout ("document.location.href = 'Agregarhabitacion.aspx';",1500);
         }
     </script>
     <script>
          function abrirVentana(){
-        var url = "WebForm2.aspx";
+        var url = "BuscarTipo.aspx";
         window.open(url, "Nuevo","alwaysRaised=no,toolbar=no,menubar=no,status=no,resizable=no,width=400,height=300,location=no");
       }
     </script>
@@ -50,6 +50,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form id="registrarHabitacion" role="form" runat="server">
+                                        <asp:HiddenField ID="idth" runat="server" />
                                         <div class="form-group">
                                             <label for="nombre">Numero de Habitacion (*)</label>
                                         </div>
@@ -68,15 +69,12 @@
                                             </div>
                                             <br>
                                         </div>
-                                            
+                                        
                                         <div class="form-group">
                                             <br>                                                        
                                             <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />   
                                             <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="agregar_Click" />
                                         </div>
-                                        <asp:TextBox ID="algo" runat="server" CssClass="form-control"/>
-                                            
-                                      
                                     </form>
                                </div>
                             </div>

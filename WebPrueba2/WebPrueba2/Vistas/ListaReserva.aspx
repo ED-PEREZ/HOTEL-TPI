@@ -1,9 +1,51 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="ListaReserva.aspx.cs" Inherits="WebPrueba2.Vistas.ListaReserva" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Inventario y Pedidos  
+    Recepcion  
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
-
+         function completeCampos() {
+            Swal({
+                position: 'top-end',
+                type: 'warning',
+                title: 'Complete los campos!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        function eliminar(){
+				swal({
+					tittle: 'CONFIRME SI',
+					text: "DESEA ELIMINAR EL REGISTRO?",
+					type: 'info',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'SI, ELIMINAR'
+				}).then((result) => {
+					if (result.value) {
+                       
+					}
+				})
+       }
+       function datosCorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Eliminacion completada!!',
+                showConfirmButton: false,
+                timer: 5000
+            });
+             setTimeout ("document.location.href = 'ListaReserva.aspx'",1500);
+        }
+       function datosIncorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'No pudo eliminarse el registro!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -11,7 +53,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Lista del Inventario
+                    Lista de Reserva
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -21,7 +63,17 @@
                                     <Columns>   
                                         <asp:BoundField DataField="codigo" HeaderText="Codigo" />
                                         <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                                       <asp:BoundField DataField="fechareserva" DataFormatString="{0:d}"  HeaderText="Fecha de Reserva" />
+                                        <asp:BoundField DataField="fechareserva" HeaderText="Fecha de Reserva" />
+                                        <asp:TemplateField ItemStyle-Width="10%" HeaderText="Opciones">
+                                            <ItemTemplate>
+                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idreserva") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
+                                               <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idreserva") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btEli_Click" runat="server">
+                                               <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                            </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                     </Columns>
                                  </asp:GridView> 
                             </form>

@@ -14,60 +14,21 @@ namespace WebPrueba2.Vistas
         MySqlConnection con = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                calendarIn.Visible = false;
-                calendarSa.Visible = false;
-            }
-        }
 
-        protected void fechIn_Click(object sender, ImageClickEventArgs e)
-        {
-            if (calendarIn.Visible)
-            {
-                calendarIn.Visible = false;
-            }
-            else
-            {
-                calendarIn.Visible = true;
-            }
-        }
-
-        protected void calendar_SelectionChanged(object sender, EventArgs e)
-        {
-            fechaIn.Text = calendarIn.SelectedDate.ToShortDateString();
-            calendarIn.Visible = false;
-        }
-
-        protected void fechSa_Click(object sender, ImageClickEventArgs e)
-        {
-            if (calendarSa.Visible)
-            {
-                calendarSa.Visible = false;
-            }
-            else
-            {
-                calendarSa.Visible = true;
-            }
-        }
-
-        protected void calendarSa_SelectionChanged(object sender, EventArgs e)
-        {
-            fechaSa.Text = calendarSa.SelectedDate.ToShortDateString();
-            calendarSa.Visible = false;
         }
 
         protected void agregar_Click(object sender, EventArgs e)
         {
             con.Open();
+            string idhabi = idha.Value.ToString();
             if (!(nombre.Text == "" || dui.Text == "" || codigo.Text == ""
                 || correo.Text == "" || cell.Text == "" || fechaIn.Text == ""
-                || fechaSa.Text == "" || region.SelectedItem.Text == "0")) { 
+                || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhabi=="")) { 
             
                 MySqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO cliente (nombre,dui,codigo,celular,fechaentrada,fechasalida,region,correo) VALUES" +
-                    " ('" + nombre.Text + "','" + dui.Text + "','" + codigo.Text + "','" + cell.Text + "','"+fechaIn.Text+"','"+fechaSa.Text+"','"+region.SelectedItem.Value+"','"+correo.Text+"')";
+                cmd.CommandText = "INSERT INTO cliente (nombre,dui,codigo,celular,fechaentrada,fechasalida,region,correo,idhabitacion) VALUES" +
+                    " ('" + nombre.Text + "','" + dui.Text + "','" + codigo.Text + "','" + cell.Text + "','"+fechaIn.Text+"','"+fechaSa.Text+"','"+region.SelectedItem.Value+"','"+correo.Text+"',"+idhabi+")";
 
 
                 if (cmd.ExecuteNonQuery() > 0)

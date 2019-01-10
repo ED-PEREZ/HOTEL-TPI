@@ -29,10 +29,12 @@
                 showConfirmButton: false,
                 timer: 1500
             });
-         setTimeout ("document.location.href = 'ListaHabitacion.aspx';", 1500); 
-         
-            
+         setTimeout ("document.location.href = 'ListaHabitacion.aspx';", 1500);      
         }
+        function abrirVentana(){
+        var url = "BuscarTipo.aspx";
+        window.open(url, "Nuevo","alwaysRaised=no,toolbar=no,menubar=no,status=no,resizable=no,width=400,height=300,location=no");
+      }
     </script>
  
 </asp:Content>
@@ -49,6 +51,7 @@
                                     
                                     <form id="registrarHabitacion" role="form" runat="server">
                                         <asp:HiddenField ID="hf" runat="server" />
+                                        <asp:HiddenField ID="idth" runat="server" />
                                         <div class="form-group">
                                             <label for="nombre">Numero de Habitacion (*)</label>
                                         </div>
@@ -67,15 +70,14 @@
                                             </div>
                                             <br>
                                         </div>
-                                            
+                                        <div class="form-group">
+                                            <asp:TextBox ID="idtipoh" runat="server" class="form-control"></asp:TextBox>
+                                        </div>    
                                         <div class="form-group">
                                             <br>                                                        
                                             <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />   
-                                            <asp:Button ID="agregar"  runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="agregar_Click" />
+                                            <asp:Button ID="agregar"  runat="server" class="btn btn-primary btn-lg btn-success"  Text="Modificar" OnClick="agregar_Click" />
                                         </div>
-                                        <asp:TextBox ID="algo" runat="server" CssClass="form-control"/>
-                                            
-                                      
                                     </form>
                                </div>
                             </div>

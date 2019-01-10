@@ -11,6 +11,7 @@ namespace WebPrueba2.Vistas
 {
     public partial class ListaProducto : System.Web.UI.Page
     {
+        int productoID;
         protected void Page_Load(object sender, EventArgs e)
         {
             GridFill();
@@ -31,6 +32,38 @@ namespace WebPrueba2.Vistas
                 gvTipo.DataSource = dt;
                 gvTipo.DataBind();
                 gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
+
+        protected void btMod_Click(object sender, EventArgs e)
+        {
+            productoID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+            Response.Redirect("EditarProducto.aspx?id=" + productoID);
+        }
+
+        protected void btEli_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+            {
+                productoID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+                sqlCOn.Open();
+                MySqlCommand cmd = sqlCOn.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "delete from producto WHERE idproducto=" + productoID + "";
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    sqlCOn.Close();
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+
+                }
+                else
+                {
+                    sqlCOn.Close();
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+
+                }
+                sqlCOn.Close();
             }
         }
     }

@@ -3,7 +3,49 @@
     Habitaciones
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
-
+         function completeCampos() {
+            Swal({
+                position: 'top-end',
+                type: 'warning',
+                title: 'Complete los campos!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        function eliminar(){
+				swal({
+					tittle: 'CONFIRME SI',
+					text: "DESEA ELIMINAR EL REGISTRO?",
+					type: 'info',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'SI, ELIMINAR'
+				}).then((result) => {
+					if (result.value) {
+                       
+					}
+				})
+       }
+       function datosCorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Eliminacion completada!!',
+                showConfirmButton: false,
+                timer: 5000
+            });
+             setTimeout ("document.location.href = 'ListaReserva.aspx'",1500);
+        }
+       function datosIncorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'No pudo eliminarse el registro!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
     </script>
 </asp:Content>
 
@@ -23,8 +65,13 @@
                                         <asp:BoundField DataField="numhabitacion" HeaderText="Numero de Habitacion #" />
                                         <asp:BoundField DataField="estado" HeaderText="Estado" />
                                         <asp:TemplateField HeaderText="Opciones">
-                                        <ItemTemplate>                            
-                                            <button class="btn btn-info"><a  class="fa fa-pencil" style="color:#0E0D0D;" href="EditarHabitac.aspx?id=<%# Eval("idhabitacion") %>" ></a></button>
+                                        <ItemTemplate>       
+                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idhabitacion") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
+                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idhabitacion") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btEli_Click" runat="server">
+                                               <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                            </asp:LinkButton>
                                         </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

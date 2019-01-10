@@ -214,9 +214,12 @@
     <Content Include="Vistas\AgregarProducto.aspx" />
     <Content Include="Vistas\AgregarReserva.aspx" />
     <Content Include="Vistas\AgregarTipoHabitacion.aspx" />
+    <Content Include="Vistas\BuscarHabitacion.aspx" />
+    <Content Include="Vistas\BuscarTipo.aspx" />
     <Content Include="Vistas\EditarCliente.aspx" />
     <Content Include="Vistas\EditarHabitac.aspx" />
     <Content Include="Vistas\EditarProducto.aspx" />
+    <Content Include="Vistas\EditarReserva.aspx" />
     <Content Include="Vistas\EditarTipoHabitacion.aspx" />
     <Content Include="Vistas\Empleado.aspx" />
     <Content Include="Vistas\Home.aspx" />
@@ -285,6 +288,20 @@
     <Compile Include="Vistas\AgregarTipoHabitacion.aspx.designer.cs">
       <DependentUpon>AgregarTipoHabitacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\BuscarHabitacion.aspx.cs">
+      <DependentUpon>BuscarHabitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\BuscarHabitacion.aspx.designer.cs">
+      <DependentUpon>BuscarHabitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\BuscarTipo.aspx.cs">
+      <DependentUpon>BuscarTipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\BuscarTipo.aspx.designer.cs">
+      <DependentUpon>BuscarTipo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\EditarCliente.aspx.cs">
       <DependentUpon>EditarCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,6 +322,13 @@
     </Compile>
     <Compile Include="Vistas\EditarProducto.aspx.designer.cs">
       <DependentUpon>EditarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\EditarReserva.aspx.cs">
+      <DependentUpon>EditarReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\EditarReserva.aspx.designer.cs">
+      <DependentUpon>EditarReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EditarTipoHabitacion.aspx.cs">
       <DependentUpon>EditarTipoHabitacion.aspx</DependentUpon>

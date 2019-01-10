@@ -14,19 +14,18 @@ namespace WebPrueba2.Vistas
         MySqlConnection con = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                calendar.Visible = false;
-            }
         }
 
         protected void agregar_Click(object sender, EventArgs e)
         {
             con.Open();
-            if (!(nombre.Text == "" || codigo.Text == "" || adelanto.Text=="" || fecha.Text==""))
+            string idhab = idha.Value.ToString();
+            if (!(nombre.Text == "" || codigo.Text == "" || adelanto.Text=="" || fecha.Text=="" || 
+                idhab==""))
             {
                 MySqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO reserva (nombre,codigo,adelanto,fechareserva) VALUES ('" + nombre.Text + "','" + codigo.Text + "',"+adelanto.Text+",'"+fecha.Text+"')";
+                cmd.CommandText = "INSERT INTO reserva (nombre,codigo,adelanto,fechareserva,idhabitacion) VALUES ('" + nombre.Text + "','" + codigo.Text + "',"+adelanto.Text+",'"+fecha.Text+"',"+idhab+")";
 
 
                 if (cmd.ExecuteNonQuery() > 0)
@@ -49,24 +48,6 @@ namespace WebPrueba2.Vistas
             }
 
             con.Close();
-        }
-
-        protected void fech_Click(object sender, ImageClickEventArgs e)
-        {
-            if (calendar.Visible)
-            {
-                calendar.Visible = false;
-            }
-            else {
-                calendar.Visible = true;
-            }
-        }
-
-        protected void calendar_SelectionChanged(object sender, EventArgs e)
-        {
-            //  fecha.Text=calendar.SelectedDate.ToLongDateString();
-            fecha.Text = calendar.SelectedDate.ToShortDateString();
-            calendar.Visible = false;
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace WebPrueba2.Vistas
 {
-    public partial class EditarCliente : System.Web.UI.Page
+    public partial class EditarReserva : System.Web.UI.Page
     {
         string idh;
         protected void Page_Load(object sender, EventArgs e)
@@ -24,21 +24,17 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "select nombre,dui,fechaentrada,fechasalida,correo,region,celular,idcliente,codigo from cliente WHERE idcliente=" + idh + "";
+                        cmd.CommandText = "select * FROM reserva WHERE idreserva=" + idh + "";
                         cmd.ExecuteNonQuery();
                         MySqlDataReader dr = cmd.ExecuteReader();
 
                         if (dr.Read() == true)
                         {
                             nombre.Text = dr["nombre"].ToString();
-                            dui.Text = dr["dui"].ToString();
                             codigo.Text = dr["codigo"].ToString();
-                            correo.Text = dr["correo"].ToString();
-                            region.Text = dr["region"].ToString();
-                            cell.Text = dr["celular"].ToString();
-                            fechaIn.Text = dr["fechaentrada"].ToString();
-                            fechaSa.Text = dr["fechasalida"].ToString();
-                            hf.Value = dr["idcliente"].ToString();
+                            adelanto.Text = dr["adelanto"].ToString();
+                            fecha.Text = dr["fechareserva"].ToString();
+                            hf.Value = dr["idreserva"].ToString();
                         }
                         sqlCOn.Close();
                     }
@@ -48,20 +44,17 @@ namespace WebPrueba2.Vistas
 
         protected void agregar_Click(object sender, EventArgs e)
         {
-            //solomodifica
             using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
             {
                 string idhab = idha.Value.ToString();
-                if (!(nombre.Text == "" || dui.Text == "" || codigo.Text == ""
-               || correo.Text == "" || cell.Text == "" || fechaIn.Text == ""
-               || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhab==""))
+                if (!(nombre.Text == "" || codigo.Text == "" || adelanto.Text == "" || fecha.Text == ""
+                    || idhab==""))
                 {
                     sqlCOn.Open();
                     MySqlCommand cmd = sqlCOn.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "UPDATE cliente SET nombre='"+nombre.Text+"',dui='"+dui.Text+"',codigo='"+codigo.Text+"'" +
-                        ",celular='"+cell.Text+"',fechaentrada='"+fechaIn.Text+"',fechasalida='"+fechaSa.Text+"',region='"+region.Text+"'," +
-                        "correo='"+correo.Text+"' idhabitacion="+idhab+" WHERE idcliente="+Convert.ToInt32(hf.Value);
+                    cmd.CommandText = "UPDATE reserva SET nombre='"+nombre.Text+"',codigo='"+codigo.Text+"',adelanto='"+adelanto.Text+"'," +
+                        "fechareserva='"+fecha.Text+"',idhabitacion="+idhab+" WHERE idreserva=" + Convert.ToInt32(hf.Value);
 
 
                     if (cmd.ExecuteNonQuery() > 0)
@@ -76,14 +69,14 @@ namespace WebPrueba2.Vistas
                         ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
 
                     }
-
+                    sqlCOn.Close();
                 }
                 else
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos()", true);
                 }
+                
             }
         }
-
     }
 }
