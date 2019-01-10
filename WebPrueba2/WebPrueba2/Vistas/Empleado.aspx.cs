@@ -16,7 +16,8 @@ namespace WebPrueba2.Vistas
         int Valor = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
                 if (Request.Params["id"] != null)
                 {
                     this.Valor = int.Parse(Request.Params["id"]);
@@ -219,7 +220,8 @@ namespace WebPrueba2.Vistas
             MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
             ds.Fill(dt);
             int d1 = 0;
-            if (dt.Rows[0][0].ToString() != "") { 
+            if (dt.Rows[0][0].ToString() != "")
+            {
                 d1 = int.Parse(dt.Rows[0][0].ToString());
             }
             con.Close();
@@ -249,6 +251,24 @@ namespace WebPrueba2.Vistas
                 System.Console.WriteLine(e);
             }
             return false;
+        }
+
+        protected void agregarm_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            MySqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            int esta = 1;
+            for (int  i = 0; i < 1000; i++) { 
+            cmd.CommandText = "INSERT INTO empleado(codigoemp, nombre, sexo, " +
+                            "fechanacimiento, direccion, dui, nit, nseguro, nafp, telefono, fechacontrato, " +
+                            "cargo, sueldo, usuario, contra) VALUES ('" + i+" "+ esta + "','" + i + "'," +
+                            "'" + i + "','" + i + "' , '" + i + "' , '" + i + "' , '" + i + "' , '" + i + "' , '" + i + "','" + i + "'," +
+                            "'" + i + "','" + esta + "','" + i +"."+e + "','" + i + "','" + i + "')";
+            cmd.ExecuteNonQuery();
+                esta++;
+            if (esta == 5) esta = 1;
+        }
         }
     }
 }

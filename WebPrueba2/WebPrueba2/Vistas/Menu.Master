@@ -354,7 +354,7 @@
                                     <a href="Empleado.aspx">Nuevo Empleado</a>
                                 </li>
                                 <li>
-                                    <a href="ListaEmpleado.aspx">Lista Empleado</a>
+                                    <a href="ListaEmpleado.aspx" id="label">Lista Empleado</a>
                                 </li>
                             </ul>
                         </li>

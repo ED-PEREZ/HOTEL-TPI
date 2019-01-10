@@ -103,6 +103,7 @@
     <Content Include="gulpfile.js" />
     <Content Include="images\icono-calendario.png" />
     <Content Include="index.html" />
+    <Content Include="js\jspdf.js" />
     <Content Include="js\sb-admin-2.js" />
     <Content Include="pages\blank.html" />
     <Content Include="pages\buttons.html" />
@@ -226,6 +227,7 @@
     <Content Include="Vistas\ListaReserva.aspx" />
     <Content Include="Vistas\listaTipoHabitacion.aspx" />
     <Content Include="Vistas\Login.aspx" />
+    <Content Include="Vistas\Reporte.aspx" />
     <Content Include="Vistas\WebForm1.aspx" />
     <Content Include="Vistas\WebForm2.aspx" />
     <Content Include="Web.config" />
@@ -379,6 +381,13 @@
     </Compile>
     <Compile Include="Vistas\Menu.Master.designer.cs">
       <DependentUpon>Menu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Reporte.aspx.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Reporte.aspx.designer.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
