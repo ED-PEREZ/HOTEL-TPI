@@ -24,7 +24,11 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "select nombre,dui,fechaentrada,fechasalida,correo,region,celular,idcliente,codigo from cliente WHERE idcliente=" + idh + "";
+                        cmd.CommandText = "SELECT a.nombre, a.dui, a.fechaentrada, a.fechasalida," +
+                            " a.idhabitacion, a.correo, a.region, a.celular, a.codigo, b.idhabitacion," +
+                            " b.numhabitacion, a.idcliente FROM cliente a " +
+                            "INNER JOIN habitacion b ON a.idhabitacion = b.idhabitacion" +
+                            " WHERE a.idcliente=" + idh + "";
                         cmd.ExecuteNonQuery();
                         MySqlDataReader dr = cmd.ExecuteReader();
 
@@ -38,6 +42,8 @@ namespace WebPrueba2.Vistas
                             cell.Text = dr["celular"].ToString();
                             fechaIn.Text = dr["fechaentrada"].ToString();
                             fechaSa.Text = dr["fechasalida"].ToString();
+                            idha.Value = dr["idhabitacion"].ToString();
+                            habitacion.Text = dr["numhabitacion"].ToString();
                             hf.Value = dr["idcliente"].ToString();
                         }
                         sqlCOn.Close();
@@ -61,7 +67,7 @@ namespace WebPrueba2.Vistas
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "UPDATE cliente SET nombre='"+nombre.Text+"',dui='"+dui.Text+"',codigo='"+codigo.Text+"'" +
                         ",celular='"+cell.Text+"',fechaentrada='"+fechaIn.Text+"',fechasalida='"+fechaSa.Text+"',region='"+region.Text+"'," +
-                        "correo='"+correo.Text+"' idhabitacion="+idhab+" WHERE idcliente="+Convert.ToInt32(hf.Value);
+                        "correo='"+correo.Text+"', idhabitacion="+idhab+" WHERE idcliente="+Convert.ToInt32(hf.Value);
 
 
                     if (cmd.ExecuteNonQuery() > 0)

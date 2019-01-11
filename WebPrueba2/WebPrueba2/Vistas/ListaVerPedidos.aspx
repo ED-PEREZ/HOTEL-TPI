@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="ListaCliente.aspx.cs" Inherits="WebPrueba2.Vistas.ListaCliente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="ListaVerPedidos.aspx.cs" Inherits="WebPrueba2.Vistas.Reportes.ListaVerPedidos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        Recepcion
+    Pedidos
    <script src="../Estilos/Sweetalert.js"></script>
    <script type="text/javascript">
        function completeCampos() {
@@ -23,7 +23,6 @@
 					confirmButtonText: 'SI, ELIMINAR'
 				}).then((result) => {
 					if (result.value) {
-                        document.getElementById("<%=algo.ClientID%>").value = "eliminar";
 					}
 				})
        }
@@ -50,34 +49,30 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="row">
+    <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Lista de Clientes
+                    Lista de Pedidos por los Clientes
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12"> 
                             <form id="form" runat="server">
-                                <asp:TextBox ID="algo" runat="server" />
-                                 <asp:TextBox ID="contenedor" runat="server" />
-                                <asp:TextBox ID="ja" runat="server" />
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"  >                                    
                                     <Columns>   
-                                        <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                                        <asp:BoundField DataField="dui" HeaderText="DUI" />
-                                        <asp:BoundField DataField="fechaentrada" DataFormatString="{0:d}"  HeaderText="Fecha de Reserva" />
-                                        <asp:BoundField DataField="fechasalida" DataFormatString="{0:d}"  HeaderText="Fecha de Reserva" />
-                                        <asp:BoundField DataField="correo" HeaderText="E-Mail" />
-                                        <asp:BoundField DataField="celular" HeaderText="Celular" />
+                                        <asp:BoundField DataField="numhabitacion" HeaderText="# Habitacion del Cliente" />
+                                        <asp:BoundField DataField="nombre" HeaderText="Nombre del Cliente" />
+                                        <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />
+                                        <asp:TemplateField HeaderText="Foto">
+                                            <ItemTemplate>
+                                                <asp:Image ID="imagen" runat="server" Width="100px" Height="100px" ImageUrl='<%#"data:image/jpg;base64,"+ Convert.ToBase64String((byte[])Eval("foto")) %>' />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Opciones">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idcliente") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
-                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                            </asp:LinkButton>
-                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idcliente") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btEli_Click" runat="server">
-                                               <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idservicio") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
+                                                <i class="ace-icon fa fa-send-o  bigger-120"></i>
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                         </asp:TemplateField>
@@ -93,11 +88,11 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="final" runat="server">
-       <script>
+    <script>
     $(document).ready(function() {
         $("#<%=gvTipo.ClientID %>").DataTable({
             responsive: true
         });
     });
     </script>
- </asp:Content>
+</asp:Content>
