@@ -26,7 +26,7 @@ namespace WebPrueba2.Vistas
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT idempleado, codigoemp, nombre, dui, IF(cargo = 1, 'ADMINISTRADOR', "
                     + "IF(cargo = 2, 'GERENTE', IF(cargo = 3, 'RECEPCIONISTA',"
-                    + "IF(empleado.cargo=4,'RECEPCIONISTA','OTRO')))) AS cargo FROM empleado";
+                    + "IF(empleado.cargo=4,'MANTENIMIENTO','OTRO')))) AS cargo FROM empleado";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
@@ -65,6 +65,12 @@ namespace WebPrueba2.Vistas
 
             sqlCon.Close();
             Response.Redirect("ListaEmpleado.aspx");
+        }
+
+        protected void Reporte_Click(Object sender, EventArgs e)
+        {
+            empleadoID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+            Response.Redirect("Reportes/ReporteEmpleado.aspx?id=" + empleadoID);
         }
     }
 }

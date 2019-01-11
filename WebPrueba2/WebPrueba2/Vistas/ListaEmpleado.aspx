@@ -32,13 +32,17 @@
                     <asp:BoundField DataField="dui" HeaderText="DUI" ItemStyle-Width="10%" />
                     <asp:BoundField DataField="nombre" HeaderText="NOMBRE" ItemStyle-Width="50%" />
                     <asp:BoundField DataField="cargo" HeaderText="CARGO" ItemStyle-Width="10%" />
-                    <asp:TemplateField ItemStyle-Width="10%" HeaderText="Opciones">
+                    <asp:TemplateField ItemStyle-Width="15%" HeaderText="ACCIONES">
                         <ItemTemplate>
-                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idEmpleado") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="Editar_Click" runat="server">
+                            <asp:LinkButton ID="btRep" target="blank" CommandArgument='<%# Eval("idEmpleado") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="Reporte_Click" runat="server">
+                               <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
+                            </asp:LinkButton>
+                            </nav>
+                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idEmpleado") %>' ToolTip="MODIFICAR" CssClass="btn btn-primary btn-sm btn-warning" OnClick="Editar_Click" runat="server">
                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                             </asp:LinkButton>
                             </nav>
-                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idEmpleado") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="Eliminar_Click" runat="server">
+                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idEmpleado") %>' ToolTip="ELIMINAR" CssClass="btn btn-primary btn-sm btn-danger" OnClick="Eliminar_Click" runat="server">
                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
                             </asp:LinkButton>
                         </ItemTemplate>

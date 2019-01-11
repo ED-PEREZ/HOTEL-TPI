@@ -143,7 +143,7 @@
                                         <asp:ListItem Text="GERENTE" Value="2"></asp:ListItem>
                                         <asp:ListItem Text="RECEPCIONISTA" Value="3"></asp:ListItem>
                                         <asp:ListItem Text="MANTENIMIENTO" Value="4"></asp:ListItem>
-                                        <asp:ListItem Text="OTRO" Value="4"></asp:ListItem>
+                                        <asp:ListItem Text="OTRO" Value="5"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                                 <div class="form-group">
@@ -177,6 +177,7 @@
                                     <br>
                                     <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />
                                     <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success" Text="Guardar" OnClick="agregar_Click" />
+                                    <asp:Button ID="agregarm" Visible="false" runat="server" class="btn btn-primary btn-lg btn-success" Text="Guardar" OnClick="agregarm_Click" />
                                 </div>
                             </form>
                         </div>
@@ -186,4 +187,5 @@
             </div>
         </div>
     </div>
+    
 </asp:Content>
