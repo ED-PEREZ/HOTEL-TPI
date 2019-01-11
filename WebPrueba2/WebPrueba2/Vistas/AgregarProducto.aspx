@@ -29,7 +29,7 @@
                 showConfirmButton: false,
                 timer: 5000
             });
-            document.location.href = 'AgregarCatalogo.aspx';
+             setTimeout ("document.location.href = 'AgregarProducto.aspx'",1500);
         }
     </script>
 </asp:Content>

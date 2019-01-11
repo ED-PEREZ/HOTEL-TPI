@@ -325,7 +325,7 @@
                             <a href="#"><i class="fa fa-cutlery fa-fw"></i>Servicio al Cuaro <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                  <li>
-                                    <a href="AgregarPedido.aspx">Nuevo Pedido</a>
+                                    <a href="AgregarPedido.aspx?idcli=13">Nuevo Pedido</a>
                                 </li>
                                  <li>
                                     <a href="#">Lista</a>
@@ -342,7 +342,7 @@
                                     <a href="ListaProducto.aspx">Lista Productos</a>
                                 </li>
                                 <li>
-                                    <a href="notifications.html">Ver Pedidos</a>
+                                    <a href="ListaVerPedidos.aspx">Ver Pedidos</a>
                                 </li>                                
                             </ul>
                             <!-- /.nav-second-level -->

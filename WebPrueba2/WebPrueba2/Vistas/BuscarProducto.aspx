@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarTipo.aspx.cs" Inherits="WebPrueba2.Vistas.BuscarTipo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarProducto.aspx.cs" Inherits="WebPrueba2.Vistas.BuscarProducto" %>
 
 <!DOCTYPE html>
 
@@ -35,57 +35,54 @@
     <script type="text/javascript">
         function selecciona(tipo,id) {
             window.opener.document.getElementById('ContentPlaceHolder1_tipo').value = tipo;
-            window.opener.document.getElementById('ContentPlaceHolder1_idth').value = id;
+            window.opener.document.getElementById('ContentPlaceHolder1_hf').value = id;
             window.close();
 }
     </script>
 </head>
 <body>
     <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Productos
+            </h1>
+        </div>        
+    </div>
 
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Habitaciones
-                    </h1>
+     <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Lista del Inventario
                 </div>
-            
-     </div>
-
-        <div class="row">
-           <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                        Lista de Tipos de Habitacion
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12"> 
-                              <form id="form" runat="server">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12"> 
+                            <form id="form" runat="server">
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"    >
-                                <Columns>
-                                   <asp:BoundField DataField="tipohabitacion" HeaderText="Tipo" />
-                                   <asp:BoundField DataField="precio" HeaderText="Precio" />
-                                    <asp:TemplateField HeaderText="Foto">
-                                        <ItemTemplate>
-                                            <asp:Image ID="imagen" runat="server" Width="100px" Height="100px" ImageUrl='<%#"data:image/jpg;base64,"+ Convert.ToBase64String((byte[])Eval("foto")) %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Opciones">
-                                        <ItemTemplate> 
-                                             <button type="button" class="btn btn-primary" onclick="selecciona('<%# Eval("tipohabitacion") %>','<%# Eval("idtipohabitacion") %>')" >Retornar</button>
+                                    <Columns>   
+                                        <asp:BoundField DataField="descripcion" HeaderText="Tipo" />
+                                        <asp:BoundField DataField="precio" HeaderText="Precio" />
+                                        <asp:TemplateField HeaderText="Foto">
+                                            <ItemTemplate>
+                                                <asp:Image ID="imagen" runat="server" Width="100px" Height="100px" ImageUrl='<%#"data:image/jpg;base64,"+ Convert.ToBase64String((byte[])Eval("foto")) %>' />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Opciones">
+                                        <ItemTemplate>    
+                                            <button type="button" class="btn btn-primary" onclick="selecciona('<%# Eval("descripcion") %>','<%# Eval("idproducto") %>')" >Retornar</button>
                                         </ItemTemplate>
                                         </asp:TemplateField>
-                               </Columns>
-                          </asp:GridView>                    
-       </form>
- </div>
-                            </div>
-                        </div>
-
-                    </div>
+                                    </Columns>
+                                 </asp:GridView> 
+                            </form>
+                         </div>
+                     </div>
+                 </div>
              </div>
-       </div>
- 
+         </div>
+    </div> 
+  
 
      <script src="../vendor/jquery/jquery.min.js"></script>
 
@@ -111,3 +108,4 @@
 
 </body>
 </html>
+

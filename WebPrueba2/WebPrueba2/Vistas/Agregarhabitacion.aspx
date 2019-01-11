@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-xs-12 col-sm-6 col-md-8">  
-                                            <asp:TextBox ID="tipo" runat="server" class="form-control" placeholder="seleccione" ReadOnly="true"></asp:TextBox>
+                                            <asp:TextBox ID="tipo" runat="server" class="form-control"  placeholder="seleccione" ReadOnly="true"></asp:TextBox>
                                             </div>
                                             <div class="col-xs-6 col-md-4">
                                             <button type="button" class="btn btn-primary btn-circle" onclick="abrirVentana()"><i class="fa fa-list"></i></button>

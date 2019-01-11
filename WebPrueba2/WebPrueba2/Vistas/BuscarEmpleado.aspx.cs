@@ -9,32 +9,31 @@ using System.Web.UI.WebControls;
 
 namespace WebPrueba2.Vistas
 {
-    
-    public partial class BuscarTipo : System.Web.UI.Page
+    public partial class BuscarEmpleado : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             GridFill();
         }
-        void GridFill()
+        private void GridFill()
         {
             using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
             {
                 sqlCOn.Open();
                 MySqlCommand cmd = sqlCOn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from tipo_habitacion ";
+                cmd.CommandText = "SELECT * FROM empleado";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
-                int i= ds.Fill(dt);
+                int i = ds.Fill(dt);
                 gvTipo.DataSource = dt;
                 gvTipo.DataBind();
-
-                gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+                if (i > 0)
+                {
+                    gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
             }
         }
-
-
     }
 }

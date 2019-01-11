@@ -14,26 +14,29 @@ namespace WebPrueba2.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            String idh = "";
-            if (Request.Params["id"] != null)
+            if (!IsPostBack)
             {
-                idh = Request.Params["id"];
-                using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                String idh = "";
+                if (Request.Params["id"] != null)
                 {
-                    sqlCOn.Open();
-                    MySqlCommand cmd = sqlCOn.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select * from producto WHERE idproducto=" + idh + "";
-                    cmd.ExecuteNonQuery();
-                    MySqlDataReader dr = cmd.ExecuteReader();
-
-                    if (dr.Read() == true)
+                    idh = Request.Params["id"];
+                    using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
                     {
-                        descripcion.Text = dr["descripcion"].ToString();
-                        precio.Text = dr["precio"].ToString();
-                        hf.Value = dr["idproducto"].ToString();
+                        sqlCOn.Open();
+                        MySqlCommand cmd = sqlCOn.CreateCommand();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "select * from producto WHERE idproducto=" + idh + "";
+                        cmd.ExecuteNonQuery();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.Read() == true)
+                        {
+                            descripcion.Text = dr["descripcion"].ToString();
+                            precio.Text = dr["precio"].ToString();
+                            hf.Value = dr["idproducto"].ToString();
+                        }
+                        sqlCOn.Close();
                     }
-                    sqlCOn.Close();
                 }
             }
         }

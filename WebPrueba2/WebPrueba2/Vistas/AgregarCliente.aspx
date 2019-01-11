@@ -54,7 +54,7 @@
                 showConfirmButton: false,
                 timer: 5000
             });
-            setTimeout ("document.location.href = 'Agregarhabitacion.aspx';",1500);
+            setTimeout ("document.location.href = 'AgregarCliente.aspx';",1500);
         }
         function abrirVentana(){
         var url = "BuscarHabitacion.aspx";

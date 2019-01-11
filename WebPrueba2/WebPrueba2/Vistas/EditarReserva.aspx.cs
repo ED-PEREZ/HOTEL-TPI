@@ -24,7 +24,10 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "select * FROM reserva WHERE idreserva=" + idh + "";
+                        cmd.CommandText = "SELECT a.nombre, a.codigo, a.adelanto, a.fechareserva," +
+                            " b.numhabitacion, b.idhabitacion, a.idhabitacion, a.idreserva" +
+                            " FROM habitacion b INNER JOIN reserva a ON a.idhabitacion = b.idhabitacion" +
+                            " WHERE a.idreserva=" + idh + "";
                         cmd.ExecuteNonQuery();
                         MySqlDataReader dr = cmd.ExecuteReader();
 
@@ -34,6 +37,8 @@ namespace WebPrueba2.Vistas
                             codigo.Text = dr["codigo"].ToString();
                             adelanto.Text = dr["adelanto"].ToString();
                             fecha.Text = dr["fechareserva"].ToString();
+                            habitacion.Text = dr["numhabitacion"].ToString();
+                            idha.Value = dr["idhabitacion"].ToString();
                             hf.Value = dr["idreserva"].ToString();
                         }
                         sqlCOn.Close();
