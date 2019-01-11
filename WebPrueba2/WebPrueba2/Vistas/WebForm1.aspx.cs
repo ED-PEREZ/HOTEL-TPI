@@ -22,7 +22,7 @@ namespace WebPrueba2.Vistas
                 sqlCOn.Open();
                 MySqlCommand cmd = sqlCOn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from usuarios ";
+                cmd.CommandText = "select * from usuario ";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
