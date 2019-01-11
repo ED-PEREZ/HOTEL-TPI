@@ -103,8 +103,6 @@
     <Content Include="gulpfile.js" />
     <Content Include="images\icono-calendario.png" />
     <Content Include="index.html" />
-    <Content Include="js\jspdf.js" />
-    <Content Include="js\jspdf.min.js" />
     <Content Include="js\sb-admin-2.js" />
     <Content Include="pages\blank.html" />
     <Content Include="pages\buttons.html" />
@@ -208,18 +206,6 @@
     <Content Include="vendor\morrisjs\morris.min.js" />
     <Content Include="vendor\raphael\raphael.js" />
     <Content Include="vendor\raphael\raphael.min.js" />
-    <Content Include="Vistas\AgregarCatalogo.aspx" />
-    <Content Include="Vistas\AgregarCliente.aspx" />
-    <Content Include="Vistas\Agregarhabitacion.aspx" />
-    <Content Include="Vistas\AgregarPedido.aspx" />
-    <Content Include="Vistas\AgregarProducto.aspx" />
-    <Content Include="Vistas\AgregarReserva.aspx" />
-    <Content Include="Vistas\AgregarTipoHabitacion.aspx" />
-    <Content Include="Vistas\EditarCliente.aspx" />
-    <Content Include="Vistas\EditarHabitac.aspx" />
-    <Content Include="Vistas\EditarProducto.aspx" />
-    <Content Include="Vistas\EditarTipoHabitacion.aspx" />
-    <Content Include="Vistas\Empleado.aspx" />
     <Content Include="Vistas\Home.aspx" />
     <Content Include="Vistas\ListaCliente.aspx" />
     <Content Include="Vistas\ListaEmpleado.aspx" />
@@ -228,9 +214,6 @@
     <Content Include="Vistas\ListaReserva.aspx" />
     <Content Include="Vistas\listaTipoHabitacion.aspx" />
     <Content Include="Vistas\Login.aspx" />
-    <Content Include="Vistas\Reportes\ReporteEmpleado.aspx" />
-    <Content Include="Vistas\Reportes\ReporteEmpleadoLista.aspx" />
-    <Content Include="Vistas\Reportes\ReporteHabitaciones.aspx" />
     <Content Include="Vistas\WebForm1.aspx" />
     <Content Include="Vistas\WebForm2.aspx" />
     <Content Include="Web.config" />
@@ -238,90 +221,6 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vistas\AgregarCatalogo.aspx.cs">
-      <DependentUpon>AgregarCatalogo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\AgregarCatalogo.aspx.designer.cs">
-      <DependentUpon>AgregarCatalogo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\AgregarCliente.aspx.cs">
-      <DependentUpon>AgregarCliente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\AgregarCliente.aspx.designer.cs">
-      <DependentUpon>AgregarCliente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Agregarhabitacion.aspx.cs">
-      <DependentUpon>Agregarhabitacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Agregarhabitacion.aspx.designer.cs">
-      <DependentUpon>Agregarhabitacion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\AgregarPedido.aspx.cs">
-      <DependentUpon>AgregarPedido.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\AgregarPedido.aspx.designer.cs">
-      <DependentUpon>AgregarPedido.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\AgregarProducto.aspx.cs">
-      <DependentUpon>AgregarProducto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\AgregarProducto.aspx.designer.cs">
-      <DependentUpon>AgregarProducto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\AgregarReserva.aspx.cs">
-      <DependentUpon>AgregarReserva.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\AgregarReserva.aspx.designer.cs">
-      <DependentUpon>AgregarReserva.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\AgregarTipoHabitacion.aspx.cs">
-      <DependentUpon>AgregarTipoHabitacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\AgregarTipoHabitacion.aspx.designer.cs">
-      <DependentUpon>AgregarTipoHabitacion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\EditarCliente.aspx.cs">
-      <DependentUpon>EditarCliente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\EditarCliente.aspx.designer.cs">
-      <DependentUpon>EditarCliente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\EditarHabitac.aspx.cs">
-      <DependentUpon>EditarHabitac.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\EditarHabitac.aspx.designer.cs">
-      <DependentUpon>EditarHabitac.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\EditarProducto.aspx.cs">
-      <DependentUpon>EditarProducto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\EditarProducto.aspx.designer.cs">
-      <DependentUpon>EditarProducto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\EditarTipoHabitacion.aspx.cs">
-      <DependentUpon>EditarTipoHabitacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\EditarTipoHabitacion.aspx.designer.cs">
-      <DependentUpon>EditarTipoHabitacion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Empleado.aspx.cs">
-      <DependentUpon>Empleado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Empleado.aspx.designer.cs">
-      <DependentUpon>Empleado.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -384,27 +283,6 @@
     </Compile>
     <Compile Include="Vistas\Menu.Master.designer.cs">
       <DependentUpon>Menu.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Reportes\ReporteEmpleado.aspx.cs">
-      <DependentUpon>ReporteEmpleado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Reportes\ReporteEmpleado.aspx.designer.cs">
-      <DependentUpon>ReporteEmpleado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Reportes\ReporteEmpleadoLista.aspx.cs">
-      <DependentUpon>ReporteEmpleadoLista.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Reportes\ReporteEmpleadoLista.aspx.designer.cs">
-      <DependentUpon>ReporteEmpleadoLista.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Reportes\ReporteHabitaciones.aspx.cs">
-      <DependentUpon>ReporteHabitaciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Reportes\ReporteHabitaciones.aspx.designer.cs">
-      <DependentUpon>ReporteHabitaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

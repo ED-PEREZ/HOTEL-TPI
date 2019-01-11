@@ -31,6 +31,15 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.HiddenField hf;
         
         /// <summary>
+        /// Control idth.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idth;
+        
+        /// <summary>
         /// Control numero.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.TextBox tipo;
         
         /// <summary>
+        /// Control idtipoh.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox idtipoh;
+        
+        /// <summary>
         /// Control cancelar.
         /// </summary>
         /// <remarks>
@@ -65,14 +83,5 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button agregar;
-        
-        /// <summary>
-        /// Control algo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox algo;
     }
 }

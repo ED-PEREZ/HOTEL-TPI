@@ -14,6 +14,7 @@ namespace WebPrueba2.Vistas
         String idh;
         protected void Page_Load(object sender, EventArgs e)
         {
+            idtipoh.Visible = false;
             if (!IsPostBack)
             {
                 if (Request.Params["id"] != null)
@@ -24,13 +25,15 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "select * from habitacion WHERE idhabitacion=" + idh + "";
+                        cmd.CommandText = "SELECT a.numhabitacion,a.idhabitacion, b.tipohabitacion,b.idtipohabitacion FROM habitacion a INNER JOIN tipo_habitacion b ON a.idtipohabitacion = b.idtipohabitacion WHERE idhabitacion=" + idh+"";
                         cmd.ExecuteNonQuery();
                         MySqlDataReader dr = cmd.ExecuteReader();
 
                         if (dr.Read() == true)
                         {
                             numero.Text = dr["numhabitacion"].ToString();
+                            tipo.Text = dr["tipohabitacion"].ToString();
+                            idth.Value = dr["idtipohabitacion"].ToString();
                             hf.Value = dr["idhabitacion"].ToString();
                         }
                         sqlCOn.Close();
@@ -43,12 +46,13 @@ namespace WebPrueba2.Vistas
         {
             using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
             {
-                if (!(numero.Text == ""))
+                string idtipoh = idth.Value.ToString();
+                if (!(numero.Text == "" || idtipoh==""))
                 {
                     sqlCOn.Open();
                     MySqlCommand cmd = sqlCOn.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "UPDATE habitacion SET numhabitacion=" + numero.Text + " WHERE idhabitacion=" + Convert.ToInt32(hf.Value);
+                    cmd.CommandText = "UPDATE habitacion SET numhabitacion=" + numero.Text + ", idtipohabitacion="+idtipoh+" WHERE idhabitacion=" + Convert.ToInt32(hf.Value);
                     int exito = cmd.ExecuteNonQuery();
                     if (exito > 0)
                     {

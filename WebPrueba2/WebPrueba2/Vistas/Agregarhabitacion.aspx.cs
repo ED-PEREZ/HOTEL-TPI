@@ -21,12 +21,13 @@ namespace WebPrueba2.Vistas
         {
             con.Open();
             int exito = 0;
-            if (!(numero.Text == ""))
+            string idtipoh = idth.Value.ToString();
+            if (!(numero.Text == "" || idtipoh==""))
             {
                 
                 MySqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO habitacion (numhabitacion,estado,idtipohabitacion) VALUES (" + numero.Text + ",false,1)";
+                cmd.CommandText = "INSERT INTO habitacion (numhabitacion,estado,idtipohabitacion) VALUES (" + numero.Text + ",false,"+idtipoh+")";
                 exito = cmd.ExecuteNonQuery();
 
                 if (exito > 0)

@@ -10,7 +10,7 @@
 namespace WebPrueba2.Vistas {
     
     
-    public partial class ListaCliente {
+    public partial class BuscarTipo {
         
         /// <summary>
         /// Control form.
@@ -20,33 +20,6 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form;
-        
-        /// <summary>
-        /// Control algo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox algo;
-        
-        /// <summary>
-        /// Control contenedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contenedor;
-        
-        /// <summary>
-        /// Control ja.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ja;
         
         /// <summary>
         /// Control gvTipo.

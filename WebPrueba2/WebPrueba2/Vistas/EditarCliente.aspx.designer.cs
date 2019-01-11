@@ -31,6 +31,15 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.HiddenField hf;
         
         /// <summary>
+        /// Control idha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idha;
+        
+        /// <summary>
         /// Control nombre.
         /// </summary>
         /// <remarks>
@@ -103,24 +112,6 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.TextBox fechaIn;
         
         /// <summary>
-        /// Control imagenIn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imagenIn;
-        
-        /// <summary>
-        /// Control calendarIn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendarIn;
-        
-        /// <summary>
         /// Control fechaSa.
         /// </summary>
         /// <remarks>
@@ -128,24 +119,6 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox fechaSa;
-        
-        /// <summary>
-        /// Control imagenSa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imagenSa;
-        
-        /// <summary>
-        /// Control calendarSa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendarSa;
         
         /// <summary>
         /// Control cancelar.

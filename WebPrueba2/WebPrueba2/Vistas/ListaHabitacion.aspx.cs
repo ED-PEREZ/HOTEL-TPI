@@ -11,6 +11,7 @@ namespace WebPrueba2.Vistas
 {
     public partial class ListaHabitacion : System.Web.UI.Page
     {
+        int habitacionID;
         protected void Page_Load(object sender, EventArgs e)
         {
             GridFill();
@@ -22,14 +23,48 @@ namespace WebPrueba2.Vistas
                 sqlCOn.Open();
                 MySqlCommand cmd = sqlCOn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from habitacion ";
+                cmd.CommandText = "SELECT idhabitacion, numhabitacion, IF(estado = true, 'RESERVADO', IF(estado = false, 'DISPONIBLE','NADA')) AS estado FROM habitacion";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
-                ds.Fill(dt);
+                int i= ds.Fill(dt);
                 gvTipo.DataSource = dt;
                 gvTipo.DataBind();
-                gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+                if (i>0) {
+                    gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+            }
+        }
+
+        protected void btMod_Click(object sender, EventArgs e)
+        {
+            habitacionID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+            Response.Redirect("EditarHabitac.aspx?id=" + habitacionID);
+        }
+
+        protected void btEli_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+            {
+                habitacionID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+                sqlCOn.Open();
+                MySqlCommand cmd = sqlCOn.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "delete from habitacion WHERE idhabitacion=" + habitacionID + "";
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    sqlCOn.Close();
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+
+                }
+                else
+                {
+                    sqlCOn.Close();
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+
+                }
+                sqlCOn.Close();
             }
         }
     }
