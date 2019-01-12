@@ -73,10 +73,13 @@
                                         <asp:BoundField DataField="celular" HeaderText="Celular" />
                                         <asp:TemplateField HeaderText="Opciones">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idcliente") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
+                                            <asp:LinkButton ID="Cancelar" CommandArgument='<%# Eval("idcliente") %>' CssClass="btn btn-primary btn-sm btn-primary" OnClick="Cancelar_Click" runat="server">
+                                                <i class="ace-icon fa fa-credit-card bigger-120"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idcliente") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btMod_Click" runat="server">
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </asp:LinkButton>
-                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idcliente") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btEli_Click" runat="server">
+                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idcliente") %>' CssClass="btn btn-primary btn-sm btn-danger" OnClick="btEli_Click" runat="server">
                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                             </asp:LinkButton>
                                         </ItemTemplate>

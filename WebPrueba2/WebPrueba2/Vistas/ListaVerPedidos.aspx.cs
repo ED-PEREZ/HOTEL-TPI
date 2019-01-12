@@ -38,13 +38,17 @@ namespace WebPrueba2.Vistas.Reportes
                 {
                     gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
+                else
+                {
+                    valida.Text = "No hay pedidos pendientes";
+                }
             }
         }
 
         protected void btMod_Click(object sender, EventArgs e)
         {
             servicioID = Convert.ToInt32((sender as LinkButton).CommandArgument);
-            Response.Redirect("AgregarEntrega.aspx?id=" + servicioID);
+            Response.Redirect("AgregarEntrega.aspx?idservicio=" + servicioID);
         }
     }
 }

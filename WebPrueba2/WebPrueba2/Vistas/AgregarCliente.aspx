@@ -87,10 +87,10 @@
                                             <asp:TextBox ID="dui" runat="server" class="form-control" placeholder="02123442-9" oninput="formato(1);" maxlength="10"></asp:TextBox>
                                         </div>
                                         <div class="form-group">
-                                            <label for="codigo">Codigo (*)</label>
+                                            <label for="Usuario">Usuario (*)</label>
                                         </div>
                                         <div class="form-group">
-                                            <asp:TextBox ID="codigo" runat="server" class="form-control" placeholder="Ejemplo"></asp:TextBox>
+                                            <asp:TextBox ID="usuario" runat="server" class="form-control" placeholder="Ejemplo"></asp:TextBox>
                                         </div>
                                         <div class="form-group">
                                             <label for="correo">Correo (*)</label>

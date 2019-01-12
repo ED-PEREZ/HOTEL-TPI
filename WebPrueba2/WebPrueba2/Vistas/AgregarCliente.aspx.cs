@@ -21,7 +21,7 @@ namespace WebPrueba2.Vistas
         {
             con.Open();
             string idhabi = idha.Value.ToString();
-            if (!(nombre.Text == "" || dui.Text == "" || codigo.Text == ""
+            if (!(nombre.Text == "" || dui.Text == "" || usuario.Text == ""
                 || correo.Text == "" || cell.Text == "" || fechaIn.Text == ""
                 || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhabi=="")) { 
             
@@ -31,8 +31,8 @@ namespace WebPrueba2.Vistas
                 MySqlCommand imd = con.CreateCommand();
 
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO cliente (nombre,dui,codigo,celular,fechaentrada,fechasalida,region,correo,idhabitacion) VALUES" +
-                    " ('" + nombre.Text + "','" + dui.Text + "','" + codigo.Text + "','" + cell.Text + "','"+fechaIn.Text+"','"+fechaSa.Text+"','"+region.SelectedItem.Value+"','"+correo.Text+"',"+idhabi+")";
+                cmd.CommandText = "INSERT INTO cliente (nombre,dui,usuario,celular,fechaentrada,fechasalida,region,correo,idhabitacion) VALUES" +
+                    " ('" + nombre.Text + "','" + dui.Text + "','" + usuario.Text + "','" + cell.Text + "','"+fechaIn.Text+"','"+fechaSa.Text+"','"+region.SelectedItem.Value+"','"+correo.Text+"',"+idhabi+")";
                 cmd.ExecuteNonQuery();
 
                 imd.CommandType = CommandType.Text;

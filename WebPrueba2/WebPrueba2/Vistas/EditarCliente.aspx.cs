@@ -25,7 +25,7 @@ namespace WebPrueba2.Vistas
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = "SELECT a.nombre, a.dui, a.fechaentrada, a.fechasalida," +
-                            " a.idhabitacion, a.correo, a.region, a.celular, a.codigo, b.idhabitacion," +
+                            " a.idhabitacion, a.correo, a.region, a.celular, a.usuario, b.idhabitacion," +
                             " b.numhabitacion, a.idcliente FROM cliente a " +
                             "INNER JOIN habitacion b ON a.idhabitacion = b.idhabitacion" +
                             " WHERE a.idcliente=" + idh + "";
@@ -36,7 +36,7 @@ namespace WebPrueba2.Vistas
                         {
                             nombre.Text = dr["nombre"].ToString();
                             dui.Text = dr["dui"].ToString();
-                            codigo.Text = dr["codigo"].ToString();
+                            usuario.Text = dr["usuario"].ToString();
                             correo.Text = dr["correo"].ToString();
                             region.Text = dr["region"].ToString();
                             cell.Text = dr["celular"].ToString();
@@ -58,14 +58,14 @@ namespace WebPrueba2.Vistas
             using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
             {
                 string idhab = idha.Value.ToString();
-                if (!(nombre.Text == "" || dui.Text == "" || codigo.Text == ""
+                if (!(nombre.Text == "" || dui.Text == "" || usuario.Text == ""
                || correo.Text == "" || cell.Text == "" || fechaIn.Text == ""
                || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhab==""))
                 {
                     sqlCOn.Open();
                     MySqlCommand cmd = sqlCOn.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "UPDATE cliente SET nombre='"+nombre.Text+"',dui='"+dui.Text+"',codigo='"+codigo.Text+"'" +
+                    cmd.CommandText = "UPDATE cliente SET nombre='"+nombre.Text+"',dui='"+dui.Text+"',usuario='"+usuario.Text+"'" +
                         ",celular='"+cell.Text+"',fechaentrada='"+fechaIn.Text+"',fechasalida='"+fechaSa.Text+"',region='"+region.Text+"'," +
                         "correo='"+correo.Text+"', idhabitacion="+idhab+" WHERE idcliente="+Convert.ToInt32(hf.Value);
 

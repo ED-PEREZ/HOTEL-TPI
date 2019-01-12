@@ -59,6 +59,7 @@
                     <div class="row">
                         <div class="col-lg-12"> 
                             <form id="form" runat="server">
+                                <asp:Label ID="valida" runat="server" Text=""/>
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"  >                                    
                                     <Columns>   
                                         <asp:BoundField DataField="numhabitacion" HeaderText="# Habitacion del Cliente" />

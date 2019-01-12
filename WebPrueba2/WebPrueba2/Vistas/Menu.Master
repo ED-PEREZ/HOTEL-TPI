@@ -322,13 +322,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cutlery fa-fw"></i>Servicio al Cuaro <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-cutlery fa-fw"></i>Servicio al Cuarto <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                  <li>
                                     <a href="AgregarPedido.aspx?idcli=13">Nuevo Pedido</a>
                                 </li>
                                  <li>
-                                    <a href="#">Lista</a>
+                                    <a href="Lista.aspx?idcli=13">Lista</a>
                                 </li>
                              </ul>
                         </li>

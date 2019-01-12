@@ -3,6 +3,48 @@
     Agregar Entrega
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript" >
+        function completeCampos() {
+            Swal({
+                position: 'top-end',
+                type: 'warning',
+                title: 'Complete los campos!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        function eliminar(){
+				swal({
+					tittle: 'CONFIRME SI',
+					text: "DESEA ELIMINAR EL REGISTRO?",
+					type: 'info',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'SI, ELIMINAR'
+				}).then((result) => {
+					if (result.value) {
+					}
+				})
+       }
+       function datosCorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Pedido Entregado!!',
+                showConfirmButton: false,
+                timer: 5000
+            });
+             setTimeout ("document.location.href = 'ListaVerPedidos.aspx'",1500);
+        }
+       function datosIncorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'No pudo eliminarse el registro!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
         function abrirVentana(){
         var url = "BuscarEmpleado.aspx";
         window.open(url, "Nuevo","alwaysRaised=no,toolbar=no,menubar=no,status=no,resizable=no,width=400,height=300,location=no");

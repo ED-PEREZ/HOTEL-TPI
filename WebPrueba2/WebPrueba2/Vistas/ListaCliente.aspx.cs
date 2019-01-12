@@ -80,5 +80,11 @@ namespace WebPrueba2.Vistas
                 //}
             }
         }
+
+        protected void Cancelar_Click(object sender, EventArgs e)
+        {
+            clienteID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+            Response.Redirect("CancelarRecibo.aspx?idcli=" + clienteID);
+        }
     }
 }

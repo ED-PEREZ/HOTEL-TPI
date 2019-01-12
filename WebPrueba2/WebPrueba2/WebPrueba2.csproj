@@ -219,6 +219,7 @@
     <Content Include="Vistas\BuscarHabitacion.aspx" />
     <Content Include="Vistas\BuscarProducto.aspx" />
     <Content Include="Vistas\BuscarTipo.aspx" />
+    <Content Include="Vistas\CancelarRecibo.aspx" />
     <Content Include="Vistas\EditarCliente.aspx" />
     <Content Include="Vistas\EditarHabitac.aspx" />
     <Content Include="Vistas\EditarProducto.aspx" />
@@ -226,6 +227,7 @@
     <Content Include="Vistas\EditarTipoHabitacion.aspx" />
     <Content Include="Vistas\Empleado.aspx" />
     <Content Include="Vistas\Home.aspx" />
+    <Content Include="Vistas\Lista.aspx" />
     <Content Include="Vistas\ListaCliente.aspx" />
     <Content Include="Vistas\ListaEmpleado.aspx" />
     <Content Include="Vistas\ListaHabitacion.aspx" />
@@ -327,6 +329,13 @@
     <Compile Include="Vistas\BuscarTipo.aspx.designer.cs">
       <DependentUpon>BuscarTipo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\CancelarRecibo.aspx.cs">
+      <DependentUpon>CancelarRecibo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\CancelarRecibo.aspx.designer.cs">
+      <DependentUpon>CancelarRecibo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\EditarCliente.aspx.cs">
       <DependentUpon>EditarCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -375,6 +384,13 @@
     </Compile>
     <Compile Include="Vistas\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Lista.aspx.cs">
+      <DependentUpon>Lista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Lista.aspx.designer.cs">
+      <DependentUpon>Lista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ListaCliente.aspx.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>

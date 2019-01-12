@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-01-2019 a las 07:59:50
+-- Tiempo de generación: 12-01-2019 a las 07:59:58
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -57,23 +57,25 @@ CREATE TABLE `cliente` (
   `correo` varchar(20) CHARACTER SET utf16 COLLATE utf16_spanish_ci DEFAULT NULL,
   `region` varchar(25) CHARACTER SET utf16 COLLATE utf16_spanish_ci DEFAULT NULL,
   `celular` varchar(10) CHARACTER SET utf16 COLLATE utf16_spanish_ci DEFAULT NULL,
-  `codigo` varchar(10) CHARACTER SET utf16 COLLATE utf16_spanish_ci DEFAULT NULL
+  `usuario` varchar(45) CHARACTER SET utf16 COLLATE utf16_spanish_ci DEFAULT NULL,
+  `contra` varchar(45) CHARACTER SET utf16 COLLATE utf16_spanish_ci DEFAULT NULL,
+  `estadoc` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`idcliente`, `nombre`, `dui`, `fechaentrada`, `fechasalida`, `idhabitacion`, `correo`, `region`, `celular`, `codigo`) VALUES
-(6, 'pao', '11111111-1', '2019-01-10', '2019-01-10', 2, '1qsddddd', 'Guatemala', '3333-3333', 'aaaaa'),
-(7, 'qwe', '12333333-3', '2019-01-09', '2019-01-08', 3, 'cre', 'Costa Rica', '3333-3333', 'sdd'),
-(8, 'qwe', '12333333-3', '2019-01-09', '2019-01-08', 3, 'cre', 'Costa Rica', '3333-3333', 'sdd'),
-(9, 'juancho', '22222222-2', '2019-01-15', '2019-01-17', 3, 'ttyy', 'Honduras', '5555-5555', '1sd'),
-(10, 'asff', '22222222-2', '2019-01-09', '2019-01-02', 3, 'fghh', 'Guatemala', '4444-4444', '22a'),
-(11, 'addd', '22222222-2', '2019-01-18', '2019-01-17', 3, 'qwerr', 'Guatemala', '5555-5555', 'dfff'),
-(12, 'aaaa', '33333333-3', '2019-01-12', '2019-01-09', 3, '1qsddddd', 'Guatemala', '3333-3333', 'aaaaaa'),
-(13, 'poncho', '66666666-6', '2019-01-17', '2019-01-24', 3, 'dsssd', 'Costa Rica', '5555-5555', 'qerg'),
-(14, 'ffrr', '22222222-2', '2019-01-08', '2019-01-15', 2, 'fddff', 'Costa Rica', '3445-5555', '2sddd');
+INSERT INTO `cliente` (`idcliente`, `nombre`, `dui`, `fechaentrada`, `fechasalida`, `idhabitacion`, `correo`, `region`, `celular`, `usuario`, `contra`, `estadoc`) VALUES
+(6, 'pao', '11111111-1', '2019-01-10', '2019-01-10', 2, '1qsddddd', 'Guatemala', '3333-3333', 'aaaaa', '0', NULL),
+(7, 'qwe', '12333333-3', '2019-01-09', '2019-01-08', 3, 'cre', 'Costa Rica', '3333-3333', 'sdd', '0', NULL),
+(8, 'qwe', '12333333-3', '2019-01-09', '2019-01-08', 3, 'cre', 'Costa Rica', '3333-3333', 'sdd', '0', NULL),
+(9, 'juancho', '22222222-2', '2019-01-15', '2019-01-17', 3, 'ttyy', 'Honduras', '5555-5555', '1sd', '0', NULL),
+(10, 'asff', '22222222-2', '2019-01-09', '2019-01-02', 3, 'fghh', 'Guatemala', '4444-4444', '22a', '0', NULL),
+(11, 'addd', '22222222-2', '2019-01-18', '2019-01-17', 3, 'qwerr', 'Guatemala', '5555-5555', 'dfff', '0', NULL),
+(12, 'aaaa', '33333333-3', '2019-01-12', '2019-01-09', 3, '1qsddddd', 'Guatemala', '3333-3333', 'ddddddddd', '0', NULL),
+(13, 'poncho', '66666666-6', '2019-01-17', '2019-01-24', 3, 'dsssd', 'Costa Rica', '5555-5555', 'qerg', '0', NULL),
+(14, 'ffrr', '22222222-2', '2019-01-08', '2019-01-15', 2, 'fddff', 'Costa Rica', '3445-5555', '2sddd', '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -170,9 +172,9 @@ INSERT INTO `producto` (`idproducto`, `descripcion`, `precio`, `foto`) VALUES
 CREATE TABLE `recibo` (
   `idrecibo` int(11) NOT NULL,
   `codigo` int(11) DEFAULT NULL,
-  `formapago` varchar(10) CHARACTER SET utf16 COLLATE utf16_spanish_ci DEFAULT NULL,
+  `formapago` varchar(20) CHARACTER SET utf16 COLLATE utf16_spanish_ci DEFAULT NULL,
   `idcliente` int(11) DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
+  `fecha` varchar(20) DEFAULT NULL,
   `total` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -225,7 +227,7 @@ CREATE TABLE `servicio_cuarto` (
 --
 
 INSERT INTO `servicio_cuarto` (`idservicio`, `idrecibo`, `idempleado`, `idproducto`, `estado`) VALUES
-(3, 1, NULL, 2, 0);
+(3, 1, 4, 2, 1);
 
 -- --------------------------------------------------------
 
