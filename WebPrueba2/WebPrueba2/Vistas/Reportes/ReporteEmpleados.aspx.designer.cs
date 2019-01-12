@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebPrueba2.Vistas.Reportes {
+namespace WebPrueba2.Vistas {
     
     
     public partial class ReporteEmpleados {

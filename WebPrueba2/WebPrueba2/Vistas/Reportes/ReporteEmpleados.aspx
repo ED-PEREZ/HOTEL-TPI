@@ -1,11 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteEmpleados.aspx.cs" Inherits="WebPrueba2.Vistas.Reportes.ReporteEmpleados" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteEmpleados.aspx.cs" Inherits="WebPrueba2.Vistas.ReporteEmpleados" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>REPORTE DE EMPLEADOS</title>
+    <script src="../../vendor/jquery/jquery.js"></script>
+    <script src="../../js/jspdf.js"></script>
     <script>
         function DescargarPDF(ContenidoID, nombre) {
             var pdf = new jsPDF('p', 'pt', 'letter');
@@ -34,10 +36,8 @@
                     <asp:BoundField DataField="cargo" HeaderText="CARGO" ItemStyle-Width="10%" />
                 </Columns>
             </asp:GridView>
-            </center>
+           </center>
         </div>
-
-
     </form>
 </body>
 </html>
