@@ -15,7 +15,15 @@ namespace WebPrueba2.Vistas
         string id = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.Params["id"] != null)
+            {
+                if (int.Parse(Request.Params["id"]) == 0)
+                {
+                    Session.Clear();
+                    Response.Redirect("Login.aspx");
+                }
+                else { Response.Redirect("Login.aspx"); }
+            }
         }
 
         protected void boton1_Click(object sender, EventArgs e)

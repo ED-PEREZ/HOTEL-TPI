@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">HOTEL TPI</a>
+                <a class="navbar-brand" href="Home.aspx">HOTEL TPI</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -256,7 +256,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#" runat="server" onclick="CerrarSesion"><i class="fa fa-sign-out fa-fw"></i> Cerrar</a>
+                        <li><a href="Login.aspx?id=0"><i class="fa fa-sign-out fa-fw"></i> Cerrar</a>
                         </li>
                     </ul>
     
@@ -280,6 +280,7 @@
                             </div>
                             <!-- /input-group -->
                         </li>
+                        
                         <li>
                             <a href="Home.aspx"><i class="fa fa-home fa-fw "></i> Inicio</a>
                         </li>

@@ -46,27 +46,28 @@
 </head>
 <body>
 <div class="container">
-<h1 class="form-heading">Formulario de sesion</h1>
-<div class="login-form">
+<h1 class="form-heading" hidden="hidden">Formulario de sesion</h1>
+    
+<div class="login-form" style="">
 <div class="main-div">
     <div class="panel">
-   <h2>iniciar sesion</h2>
-   <p>Por favor ingrese usuario y contraseña</p>
+   <h2>INICIAR SESION</h2>
+   <p>POR FAVOR, INGRESE USUARIO Y CONTRASEÑA</p>
    </div>
     <form id="login" runat="server">
         
         <div class="form-group">
 
-            <asp:TextBox ID="user" runat="server" class="form-control" placeholder="Usuario"></asp:TextBox>
+            <asp:TextBox ID="user" runat="server" class="form-control" placeholder="USUARIO"></asp:TextBox>
 
         </div>
 
         <div class="form-group">
-            <asp:TextBox ID="pass" runat="server" type="password" class="form-control"  placeholder="Contraseña"></asp:TextBox>
+            <asp:TextBox ID="pass" runat="server" type="password" class="form-control"  placeholder="CONTRASEÑA"></asp:TextBox>
 
         </div>
 
-        <asp:Button ID="boton1" runat="server" class="btn btn-primary" Text="Iniciar sesion" OnClick="boton1_Click" />
+        <asp:Button ID="boton1" runat="server" class="btn btn-primary" Text="INICIAR SESION" OnClick="boton1_Click" />
 
     </form>
     </div>
