@@ -16,6 +16,11 @@ namespace WebPrueba2.Vistas
         int Valor = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session.SessionID == "")
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 if (Request.Params["id"] != null)
@@ -253,9 +258,9 @@ namespace WebPrueba2.Vistas
             return false;
         }
 
-        /*protected void agregarm_Click(object sender, EventArgs e)
+        protected void agregarm_Click(object sender, EventArgs e)
         {
-            con.Open();
+            /*con.Open();
             MySqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             int esta = 1;
@@ -268,7 +273,7 @@ namespace WebPrueba2.Vistas
             cmd.ExecuteNonQuery();
                 esta++;
             if (esta == 5) esta = 1;
-        }
         }*/
+        }
     }
 }

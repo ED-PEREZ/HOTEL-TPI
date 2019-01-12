@@ -77,7 +77,7 @@ namespace WebPrueba2.Vistas
                         }
                         sqlCOn.Close();
 
-                        if (!(total.Text=="" || )) {
+                        if (!(total.Text==""  )) {
                         }
                     }
                 }  

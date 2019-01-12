@@ -11,7 +11,15 @@ namespace WebPrueba2.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session.SessionID == "") {
+                Response.Redirect("Login.aspx");
+            }
+        }
 
+        protected void CerrarSesion(object sender, EventArgs e)
+        {
+            Session.Remove("USUARIO");
+            Response.Redirect("Login.aspx");
         }
     }
 }

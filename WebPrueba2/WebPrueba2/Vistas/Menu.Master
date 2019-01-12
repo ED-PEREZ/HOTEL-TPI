@@ -256,7 +256,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="Login.aspx"><i class="fa fa-sign-out fa-fw"></i> Cerrar</a>
+                        <li><a href="#" runat="server" onclick="CerrarSesion"><i class="fa fa-sign-out fa-fw"></i> Cerrar</a>
                         </li>
                     </ul>
     
