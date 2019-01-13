@@ -29,29 +29,66 @@
     <div id="Reporte" class="Rows" style="width: 80%; font-family:'Century Gothic'" >
         <div class="col-xs-12">
             <form class="form-horizontal" role="form" id="formE" name="formE">
-                <div><h1>EMPLEADO</h1></div>
+                <table style="border:0px;font-family:'Century Gothic'">
+                    <thead>EMPLEADO</thead>
+                    <tbody>
+                        <tr>
+                        <td>
+                           <label  for="idE" style="width:30;height:20px" >Id. Empleado</label>
+                        </td>
+                            <td>
+                                <asp:Label width="70%" height="20px" id="idE" runat="server" Text="ID. DEL EMPLEADO" style="margin-left: 98px"/>
+                            </td>
+                       </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30" for="cod">CODIGO:</label>
+                            </td>
+                            <td>
+                                <asp:Label  width="70%" id="cod" runat="server" Text="CODIGO DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                 <label style="width:30%" for="nomb">NOMBRE:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="60%" id="nomb" runat="server" Text="NOMBRE DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30" for="sexo">SEXO:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="60%" id="sexo" runat="server" Text="SEXO DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div><h1></h1></div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="idE">Id. Empleado</label>
+                    
                     	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="idE" runat="server" Text="ID. DEL EMPLEADO"/>
+							
 						</div>
                  </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="cod">CODIGO:</label>
+                    
                     	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="cod" runat="server" Text="CODIGO DEL EMPLEADO"/>
+							
 						</div>
                  </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="nomb">NOMBRE:</label>
+                   
                     	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="nomb" runat="server" Text="NOMBRE DEL EMPLEADO"/>
+							
 						</div>
                  </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="sexo">SEXO:</label>
+                    
                     	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="sexo" runat="server" Text="SEXO DEL EMPLEADO"/>
+							
 						</div>
                  </div>
                 <div class="form-group">

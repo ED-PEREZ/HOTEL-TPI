@@ -30,9 +30,13 @@ namespace WebPrueba2.Vistas
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
-                ds.Fill(dt);
+                int i = ds.Fill(dt);
                 gvEmpleados.DataSource = dt;
                 gvEmpleados.DataBind();
+                if (i > 0)
+                {
+                    gvEmpleados.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
                 sqlCon.Close();
             }
         }
