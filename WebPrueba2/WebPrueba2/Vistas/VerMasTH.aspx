@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" EnableEventValidation="false" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="listaTipoHabitacion.aspx.cs" Inherits="WebPrueba2.Vistas.listaTipoHabitacion" %>
-
-<asp:Content ID="con1" ContentPlaceHolderID="head" runat="server">
-    Habitaciones
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="VerMasTH.aspx.cs" Inherits="WebPrueba2.Vistas.VerMasTH" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    Tipo de Habitacion
     <script src="../Estilos/Sweetalert.js"></script>
-    <script type="text/javascript">
-         function completeCampos() {
+   <script type="text/javascript">
+       function completeCampos() {
             Swal({
                 position: 'top-end',
                 type: 'warning',
@@ -24,7 +23,6 @@
 					confirmButtonText: 'SI, ELIMINAR'
 				}).then((result) => {
 					if (result.value) {
-                       
 					}
 				})
        }
@@ -50,34 +48,28 @@
     </script>
 </asp:Content>
 
-<asp:Content ID="con2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+          <div class="row">
            <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                        Lista de Tipos de Habitacion
+                        Contenido de la Habitacion
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12"> 
                               <form id="form" runat="server">
+                                  <asp:HiddenField ID="hf" runat="server" />
+                                  <div class="form-group">  
+                                      <asp:Button ID="pagar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Insertar" OnClick="pagar_Click" /> 
+                                   </div> 
+                                 <asp:Label ID="Label1" runat="server" Text=""/>
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"    >
                                 <Columns>
-                                   <asp:BoundField DataField="tipohabitacion" HeaderText="Tipo" />
-                                   <asp:BoundField DataField="precio" HeaderText="Precio" />
-                                    <asp:TemplateField HeaderText="Foto">
-                                        <ItemTemplate>
-                                            <asp:Image ID="imagen" runat="server" Width="100px" Height="100px" ImageUrl='<%#"data:image/jpg;base64,"+ Convert.ToBase64String((byte[])Eval("foto")) %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                   <asp:BoundField DataField="cantidad" HeaderText="Cantidad" />
+                                   <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />
                                     <asp:TemplateField HeaderText="Opciones">
                                         <ItemTemplate> 
-                                            <asp:LinkButton ID="insertar" CommandArgument='<%# Eval("idtipohabitacion") %>' CssClass="btn btn-primary btn-sm btn-primary" OnClick="insertar_Click" runat="server">
-                                               <i class="ace-icon fa fa-eye bigger-120"></i>
-                                            </asp:LinkButton>   
-                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idtipohabitacion") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
-                                               <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                            </asp:LinkButton>   
                                             <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idtipohabitacion") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btEli_Click" runat="server">
                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                             </asp:LinkButton>
@@ -95,8 +87,7 @@
        </div>
 </asp:Content>
 
-<asp:Content ID="scrip" ContentPlaceHolderID="final" runat="server">
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<asp:Content ID="Content3" ContentPlaceHolderID="final" runat="server">
     <script>
     $(document).ready(function() {
         $("#<%=gvTipo.ClientID %>").DataTable({
@@ -105,5 +96,3 @@
     });
     </script>
 </asp:Content>
-
-

@@ -302,6 +302,9 @@
                                 <li>
                                     <a href="AgregarCatalogo.aspx">Agregar Catalogo</a>
                                 </li>
+                                <li>
+                                    <a href="ListaCatalogo.aspx">Lista del Catalogo</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

@@ -218,17 +218,20 @@
     <Content Include="vendor\raphael\raphael.min.js" />
     <Content Include="Vistas\AgregarCatalogo.aspx" />
     <Content Include="Vistas\AgregarCliente.aspx" />
+    <Content Include="Vistas\AgregarContenido.aspx" />
     <Content Include="Vistas\AgregarEntrega.aspx" />
     <Content Include="Vistas\Agregarhabitacion.aspx" />
     <Content Include="Vistas\AgregarPedido.aspx" />
     <Content Include="Vistas\AgregarProducto.aspx" />
     <Content Include="Vistas\AgregarReserva.aspx" />
     <Content Include="Vistas\AgregarTipoHabitacion.aspx" />
+    <Content Include="Vistas\BuscarCatalogo.aspx" />
     <Content Include="Vistas\BuscarEmpleado.aspx" />
     <Content Include="Vistas\BuscarHabitacion.aspx" />
     <Content Include="Vistas\BuscarProducto.aspx" />
     <Content Include="Vistas\BuscarTipo.aspx" />
     <Content Include="Vistas\CancelarRecibo.aspx" />
+    <Content Include="Vistas\EditarCatalogo.aspx" />
     <Content Include="Vistas\EditarCliente.aspx" />
     <Content Include="Vistas\EditarHabitac.aspx" />
     <Content Include="Vistas\EditarProducto.aspx" />
@@ -237,6 +240,7 @@
     <Content Include="Vistas\Empleado.aspx" />
     <Content Include="Vistas\Home.aspx" />
     <Content Include="Vistas\Lista.aspx" />
+    <Content Include="Vistas\ListaCatalogo.aspx" />
     <Content Include="Vistas\ListaCliente.aspx" />
     <Content Include="Vistas\ListaEmpleado.aspx" />
     <Content Include="Vistas\ListaHabitacion.aspx" />
@@ -248,6 +252,7 @@
     <Content Include="Vistas\Reportes\ReporteEmpleados.aspx" />
     <Content Include="Vistas\Reportes\ReporteEmpleado.aspx" />
     <Content Include="Vistas\Reportes\ReporteHabitaciones.aspx" />
+    <Content Include="Vistas\VerMasTH.aspx" />
     <Content Include="Vistas\WebForm1.aspx" />
     <Content Include="Vistas\WebForm2.aspx" />
     <Content Include="Web.config" />
@@ -268,6 +273,13 @@
     </Compile>
     <Compile Include="Vistas\AgregarCliente.aspx.designer.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\AgregarContenido.aspx.cs">
+      <DependentUpon>AgregarContenido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\AgregarContenido.aspx.designer.cs">
+      <DependentUpon>AgregarContenido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\AgregarEntrega.aspx.cs">
       <DependentUpon>AgregarEntrega.aspx</DependentUpon>
@@ -311,6 +323,13 @@
     <Compile Include="Vistas\AgregarTipoHabitacion.aspx.designer.cs">
       <DependentUpon>AgregarTipoHabitacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\BuscarCatalogo.aspx.cs">
+      <DependentUpon>BuscarCatalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\BuscarCatalogo.aspx.designer.cs">
+      <DependentUpon>BuscarCatalogo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\BuscarEmpleado.aspx.cs">
       <DependentUpon>BuscarEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -345,6 +364,13 @@
     </Compile>
     <Compile Include="Vistas\CancelarRecibo.aspx.designer.cs">
       <DependentUpon>CancelarRecibo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\EditarCatalogo.aspx.cs">
+      <DependentUpon>EditarCatalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\EditarCatalogo.aspx.designer.cs">
+      <DependentUpon>EditarCatalogo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EditarCliente.aspx.cs">
       <DependentUpon>EditarCliente.aspx</DependentUpon>
@@ -401,6 +427,13 @@
     </Compile>
     <Compile Include="Vistas\Lista.aspx.designer.cs">
       <DependentUpon>Lista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ListaCatalogo.aspx.cs">
+      <DependentUpon>ListaCatalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ListaCatalogo.aspx.designer.cs">
+      <DependentUpon>ListaCatalogo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ListaCliente.aspx.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
@@ -485,6 +518,13 @@
     </Compile>
     <Compile Include="Vistas\Reportes\ReporteHabitaciones.aspx.designer.cs">
       <DependentUpon>ReporteHabitaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VerMasTH.aspx.cs">
+      <DependentUpon>VerMasTH.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\VerMasTH.aspx.designer.cs">
+      <DependentUpon>VerMasTH.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

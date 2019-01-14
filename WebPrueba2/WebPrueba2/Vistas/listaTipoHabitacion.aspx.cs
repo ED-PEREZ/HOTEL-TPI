@@ -94,5 +94,11 @@ namespace WebPrueba2.Vistas
                 sqlCOn.Close();
             }
         }
+
+        protected void insertar_Click(object sender, EventArgs e)
+        {
+            tipoHabitacionID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+            Response.Redirect("VerMasTH.aspx?id=" + tipoHabitacionID);
+        }
     }
 }
