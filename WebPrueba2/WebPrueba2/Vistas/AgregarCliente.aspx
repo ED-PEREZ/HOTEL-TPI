@@ -3,11 +3,11 @@
     Recepcion
      <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript" >
-        function completeCampos() {
+        function completeCampos(frase) {
             Swal({
                 position: 'top-end',
-                type: 'warning',
-                title: 'Complete los campos!!',
+                type: 'error',
+                title: frase,
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -59,7 +59,18 @@
         function abrirVentana(){
         var url = "BuscarHabitacion.aspx";
         window.open(url, "Nuevo","alwaysRaised=no,toolbar=no,menubar=no,status=no,resizable=no,width=500,height=600,location=no");
-      }
+        }
+        function definir() {
+            var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+            var cad = "";
+            var clv = "";
+            for (var i = 0; cad.length < 5; i++) {
+                clv += str.charAt(Math.random() * 65 + 0);
+                cad += str.charAt(Math.random() * 65 + 0);
+            }
+            document.getElementById("<%=usert.ClientID%>").value = cad;
+            document.getElementById("<%=passt.ClientID%>").value = clv;
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -126,6 +137,16 @@
                                             <br>
                                         </div>
                                         <div class="form-group">
+                                            <label for="tiempo">Tiempo de Hospedaje (*)</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:DropDownList ID="tiempo" class="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="tiempo_SelectedIndexChanged">
+                                                <asp:ListItem Enabled="true" Text="Seleccione" Value="0"></asp:ListItem>
+                                                <asp:ListItem  Text="Una noche" Value="Noche"></asp:ListItem>
+                                                <asp:ListItem  Text="Uno o mas dias" Value="Dias"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="entrada">Fecha de Entrada (*)</label>
                                         </div>
                                         <div class="form-group">
@@ -138,7 +159,44 @@
                                            <asp:TextBox TextMode="Date" ID="fechaSa" autocomplete="off" runat="server" Cssclass="form-control" parent="dd-MM-yyyy"> </asp:TextBox>
                                         </div>
                                         <div class="form-group">
-                                             <br>                                                       
+                                            <label for="tl">Total por Recepcion (*)</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-xs-6 col-sm-4">
+                                                <asp:Label ID="to" runat="server" Text="Total $"/>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4">
+                                                <asp:Label ID="totalG" runat="server" Text=""/>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4">
+                                                <asp:Button ID="totalizar" runat="server" class="btn btn-info btn-sm" Text="Totalizar" OnClick="totalizar_Click" /> 
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <div class="form-group">
+                                            <br>
+                                            <label for="usuario">USUARIO (Presione Boton "DEFINIR" para ver)</label>
+                                        </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                        <div>
+                                            <input type="text" id="usert" name="usert" class="form-control" placeholder="Usuario" readonly runat="server" />
+                                        </div>
+                                        <div>
+                                            <input type="text" id="passt" name="passt" class="form-control" placeholder="Contraseña" readonly runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-8 col-md-4">
+                                        <button type="button" id="defi" class="btn btn-primary btn-lg btn-info" onclick="definir()" runat="server">
+                                            <i class="">DEFINIR</i>
+                                        </button>
+                                    </div>
+                                    <br>
+                                    <br>
+                                </div>
+                                        <div class="form-group">
+                                             <br>     
+                                             <br>
                                             <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />   
                                             <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="agregar_Click" />
                                         </div>                     

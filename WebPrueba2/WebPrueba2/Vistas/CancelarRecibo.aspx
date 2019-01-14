@@ -1,6 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="CancelarRecibo.aspx.cs" Inherits="WebPrueba2.Vistas.CancelarRecibo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Cancelar 
+    Cancelar
+    <script src="../Estilos/Sweetalert.js"></script>
+    <script type="text/javascript" >
+        function completeCampos() {
+            Swal({
+                position: 'top-end',
+                type: 'warning',
+                title: 'Complete los campos!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -14,7 +26,8 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    
+                                        <asp:HiddenField ID="hf" runat="server" />
+                                        <asp:HiddenField ID="hftp" runat="server" />
                                         <div class="form-group">
                                             <label for="fecha">Fecha de Emision (*)</label>
                                         </div>
@@ -30,6 +43,12 @@
                                                 <asp:ListItem  Text="Efectivo" Value="Efectivo"></asp:ListItem>
                                                 <asp:ListItem  Text="Tarjeta de Credito" Value="Tarjeta de Credito"></asp:ListItem>
                                         </asp:DropDownList>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fecha">Total a Pagar (*)</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:Label ID="Topa" runat="server" Text=""></asp:Label>
                                         </div>
                                         <div class="form-group">
                                             <br>                                                        

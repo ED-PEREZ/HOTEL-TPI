@@ -22,6 +22,24 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.HtmlControls.HtmlForm registrarCatalogo;
         
         /// <summary>
+        /// Control hf.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf;
+        
+        /// <summary>
+        /// Control hftp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hftp;
+        
+        /// <summary>
         /// Control fecha.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList forma;
+        
+        /// <summary>
+        /// Control Topa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Topa;
         
         /// <summary>
         /// Control cancelar.

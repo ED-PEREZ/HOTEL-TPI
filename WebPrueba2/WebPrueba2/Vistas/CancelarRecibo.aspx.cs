@@ -12,7 +12,8 @@ namespace WebPrueba2.Vistas
     public partial class CancelarRecibo : System.Web.UI.Page
     {
         MySqlConnection con = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
-       string idc="";
+        string idc="";
+        double totalRecibo = 0.0;
         protected void Page_Load(object sender, EventArgs e)
         {
             fecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -23,7 +24,7 @@ namespace WebPrueba2.Vistas
                     idc = Request.Params["idcli"];
                     using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
                     {
-                        double ph, pr;
+                        
                         sqlCOn.Open();
                         MySqlCommand smd = sqlCOn.CreateCommand();
                         smd.CommandType = CommandType.Text;
@@ -45,47 +46,82 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "SELECT a.numhabitacion, b.tipohabitacion, b.precio, b.foto FROM habitacion a " +
+                        cmd.CommandText = "SELECT a.numhabitacion, b.tipohabitacion, b.precio, b.foto, c.idcliente FROM habitacion a " +
                             "INNER JOIN tipo_habitacion b ON a.idtipohabitacion = b.idtipohabitacion " +
                             "INNER JOIN cliente c ON c.idhabitacion = a.idhabitacion WHERE c.idcliente=" + idc;
                         cmd.ExecuteNonQuery();
                         DataTable td = new DataTable();
                         MySqlDataAdapter cd = new MySqlDataAdapter(cmd);
-                        int j = cd.Fill(td);
+                        int j=cd.Fill(td);
                         gvTipo.DataSource = td;
                         gvTipo.DataBind();
                         MySqlDataReader rd = cmd.ExecuteReader();
-                        if (i < 1)
+                        if (j < 1)
                         {
                             Label1.Text = "No ha solicitado ningun pedido";
+
                         }
                         if (rd.Read() == true)
                         {
-                            total.Text = "Total: $" + rd["precio"].ToString();
+                            hf.Value = rd["idcliente"].ToString();
+                            totalRecibo = totalRecibo+ Convert.ToDouble(rd["precio"].ToString());
                         }
                         sqlCOn.Close();
 
                         sqlCOn.Open();
                         MySqlCommand mcd = sqlCOn.CreateCommand();
                         mcd.CommandType = CommandType.Text;
-                        mcd.CommandText = "SELECT SUM(a.precio) total FROM producto a INNER JOIN servicio_cuarto b ON b.idproducto = a.idproducto INNER JOIN recibo c ON b.idrecibo = c.idrecibo WHERE b.estado=TRUE AND c.idcliente=13";
+                        mcd.CommandText = "SELECT SUM(a.precio) total FROM producto a INNER JOIN servicio_cuarto b ON b.idproducto = a.idproducto INNER JOIN recibo c ON b.idrecibo = c.idrecibo WHERE b.estado=TRUE AND c.idcliente="+idc;
                         mcd.ExecuteNonQuery();
+                        DataTable tk = new DataTable();
+                        MySqlDataAdapter kd = new MySqlDataAdapter(mcd);
+                        int z = cd.Fill(tk);
                         MySqlDataReader dr = mcd.ExecuteReader();
-                        if (dr.Read() == true && j > 0)
+                        if (dr.Read() == true && z>0)
                         {
-                            total.Text = "Total: $" + dr["total"].ToString();
+                            String aux= dr["total"].ToString();
+                            if (aux=="") {
+                                aux = "0";
+                            }
+                            total.Text = "Total: $" + aux;
+                            totalRecibo = totalRecibo + Convert.ToDouble(aux); 
                         }
                         sqlCOn.Close();
 
-                        if (!(total.Text==""  )) {
-                        }
+                        Topa.Text = "$ "+ Convert.ToString(totalRecibo);
+                        hftp.Value = Convert.ToString(totalRecibo);
                     }
                 }  
             }
         }
         protected void pagar_Click(object sender, EventArgs e)
         {
+            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+            {
+                string id = "",tp="";
+                id = hf.Value.ToString();
+                tp = hftp.Value.ToString();
+                if (!(forma.SelectedItem.Text == "Seleccione" || fecha.Text == "" || tp == "" || id==""))
+                {
+                    sqlCOn.Open();
+                    MySqlCommand cmd = sqlCOn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "UPDATE recibo SET formapago='"+forma.SelectedItem.Text+"',fecha='"+fecha.Text+"',total="+tp+" WHERE idcliente="+id;
+                    cmd.ExecuteNonQuery();
+                    sqlCOn.Close();
 
+                    sqlCOn.Open();
+                    MySqlCommand amd = sqlCOn.CreateCommand();
+                    amd.CommandType = CommandType.Text;
+                    amd.CommandText = "UPDATE cliente SET estadoc=true WHERE idcliente=" + id;
+                    amd.ExecuteNonQuery();
+                    sqlCOn.Close();
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos()", true);
+                }
+            }
         }
     }
 }
