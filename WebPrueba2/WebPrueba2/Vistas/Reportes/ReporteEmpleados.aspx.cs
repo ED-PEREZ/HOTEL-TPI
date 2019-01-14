@@ -23,7 +23,7 @@ namespace WebPrueba2.Vistas
                 sqlCon.Open();
                 MySqlCommand cmd = sqlCon.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT idempleado, codigoemp, nombre, dui, IF(cargo = 1, 'ADMINISTRADOR', "
+                cmd.CommandText = "SELECT idempleado, codigoemp, nombre, dui, nit, nafp, nseguro, IF(cargo = 1, 'ADMINISTRADOR', "
                     + "IF(cargo = 2, 'GERENTE', IF(cargo = 3, 'RECEPCIONISTA',"
                     + "IF(empleado.cargo=4,'RECEPCIONISTA','OTRO')))) AS cargo FROM empleado";
                 cmd.ExecuteNonQuery();
@@ -32,8 +32,6 @@ namespace WebPrueba2.Vistas
                 ds.Fill(dt);
                 gvEmpleados.DataSource = dt;
                 gvEmpleados.DataBind();
-
-                gvEmpleados.HeaderRow.TableSection = TableRowSection.TableHeader;
                 sqlCon.Close();
             }
         }
