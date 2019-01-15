@@ -46,7 +46,7 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "SELECT a.numhabitacion, b.tipohabitacion, b.precio, b.foto, c.idcliente FROM habitacion a " +
+                        cmd.CommandText = "SELECT a.numhabitacion, b.tipohabitacion, b.precio, b.foto, c.idcliente,c.totalp FROM habitacion a " +
                             "INNER JOIN tipo_habitacion b ON a.idtipohabitacion = b.idtipohabitacion " +
                             "INNER JOIN cliente c ON c.idhabitacion = a.idhabitacion WHERE c.idcliente=" + idc;
                         cmd.ExecuteNonQuery();
@@ -64,7 +64,7 @@ namespace WebPrueba2.Vistas
                         if (rd.Read() == true)
                         {
                             hf.Value = rd["idcliente"].ToString();
-                            totalRecibo = totalRecibo+ Convert.ToDouble(rd["precio"].ToString());
+                            totalRecibo = totalRecibo+ Convert.ToDouble(rd["totalp"].ToString());
                         }
                         sqlCOn.Close();
 
@@ -113,15 +113,27 @@ namespace WebPrueba2.Vistas
                     sqlCOn.Open();
                     MySqlCommand amd = sqlCOn.CreateCommand();
                     amd.CommandType = CommandType.Text;
-                    amd.CommandText = "UPDATE cliente SET estadoc=true WHERE idcliente=" + id;
-                    amd.ExecuteNonQuery();
+                    amd.CommandText = "UPDATE cliente SET estadoc=false idhabitacion=null WHERE idcliente=" + id;
+                    int i=amd.ExecuteNonQuery();
                     sqlCOn.Close();
+
+                    if (i>0) {
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                    }
+                    else {
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+                    }
                 }
                 else
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos()", true);
                 }
             }
+        }
+
+        protected void cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaCliente.aspx");
         }
     }
 }

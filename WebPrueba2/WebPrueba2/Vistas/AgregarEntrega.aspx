@@ -57,7 +57,7 @@
            <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                        Habitacion
+                        Pedido
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -79,7 +79,7 @@
                                         
                                         <div class="form-group">
                                             <br>                                                        
-                                            <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />   
+                                            <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" OnClick="cancelar_Click" />   
                                             <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="agregar_Click" />
                                         </div>
                                     </form>

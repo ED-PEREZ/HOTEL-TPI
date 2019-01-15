@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="form-group">
                                             <br>                                                        
-                                            <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />   
+                                            <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" OnClick="cancelar_Click" />   
                                             <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Modificar" OnClick="agregar_Click" />
                                         </div>                     
                                     </form>

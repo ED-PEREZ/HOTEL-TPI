@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="form-group">
                                             <br>                                                        
-                                            <asp:Button ID="boton2" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />   
+                                            <asp:Button ID="boton2" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" OnClick="boton2_Click" />   
                                             <asp:Button ID="boton1" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="boton1_Click" />
                                         </div>
                                         

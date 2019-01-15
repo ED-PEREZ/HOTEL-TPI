@@ -35,9 +35,11 @@ namespace WebPrueba2.Vistas
                             idre.Value = dr["idreserva"].ToString();
                             ade.Value = dr["adelanto"].ToString();
                             fechaIn.Text = dr["fechareserva"].ToString();
+                            numha.Value = dr["numhabitacion"].ToString();
                             idha.Value = dr["idhabitacion"].ToString();
                             ////si se cambia lahabitacion este mantendrar el valor del anterior
                             hfidha.Value = dr["idhabitacion"].ToString();
+                            nuhar.Value= dr["numhabitacion"].ToString();
                             ha.Value = dr["numhabitacion"].ToString();
                         }
                         sqlCOn.Close();
@@ -267,6 +269,13 @@ namespace WebPrueba2.Vistas
         protected void totalizar_Click(object sender, EventArgs e)
         {
             totalG.Text = "" + total(tiempo.SelectedItem.Text, fechaIn.Text, fechaSa.Text);
+        }
+
+        protected void res_Click(object sender, EventArgs e)
+        {
+            idha.Value=hfidha.Value;
+            numha.Value = nuhar.Value;
+            ha.Value = numha.Value;
         }
     }
 }

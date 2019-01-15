@@ -78,5 +78,10 @@ namespace WebPrueba2.Vistas
                 }
             }
         }
+
+        protected void boton2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaProducto.aspx");
+        }
     }
 }

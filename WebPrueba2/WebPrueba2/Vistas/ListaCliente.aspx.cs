@@ -28,7 +28,7 @@ namespace WebPrueba2.Vistas
                 sqlCOn.Open();
                 MySqlCommand cmd = sqlCOn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from cliente ";
+                cmd.CommandText = "select * from cliente WHERE estadoc=true";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
@@ -59,22 +59,41 @@ namespace WebPrueba2.Vistas
                 //{
                 // contenedor.Text = "" + Convert.ToInt32((sender as LinkButton).CommandArgument)
                     clienteID = Convert.ToInt32((sender as LinkButton).CommandArgument);
-                    sqlCOn.Open();
+                string idhabitacion = "";
+
+                sqlCOn.Open();
+                MySqlCommand hmd = sqlCOn.CreateCommand();
+                hmd.CommandType = CommandType.Text;
+                hmd.CommandText = "SELECT * FROM cliente WHERE idcliente=" + clienteID + "";
+                hmd.ExecuteNonQuery();
+                MySqlDataReader dr = hmd.ExecuteReader();
+                if (dr.Read() == true)
+                {
+                    idhabitacion = dr["idhabitacion"].ToString();
+                }
+                sqlCOn.Close();
+
+                sqlCOn.Open();
                     MySqlCommand cmd = sqlCOn.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "delete from cliente WHERE idcliente="+clienteID+"";
-
-                if (cmd.ExecuteNonQuery() > 0)
-                {
+                    int i = cmd.ExecuteNonQuery();
                     sqlCOn.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                if (i > 0)
+                {
+                    sqlCOn.Open();
+                    MySqlCommand dmd = sqlCOn.CreateCommand();
+                    dmd.CommandType = CommandType.Text;
+                    dmd.CommandText = "UPDATE habitacion SET estado=false WHERE idhabitacion=" + idhabitacion + "";
+                    dmd.ExecuteNonQuery();
+                    sqlCOn.Close();
 
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
                 }
                 else
                 {
                     sqlCOn.Close();
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
-
                 }
                 sqlCOn.Close();
                 //}

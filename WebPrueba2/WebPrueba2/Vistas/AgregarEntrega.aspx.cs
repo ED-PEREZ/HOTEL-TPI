@@ -55,5 +55,10 @@ namespace WebPrueba2.Vistas
 
             con.Close();
         }
+
+        protected void cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaVerPedidos.aspx");
+        }
     }
 }

@@ -4,11 +4,20 @@
      Recepcion
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript" >
-        function completeCampos(frase) {
+        function completeCampo(frase) {
             Swal({
                 position: 'top-end',
                 type: 'warning',
                 title: frase,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        function completeCampos() {
+            Swal({
+                position: 'top-end',
+                type: 'warning',
+                title: 'Complete Campos',
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -30,7 +39,7 @@
                 showConfirmButton: false,
                 timer: 5000
             });
-             setTimeout ("document.location.href = 'AgregarCliente.aspx'",1500);
+             setTimeout ("document.location.href = 'ListaReserva.aspx'",1500);
         }
         function formato(f) {
             if (f == 1) {
@@ -91,9 +100,11 @@
                                     <form id="registrarCliente" role="form" runat="server">
                                          <asp:HiddenField ID="idha" runat="server" />
                                          <asp:HiddenField ID="numha" runat="server" />
+
                                         <asp:HiddenField ID="hfidha" runat="server" />
                                         <asp:HiddenField ID="idre" runat="server" />
                                         <asp:HiddenField ID="ade" runat="server" />
+                                        <asp:HiddenField ID="nuhar" runat="server" />
                                         <div class="form-group">
                                             <label for="nombre">Nombre (*)</label>
                                         </div>
@@ -139,7 +150,10 @@
                                             <input type="text" id="ha" name="ha" class="form-control" placeholder="Seleccione" readonly runat="server" />
                                         </div>
                                             </div>
-                                            <div class="col-xs-6 col-md-4"><button type="button" class="btn btn-primary btn-circle" onclick="abrirVentana()"><i class="fa fa-list"></i></button></div>                                                                                 
+                                            <div class="col-xs-6 col-md-4">
+                                                <button type="button" class="btn btn-primary btn-circle" onclick="abrirVentana()"><i class="fa fa-list"></i></button>
+                                                <asp:Button ID="res" CssClass="btn btn-info btn-sm" Text="Reestablecer" OnClick="res_Click" runat="server"></asp:Button>
+                                            </div> 
                                             <br>
                                             <br>
                                         </div>
@@ -176,7 +190,7 @@
                                                 <asp:Label ID="totalG" runat="server" Text=""/>
                                             </div>
                                             <div class="col-xs-6 col-sm-4">
-                                                <asp:Button ID="totalizar" runat="server" class="btn btn-info btn-sm" Text="Totalizar" OnClick="totalizar_Click" /> 
+                                                <asp:Button ID="totalizar" runat="server" class="btn btn-info btn-lg" Text="Totalizar" OnClick="totalizar_Click" /> 
                                             </div>
                                             <br>
                                         </div>

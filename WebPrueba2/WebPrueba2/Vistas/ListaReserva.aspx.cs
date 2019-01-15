@@ -52,22 +52,42 @@ namespace WebPrueba2.Vistas
             using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
             {
                 reservaID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+                string idhabitacion = "";
+
+                sqlCOn.Open();
+                MySqlCommand hmd = sqlCOn.CreateCommand();
+                hmd.CommandType = CommandType.Text;
+                hmd.CommandText = "SELECT * FROM reserva WHERE idcliente=" + reservaID + "";
+                hmd.ExecuteNonQuery();
+                MySqlDataReader dr = hmd.ExecuteReader();
+                if (dr.Read() == true)
+                {
+                    idhabitacion = dr["idhabitacion"].ToString();
+                }
+                sqlCOn.Close();
+
+
                 sqlCOn.Open();
                 MySqlCommand cmd = sqlCOn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "delete from reserva WHERE idreserva=" + reservaID + "";
+                int i=cmd.ExecuteNonQuery();
+                sqlCOn.Close();
 
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    sqlCOn.Close();
+                sqlCOn.Open();
+                MySqlCommand xmd = sqlCOn.CreateCommand();
+                xmd.CommandType = CommandType.Text;
+                xmd.CommandText = "UPDATE habitacion SET estado=false WHERE idhabitacion=" + idhabitacion + "";
+                xmd.ExecuteNonQuery();
+                sqlCOn.Close();
+
+                if (i > 0)
+                {                    
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
-
                 }
                 else
                 {
-                    sqlCOn.Close();
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
-
                 }
                 sqlCOn.Close();
             }

@@ -12,6 +12,25 @@
                 timer: 1500
             });
         }
+        function datosCorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Pago Realizado!!',
+                showConfirmButton: false,
+                timer: 5000
+            });
+             setTimeout ("document.location.href = 'ListaCliente.aspx'",1500);
+        }
+        function datosIncorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'No se Completo la accion!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
     </script>
 </asp:Content>
 
@@ -52,7 +71,7 @@
                                         </div>
                                         <div class="form-group">
                                             <br>                                                        
-                                            <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" />   
+                                            <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" OnClick="cancelar_Click" />   
                                             <asp:Button ID="pagar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="pagar_Click" />
                                         </div>          
                                </div>
@@ -106,7 +125,7 @@
                                                               <asp:Image ID="imagen" runat="server" Width="100px" Height="100px" ImageUrl='<%#"data:image/jpg;base64,"+ Convert.ToBase64String((byte[])Eval("foto")) %>' />
                                                           </ItemTemplate>
                                                       </asp:TemplateField>
-                                                      <asp:BoundField DataField="precio" HeaderText="Precio" ItemStyle-CssClass="success" />
+                                                      <asp:BoundField DataField="totalp" HeaderText="Total por Recepcion" ItemStyle-CssClass="success" />
                                                   </Columns>
                                                 </asp:GridView>                                                                                                          
                                               </div>

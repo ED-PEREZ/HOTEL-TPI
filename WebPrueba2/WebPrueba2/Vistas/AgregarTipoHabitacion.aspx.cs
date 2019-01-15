@@ -68,5 +68,10 @@ namespace WebPrueba2.Vistas
 
             con.Close();
         }
+
+        protected void boton2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
     }
 }
