@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="WebPrueba2.Vistas.AgregarCliente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/Menu.Master" AutoEventWireup="true" CodeBehind="AgregarClienteReserva.aspx.cs" Inherits="WebPrueba2.Vistas.AgregarClienteReserva" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Recepcion
-     <script src="../Estilos/Sweetalert.js"></script>
+     Recepcion
+    <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript" >
         function completeCampos(frase) {
             Swal({
@@ -54,7 +55,7 @@
                 showConfirmButton: false,
                 timer: 5000
             });
-            setTimeout ("document.location.href = 'AgregarCliente.aspx';",1500);
+            setTimeout ("document.location.href = 'ListaReserva.aspx';",1500);
         }
         function abrirVentana(){
         var url = "BuscarHabitacion.aspx";
@@ -70,15 +71,15 @@
             }
             document.getElementById("<%=usert.ClientID%>").value = cad;
             document.getElementById("<%=passt.ClientID%>").value = clv;
-            document.getElementById("<%=ha.ClientID%>").value = "algo";
         }
         function llenar(num) {
             document.getElementById("<%=ha.ClientID%>").value = num;
         }
     </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="row">
+    <div class="row">
            <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -90,6 +91,9 @@
                                     <form id="registrarCliente" role="form" runat="server">
                                          <asp:HiddenField ID="idha" runat="server" />
                                          <asp:HiddenField ID="numha" runat="server" />
+                                        <asp:HiddenField ID="hfidha" runat="server" />
+                                        <asp:HiddenField ID="idre" runat="server" />
+                                        <asp:HiddenField ID="ade" runat="server" />
                                         <div class="form-group">
                                             <label for="nombre">Nombre (*)</label>
                                         </div>
@@ -143,7 +147,7 @@
                                             <label for="tiempo">Tiempo de Hospedaje (*)</label>
                                         </div>
                                         <div class="form-group">
-                                            <asp:DropDownList ID="tiempo" class="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="tiempo_SelectedIndexChanged1"  >
+                                            <asp:DropDownList ID="tiempo" class="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="tiempo_SelectedIndexChanged"  >
                                                 <asp:ListItem Enabled="true" Text="Seleccione" Value="0"></asp:ListItem>
                                                 <asp:ListItem  Text="Una noche" Value="Una noche"></asp:ListItem>
                                                 <asp:ListItem  Text="Uno o mas dias" Value="Uno o mas dias"></asp:ListItem>
@@ -210,5 +214,8 @@
 
                     </div>
              </div>
-       </div>          
+       </div> 
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="final" runat="server">
 </asp:Content>

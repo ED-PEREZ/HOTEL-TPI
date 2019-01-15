@@ -9,53 +9,38 @@ using System.Web.UI.WebControls;
 
 namespace WebPrueba2.Vistas
 {
-    public partial class EditarCliente : System.Web.UI.Page
+    public partial class AgregarClienteReserva : System.Web.UI.Page
     {
-        string idh;
+        string idr;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Request.Params["id"] != null)
                 {
-                    idh = Request.Params["id"];
+                    idr = Request.Params["id"];
                     using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
                     {
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "SELECT a.nombre, a.dui, a.fechaentrada, a.fechasalida," +
-                            " a.idhabitacion, a.correo, a.region, a.celular, a.usuario, b.idhabitacion," +
-                            " b.numhabitacion, a.idcliente,a.ndias,a.totalp FROM cliente a " +
-                            "INNER JOIN habitacion b ON a.idhabitacion = b.idhabitacion" +
-                            " WHERE a.idcliente=" + idh + "";
+                        cmd.CommandText = "SELECT a.idreserva, a.nombre, a.fechareserva, a.adelanto, a.idhabitacion, b.numhabitacion" +
+                            " FROM reserva a INNER JOIN habitacion b ON a.idhabitacion = b.idhabitacion WHERE a.idreserva=" + idr + "";
                         cmd.ExecuteNonQuery();
                         MySqlDataReader dr = cmd.ExecuteReader();
-                        string auxi = "";
+                        
                         if (dr.Read() == true)
                         {
                             nombre.Text = dr["nombre"].ToString();
-                            dui.Text = dr["dui"].ToString();
-                            tiempo.Text = dr["ndias"].ToString();
-                            auxi = dr["ndias"].ToString();
-                            totalG.Text = dr["totalp"].ToString();
-                            correo.Text = dr["correo"].ToString();
-                            region.Text = dr["region"].ToString();
-                            cell.Text = dr["celular"].ToString();
-                            fechaIn.Text = dr["fechaentrada"].ToString();
-                            fechaSa.Text = dr["fechasalida"].ToString();
+                            idre.Value = dr["idreserva"].ToString();
+                            ade.Value = dr["adelanto"].ToString();
+                            fechaIn.Text = dr["fechareserva"].ToString();
                             idha.Value = dr["idhabitacion"].ToString();
-                            //si se cambia lahabitacion este mantendrar el valor del anterior
+                            ////si se cambia lahabitacion este mantendrar el valor del anterior
                             hfidha.Value = dr["idhabitacion"].ToString();
                             ha.Value = dr["numhabitacion"].ToString();
-                            numha.Value = dr["numhabitacion"].ToString();
-                            hf.Value = dr["idcliente"].ToString();
                         }
                         sqlCOn.Close();
-                        if (auxi=="Una noche") {
-                            fechaIn.Enabled = false;
-                            fechaSa.Enabled = false;
-                        }
                     }
                 }
             }
@@ -63,12 +48,12 @@ namespace WebPrueba2.Vistas
 
         protected void agregar_Click(object sender, EventArgs e)
         {
-            //solomodifica
             using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
             {
-                string idhab = idha.Value.ToString();
+                string idhabi = idha.Value.ToString();
                 if (!(nombre.Text == "" || dui.Text == "" || correo.Text == "" || cell.Text == "" || fechaIn.Text == ""
-               || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhab=="" || tiempo.SelectedItem.Text=="0"))
+                    || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhabi == "" || totalG.Text == "" || tiempo.SelectedItem.Text == "0"
+                    || usert.Value == "" || passt.Value == "") && validar())
                 {
                     string totalaux = total(tiempo.SelectedItem.Text, fechaIn.Text, fechaSa.Text);
                     if (totalaux == totalG.Text)
@@ -76,11 +61,16 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "UPDATE cliente SET nombre='" + nombre.Text + "',dui='" + dui.Text + "'," +
-                            "celular='" + cell.Text + "',fechaentrada='" + fechaIn.Text + "',fechasalida='" + fechaSa.Text + "',region='" + region.Text + "'," +
-                            "correo='" + correo.Text + "', idhabitacion=" + idhab + ", ndias='"+ tiempo.SelectedItem.Text + "'," +
-                            "totalp="+totalaux+" WHERE idcliente=" + Convert.ToInt32(hf.Value);
-                        int i = cmd.ExecuteNonQuery();
+                        cmd.CommandText = "INSERT INTO cliente (nombre,dui,usuario,celular,fechaentrada,fechasalida,region,correo,idhabitacion,contra,estadoc,ndias,totalp) VALUES" +
+                            " ('" + nombre.Text + "','" + dui.Text + "','" + usert.Value + "','" + cell.Text + "','" + fechaIn.Text + "','" + fechaSa.Text + "','" + region.SelectedItem.Value + "','" + correo.Text + "'," + idhabi + ",'" + passt.Value + "',true,'" + tiempo.SelectedItem.Text + "'," + totalG.Text + ")";
+                        int i=cmd.ExecuteNonQuery();
+                        sqlCOn.Close();
+
+                        sqlCOn.Open();
+                        MySqlCommand rmd = sqlCOn.CreateCommand();
+                        rmd.CommandType = CommandType.Text;
+                        rmd.CommandText = "DELETE FROM reserva WHERE idreserva="+ idre.Value.ToString();
+                        rmd.ExecuteNonQuery();
                         sqlCOn.Close();
 
                         if (idha.Value.ToString() != hfidha.Value.ToString())
@@ -88,7 +78,7 @@ namespace WebPrueba2.Vistas
                             sqlCOn.Open();
                             MySqlCommand hmd = sqlCOn.CreateCommand();
                             hmd.CommandType = CommandType.Text;
-                            hmd.CommandText = "UPDATE habitacion SET estado=false WHERE idhabitacion="+ hfidha.Value.ToString();
+                            hmd.CommandText = "UPDATE habitacion SET estado=false WHERE idhabitacion=" + hfidha.Value.ToString();
                             hmd.ExecuteNonQuery();
                             sqlCOn.Close();
 
@@ -102,16 +92,15 @@ namespace WebPrueba2.Vistas
 
                         if (i > 0)
                         {
-                            
                             ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
-
                         }
                         else
                         {
                             ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
                         }
                     }
-                    else {
+                    else
+                    {
                         ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampo('Debe de totalizar')", true);
                     }
                 }
@@ -122,9 +111,57 @@ namespace WebPrueba2.Vistas
             }
         }
 
-        protected void totalizar_Click(object sender, EventArgs e)
+        private bool validar()
         {
-            totalG.Text = "" + total(tiempo.SelectedItem.Text, fechaIn.Text, fechaSa.Text);
+            try
+            {
+                if (usert.Value == "" || passt.Value == "")
+                {
+                    return false;
+                }
+                else
+                {
+                    if (existeUsuario())
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e);
+            }
+            return false;
+        }
+
+        private bool existeUsuario()
+        {
+            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+            {
+                string use = "", pass = "";
+
+                sqlCOn.Open();
+                MySqlCommand bmd = sqlCOn.CreateCommand();
+                bmd.CommandType = CommandType.Text;
+                bmd.CommandText = "SELECT * FROM cliente WHERE usuario='" + usert.Value + "' AND contra='" + passt.Value + "'";
+                bmd.ExecuteNonQuery();
+                MySqlDataReader rd = bmd.ExecuteReader();
+                if (rd.Read() == true)
+                {
+                    use = rd["usuario"].ToString();
+                    pass = rd["contra"].ToString();
+                }
+                sqlCOn.Close();
+
+                if (usert.Value == use && passt.Value == pass)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         private string total(string combo, string In, string Sa)
@@ -146,7 +183,8 @@ namespace WebPrueba2.Vistas
                     MySqlDataReader rd = bmd.ExecuteReader();
                     if (rd.Read() == true)
                     {
-                        precioh = rd["precio"].ToString();
+                        double to = Convert.ToDouble(rd["precio"].ToString()) - Convert.ToDouble(ade.Value.ToString());
+                        precioh = Convert.ToString(to);
                     }
                     sqlCOn.Close();
 
@@ -166,7 +204,7 @@ namespace WebPrueba2.Vistas
                             {
                                 TimeSpan tdias = salida - ingreso;
                                 int diaz = tdias.Days;
-                                double to = Convert.ToDouble(precioh) + 30 * diaz;
+                                double to = Convert.ToDouble(precioh) + (30 * diaz) - Convert.ToDouble(ade.Value.ToString());
                                 return Convert.ToString(to);
                             }
                             else
@@ -224,6 +262,11 @@ namespace WebPrueba2.Vistas
                 fechaSa.Enabled = true;
                 ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "llenar('" + num + "')", true);
             }
+        }
+
+        protected void totalizar_Click(object sender, EventArgs e)
+        {
+            totalG.Text = "" + total(tiempo.SelectedItem.Text, fechaIn.Text, fechaSa.Text);
         }
     }
 }

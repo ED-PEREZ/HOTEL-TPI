@@ -34,7 +34,8 @@
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
         function selecciona(tipo,id) {
-            window.opener.document.getElementById('ContentPlaceHolder1_habitacion').value = tipo;
+            window.opener.document.getElementById('ContentPlaceHolder1_numha').value = tipo;
+            window.opener.document.getElementById('ContentPlaceHolder1_ha').value = tipo;
             window.opener.document.getElementById('ContentPlaceHolder1_idha').value = id;
             window.close();
 }

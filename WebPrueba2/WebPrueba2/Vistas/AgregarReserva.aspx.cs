@@ -20,27 +20,35 @@ namespace WebPrueba2.Vistas
         {
             con.Open();
             string idhab = idha.Value.ToString();
-            if (!(nombre.Text == "" || codigo.Text == "" || adelanto.Text=="" || fecha.Text=="" || 
+            if (!(nombre.Text == "" || adelanto.Text=="" || fecha.Text=="" || 
                 idhab==""))
             {
-                MySqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO reserva (nombre,codigo,adelanto,fechareserva,idhabitacion) VALUES ('" + nombre.Text + "','" + codigo.Text + "',"+adelanto.Text+",'"+fecha.Text+"',"+idhab+")";
-
-
-                if (cmd.ExecuteNonQuery() > 0)
+                if (validarfecha(fecha.Text))
                 {
+                    MySqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "INSERT INTO reserva (nombre,adelanto,fechareserva,idhabitacion) VALUES ('" + nombre.Text + "'," + adelanto.Text + ",'" + fecha.Text + "'," + idhab + ")";
+                    int i = cmd.ExecuteNonQuery();
                     con.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
 
-                }
-                else
-                {
+                    con.Open();
+                    MySqlCommand hmd = con.CreateCommand();
+                    hmd.CommandType = CommandType.Text;
+                    hmd.CommandText = "UPDATE habitacion SET estado=true WHERE idhabitacion="+ idhab;
                     con.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
 
+                    if (i > 0)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+                    }
                 }
-
+                else {
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "fecha()", true);
+                }
             }
             else
             {
@@ -48,6 +56,20 @@ namespace WebPrueba2.Vistas
             }
 
             con.Close();
+        }
+
+        private bool validarfecha(string text)
+        {
+            DateTime reserva = Convert.ToDateTime(text);
+            string ahorita = Convert.ToString(DateTime.Now.ToString("yyyy-MM-dd"));
+            DateTime hoy = Convert.ToDateTime(ahorita);
+            if (reserva >= hoy)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     }
 }

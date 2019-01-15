@@ -31,6 +31,15 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.HiddenField hf;
         
         /// <summary>
+        /// Control hfidha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfidha;
+        
+        /// <summary>
         /// Control idha.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField idha;
+        
+        /// <summary>
+        /// Control ha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField ha;
         
         /// <summary>
         /// Control nombre.
@@ -49,15 +67,6 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.TextBox nombre;
         
         /// <summary>
-        /// Control codigo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox codigo;
-        
-        /// <summary>
         /// Control adelanto.
         /// </summary>
         /// <remarks>
@@ -67,13 +76,13 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.TextBox adelanto;
         
         /// <summary>
-        /// Control habitacion.
+        /// Control numha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox habitacion;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText numha;
         
         /// <summary>
         /// Control fecha.

@@ -3,6 +3,15 @@
     Recepcion
      <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript" >
+        function fecha() {
+            Swal({
+                position: 'top-end',
+                type: 'warning',
+                title: 'Debe de ingresar una fecha valida',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
         function completeCampos() {
             Swal({
                 position: 'top-end',
@@ -49,6 +58,7 @@
                                 <div class="col-lg-6">
                                     <form id="registrarReserva" role="form" runat="server">
                                         <asp:HiddenField ID="idha" runat="server" />
+                                        <asp:HiddenField ID="ha" runat="server" />
                                         <div class="form-group">
                                             <label for="nombre">Nombre (*)</label>
                                         </div>
@@ -56,22 +66,20 @@
                                             <asp:TextBox ID="nombre" runat="server" class="form-control" placeholder="Juan Perez"></asp:TextBox>
                                         </div>                                        
                                         <div class="form-group">
-                                            <label for="codigo">Codigo (*)</label>
+                                            <label for="adelanto">Adelanto ($)</label>
                                         </div>
                                         <div class="form-group">
-                                            <asp:TextBox ID="codigo" runat="server" class="form-control" placeholder="AA021"></asp:TextBox>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="adelanto">Adelanto (*)</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <asp:TextBox ID="adelanto" runat="server" class="form-control" placeholder="Ejemplo"></asp:TextBox>
+                                            <asp:TextBox ID="adelanto" runat="server" class="form-control" placeholder="360.00"></asp:TextBox>
                                         </div>
                                          <div class="form-group">
                                             <label for="habitacion">Habitacion (#)</label>
                                         </div>
                                         <div class="form-group">                                            
-                                            <div class="col-xs-12 col-sm-6 col-md-8"> <asp:TextBox ID="habitacion" runat="server" class="form-control" placeholder="seleccione" ReadOnly="true"></asp:TextBox></div>
+                                            <div class="col-xs-12 col-sm-6 col-md-8">
+                                              <div>
+                                               <input type="text" id="numha" name="ha" class="form-control" placeholder="Seleccione" readonly runat="server" />
+                                            </div>
+                                            </div>
                                             <div class="col-xs-6 col-md-4"><button type="button" class="btn btn-primary btn-circle" onclick="abrirVentana()"><i class="fa fa-list"></i></button></div>                                                                                 
                                             <br>
                                             <br>

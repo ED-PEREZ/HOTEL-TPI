@@ -14,69 +14,87 @@ namespace WebPrueba2.Vistas
         MySqlConnection con = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
         protected void Page_Load(object sender, EventArgs e)
         {
-            fechaIn.Enabled = false;
-            fechaSa.Enabled = false;
+
         }
 
         protected void agregar_Click(object sender, EventArgs e)
         {
             con.Open();
             string idhabi = idha.Value.ToString();
-            if (!(nombre.Text == "" || dui.Text == "" || usuario.Text == ""
-                || correo.Text == "" || cell.Text == "" || fechaIn.Text == ""
-                || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhabi=="") && validar()) { 
-            
-                MySqlCommand cmd = con.CreateCommand();
-                MySqlCommand mcd = con.CreateCommand();
-                MySqlCommand rcd = con.CreateCommand();
-                MySqlCommand imd = con.CreateCommand();
+            if (!(nombre.Text == "" || dui.Text == "" || correo.Text == "" || cell.Text == "" || fechaIn.Text == ""
+                || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhabi=="" || totalG.Text== "" || tiempo.SelectedItem.Text== "0"
+                || usert.Value == "" || passt.Value=="") && validar()) {
 
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO cliente (nombre,dui,usuario,celular,fechaentrada,fechasalida,region,correo,idhabitacion) VALUES" +
-                    " ('" + nombre.Text + "','" + dui.Text + "','" + usuario.Text + "','" + cell.Text + "','"+fechaIn.Text+"','"+fechaSa.Text+"','"+region.SelectedItem.Value+"','"+correo.Text+"',"+idhabi+")";
-                cmd.ExecuteNonQuery();
-
-                imd.CommandType = CommandType.Text;
-                imd.CommandText = "SELECT * FROM cliente ORDER by cliente.idcliente DESC LIMIT 1";
-                imd.ExecuteNonQuery();
-                MySqlDataReader dc = imd.ExecuteReader();
-                int idclient = 0;
-                if (dc.Read() == true)
+                string totalaux= total(tiempo.SelectedItem.Text, fechaIn.Text, fechaSa.Text);
+                if (totalaux == totalG.Text)
                 {
-                    idclient = int.Parse(dc["idcliente"].ToString());
-                }
+                    MySqlCommand cmd = con.CreateCommand();
+                    MySqlCommand mcd = con.CreateCommand();
+                    MySqlCommand rcd = con.CreateCommand();
+                    MySqlCommand imd = con.CreateCommand();
+                    MySqlCommand ucd = con.CreateCommand();
 
-                con.Close();
-                con.Open();
-                mcd.CommandType = CommandType.Text;
-                mcd.CommandText = "SELECT COUNT(recibo.idrecibo) as cantidad FROM recibo";
-                mcd.ExecuteNonQuery();
-                MySqlDataReader dr = mcd.ExecuteReader();
-                int i = 0;
-                if (dr.Read() == true)
-                {
-                  i =int.Parse(dr["cantidad"].ToString());
-                }
-
-                con.Close();
-                con.Open();
-
-                rcd.CommandType = CommandType.Text;
-                rcd.CommandText = "INSERT INTO recibo(codigo,idcliente) VALUES("+i+","+idclient+")";
-
-                if (rcd.ExecuteNonQuery() > 0)
-                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "INSERT INTO cliente (nombre,dui,usuario,celular,fechaentrada,fechasalida,region,correo,idhabitacion,contra,estadoc,ndias,totalp) VALUES" +
+                        " ('" + nombre.Text + "','" + dui.Text + "','" + usert.Value + "','" + cell.Text + "','" + fechaIn.Text + "','" + fechaSa.Text + "','" + region.SelectedItem.Value + "','" + correo.Text + "'," + idhabi + ",'"+passt.Value+"',true,'"+ tiempo.SelectedItem.Text + "',"+ totalG.Text + ")";
+                    cmd.ExecuteNonQuery();
                     con.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
 
-                }
-                else
-                {
+                    con.Open();
+                    imd.CommandType = CommandType.Text;
+                    imd.CommandText = "SELECT * FROM cliente ORDER by cliente.idcliente DESC LIMIT 1";
+                    imd.ExecuteNonQuery();
+                    MySqlDataReader dc = imd.ExecuteReader();
+                    int idclient = 0;
+                    if (dc.Read() == true)
+                    {
+                        idclient = int.Parse(dc["idcliente"].ToString());
+                    }
                     con.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
 
+                    con.Open();
+                    ucd.CommandType = CommandType.Text;
+                    ucd.CommandText = "INSERT INTO usuario (usuario, contra, cargo) VALUES ('"+usert.Value+"','"+passt.Value+"',6)";
+                    ucd.ExecuteNonQuery();
+                    con.Close();
+
+                    con.Open();
+                    MySqlCommand hmd = con.CreateCommand();
+                    hmd.CommandType = CommandType.Text;
+                    hmd.CommandText = "UPDATE habitacion SET estado=true WHERE idhabitacion=" + idhabi;
+                    hmd.ExecuteNonQuery();
+                    con.Close();
+
+                    con.Open();
+                    mcd.CommandType = CommandType.Text;
+                    mcd.CommandText = "SELECT COUNT(recibo.idrecibo) as cantidad FROM recibo";
+                    mcd.ExecuteNonQuery();
+                    MySqlDataReader dr = mcd.ExecuteReader();
+                    int i = 0;
+                    if (dr.Read() == true)
+                    {
+                        i = int.Parse(dr["cantidad"].ToString());
+                    }
+                    con.Close();
+
+                    con.Open();
+                    rcd.CommandType = CommandType.Text;
+                    rcd.CommandText = "INSERT INTO recibo(codigo,idcliente) VALUES(" + i + "," + idclient + ")";
+                   
+                    if (rcd.ExecuteNonQuery() > 0)
+                    {
+                        con.Close();
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                    }
+                    else
+                    {
+                        con.Close();
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+                    }
                 }
-
+                else {
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos('Debe de totalizar')", true);
+                }
             }
             else
             {
@@ -140,43 +158,20 @@ namespace WebPrueba2.Vistas
             }
         }
 
-        protected void tiempo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tiempo.SelectedItem.Text== "Seleccione") {
-                fechaIn.Text = "";
-                fechaSa.Text = "";
-                fechaIn.Enabled = false;
-                fechaSa.Enabled = false;
-            }
-            if (tiempo.SelectedItem.Text == "Una noche") {
-                string hoy = Convert.ToString(DateTime.Now.ToString("yyyy-MM-dd"));
-                nombre.Text = hoy;
-                fechaIn.Text =hoy ;
-                fechaSa.Text = hoy;
-                fechaIn.Enabled = false;
-                fechaSa.Enabled = false;
-            }
-            if (tiempo.SelectedItem.Text == "Uno o mas dias") {
-                fechaIn.Text = "";
-                fechaSa.Text = "";
-                fechaIn.Enabled = true;
-                fechaSa.Enabled = true;
-            }
-        }
+        
 
         protected void totalizar_Click(object sender, EventArgs e)
         {
-            total();
+            totalG.Text=""+total(tiempo.SelectedItem.Text, fechaIn.Text, fechaSa.Text);
         }
 
-        private void total()
+        private string total(string combo,string In,string Sa)
         {
             using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
             {
                 string aux = idha.Value.ToString();
                 string precioh = "";
-                Boolean fe = fechaIn.Enabled, fs=fechaSa.Enabled;
-                string ingre = fechaIn.Text, sali = fechaSa.Text;
+                string ingre = In, sali = Sa;
 
                 if (!(aux == ""))
                 {
@@ -193,42 +188,108 @@ namespace WebPrueba2.Vistas
                     }
                     sqlCOn.Close();
 
-                    if (tiempo.SelectedItem.Text == "Una noche" && fe == false && fs == false)
+                    if (combo == "Una noche")
                     {
-                        totalG.Text = precioh;
+                        return precioh;
                     }
-                    else if (tiempo.SelectedItem.Text == "Uno o mas dias")
+                    else if (combo == "Uno o mas dias")
                     {
                         if (!(ingre == "" || sali == ""))
                         {
                            
-                            DateTime ingreso = Convert.ToDateTime(fechaIn.Text), salida = Convert.ToDateTime(fechaSa.Text);
+                            DateTime ingreso = Convert.ToDateTime(In), salida = Convert.ToDateTime(Sa);
                             string ahorita = Convert.ToString(DateTime.Now.ToString("yyyy-MM-dd"));
                             DateTime hoy = Convert.ToDateTime(ahorita);
                             if (ingreso>=hoy && salida>ingreso) {
                                 TimeSpan tdias = salida - ingreso;
                                 int diaz = tdias.Days;
                                 double to=Convert.ToDouble(precioh) +30*diaz;
-                                totalG.Text =Convert.ToString(to);
+                                return Convert.ToString(to);
                             }
                             else
                             {
                                 ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos('Debe de definir bien la fecha')", true);
+                                return "";
                             }
                         }
                         else {
                             ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos('Complete Campos')", true);
+                            return "";
                         }
                     }
-                    else if (tiempo.SelectedItem.Text == "Seleccione") {
+                    else if (combo == "Seleccione") {
                         ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos('Debe de seleccionar una opcion')", true);
+                        return "";
                     }
                 }
                 else {
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos('Debe de seleccionar una habitacion')", true);
+                    return "";
                 }
             }
-                
+            return "";  
+        }
+
+        protected void tiempo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string num = numha.Value.ToString();
+            if (tiempo.SelectedItem.Text == "Seleccione")
+            {
+                fechaIn.Text = "";
+                fechaSa.Text = "";
+                fechaIn.Enabled = false;
+                fechaSa.Enabled = false;
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "llenar('" + num + "')", true);
+            }
+            if (tiempo.SelectedItem.Text == "Una noche")
+            {
+                string hoy = Convert.ToString(DateTime.Now.ToString("yyyy-MM-dd"));
+                fechaIn.Text = hoy;
+                fechaSa.Text = hoy;
+                fechaIn.Enabled = false;
+                fechaSa.Enabled = false;
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "llenar('" + num + "')", true);
+            }
+            if (tiempo.SelectedItem.Text == "Uno o mas dias")
+            {
+                fechaIn.Text = "";
+                fechaSa.Text = "";
+                fechaIn.Enabled = true;
+                fechaSa.Enabled = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "llenar('" + num + "')", true);
+            }
+        }
+
+        protected void tiempo_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            string num = numha.Value.ToString();
+            if (tiempo.SelectedItem.Text == "Seleccione")
+            {
+                fechaIn.Text = "";
+                fechaSa.Text = "";
+                fechaIn.Enabled = false;
+                fechaSa.Enabled = false;
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "llenar('" + num + "')", true);
+            }
+            if (tiempo.SelectedItem.Text == "Una noche")
+            {
+                string hoy = Convert.ToString(DateTime.Now.ToString("yyyy-MM-dd"));
+                fechaIn.Text = hoy;
+                fechaSa.Text = hoy;
+                fechaIn.Enabled = false;
+                fechaSa.Enabled = false;
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "llenar('" + num + "')", true);
+            }
+            if (tiempo.SelectedItem.Text == "Uno o mas dias")
+            {
+                fechaIn.Text = "";
+                fechaSa.Text = "";
+                fechaIn.Enabled = true;
+                fechaSa.Enabled = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "llenar('" + num + "')", true);
+            }
         }
     }
 }
+
+

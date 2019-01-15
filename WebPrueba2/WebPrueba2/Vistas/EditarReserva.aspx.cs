@@ -24,7 +24,7 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand cmd = sqlCOn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "SELECT a.nombre, a.codigo, a.adelanto, a.fechareserva," +
+                        cmd.CommandText = "SELECT a.nombre, a.adelanto, a.fechareserva," +
                             " b.numhabitacion, b.idhabitacion, a.idhabitacion, a.idreserva" +
                             " FROM habitacion b INNER JOIN reserva a ON a.idhabitacion = b.idhabitacion" +
                             " WHERE a.idreserva=" + idh + "";
@@ -34,11 +34,12 @@ namespace WebPrueba2.Vistas
                         if (dr.Read() == true)
                         {
                             nombre.Text = dr["nombre"].ToString();
-                            codigo.Text = dr["codigo"].ToString();
                             adelanto.Text = dr["adelanto"].ToString();
                             fecha.Text = dr["fechareserva"].ToString();
-                            habitacion.Text = dr["numhabitacion"].ToString();
+                            numha.Value = dr["numhabitacion"].ToString();
                             idha.Value = dr["idhabitacion"].ToString();
+                            //sirve para ver si se modifico el id de habitacion
+                            hfidha.Value = dr["idhabitacion"].ToString();
                             hf.Value = dr["idreserva"].ToString();
                         }
                         sqlCOn.Close();
@@ -52,35 +53,72 @@ namespace WebPrueba2.Vistas
             using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
             {
                 string idhab = idha.Value.ToString();
-                if (!(nombre.Text == "" || codigo.Text == "" || adelanto.Text == "" || fecha.Text == ""
+                if (!(nombre.Text == ""  || adelanto.Text == "" || fecha.Text == ""
                     || idhab==""))
                 {
-                    sqlCOn.Open();
-                    MySqlCommand cmd = sqlCOn.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "UPDATE reserva SET nombre='"+nombre.Text+"',codigo='"+codigo.Text+"',adelanto='"+adelanto.Text+"'," +
-                        "fechareserva='"+fecha.Text+"',idhabitacion="+idhab+" WHERE idreserva=" + Convert.ToInt32(hf.Value);
-
-
-                    if (cmd.ExecuteNonQuery() > 0)
+                    if (validarfecha(fecha.Text))
                     {
+                        sqlCOn.Open();
+                        MySqlCommand cmd = sqlCOn.CreateCommand();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "UPDATE reserva SET nombre='" + nombre.Text + "',adelanto='" + adelanto.Text + "'," +
+                            "fechareserva='" + fecha.Text + "',idhabitacion=" + idhab + " WHERE idreserva=" + Convert.ToInt32(hf.Value);
+                        int i = cmd.ExecuteNonQuery();
                         sqlCOn.Close();
-                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
 
+                        if (idha.Value.ToString() != hfidha.Value.ToString())
+                        {
+                            sqlCOn.Open();
+                            MySqlCommand hmd = sqlCOn.CreateCommand();
+                            hmd.CommandType = CommandType.Text;
+                            hmd.CommandText = "UPDATE habitacion SET estado=false WHERE idhabitacion=" + hfidha.Value.ToString();
+                            hmd.ExecuteNonQuery();
+                            sqlCOn.Close();
+
+                            sqlCOn.Open();
+                            MySqlCommand vmd = sqlCOn.CreateCommand();
+                            vmd.CommandType = CommandType.Text;
+                            vmd.CommandText = "UPDATE habitacion SET estado=true WHERE idhabitacion=" + idha.Value.ToString();
+                            vmd.ExecuteNonQuery();
+                            sqlCOn.Close();
+                        }
+
+                        if (i > 0)
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                        }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+                        }
+                        sqlCOn.Close();
                     }
                     else
                     {
-                        sqlCOn.Close();
-                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
-
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "fecha()", true);
                     }
-                    sqlCOn.Close();
+
                 }
                 else
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos()", true);
                 }
                 
+            }
+        }
+
+        private bool validarfecha(string text)
+        {
+            DateTime reserva = Convert.ToDateTime(text);
+            string ahorita = Convert.ToString(DateTime.Now.ToString("yyyy-MM-dd"));
+            DateTime hoy = Convert.ToDateTime(ahorita);
+            if (reserva >= hoy)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

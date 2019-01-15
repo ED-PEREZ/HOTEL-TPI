@@ -10,7 +10,7 @@
 namespace WebPrueba2.Vistas {
     
     
-    public partial class EditarCliente {
+    public partial class AgregarClienteReserva {
         
         /// <summary>
         /// Control registrarCliente.
@@ -20,15 +20,6 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm registrarCliente;
-        
-        /// <summary>
-        /// Control hf.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hf;
         
         /// <summary>
         /// Control idha.
@@ -56,6 +47,24 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfidha;
+        
+        /// <summary>
+        /// Control idre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idre;
+        
+        /// <summary>
+        /// Control ade.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField ade;
         
         /// <summary>
         /// Control nombre.
@@ -164,6 +173,33 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button totalizar;
+        
+        /// <summary>
+        /// Control usert.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText usert;
+        
+        /// <summary>
+        /// Control passt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText passt;
+        
+        /// <summary>
+        /// Control defi.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton defi;
         
         /// <summary>
         /// Control cancelar.

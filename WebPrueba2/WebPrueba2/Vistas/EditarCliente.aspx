@@ -3,6 +3,15 @@
     Recepcion
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript" >
+        function completeCampo(frase) {
+            Swal({
+                position: 'top-end',
+                type: 'warning',
+                title: frase,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
         function completeCampos() {
             Swal({
                 position: 'top-end',
@@ -66,6 +75,8 @@
                                     <form id="registrarCliente" role="form" runat="server">
                                         <asp:HiddenField ID="hf" runat="server" />
                                          <asp:HiddenField ID="idha" runat="server" />
+                                        <asp:HiddenField ID="numha" runat="server" />
+                                        <asp:HiddenField ID="hfidha" runat="server" />
                                         <div class="form-group">
                                             <label for="nombre">Nombre (*)</label>
                                         </div>
@@ -77,12 +88,6 @@
                                         </div>
                                         <div class="form-group">
                                             <asp:TextBox ID="dui" runat="server" class="form-control" placeholder="02123442-9" oninput="formato(1);" maxlength="10"></asp:TextBox>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="usuario">Usuaio (*)</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <asp:TextBox ID="usuario" runat="server" class="form-control" placeholder="Ejemplo"></asp:TextBox>
                                         </div>
                                         <div class="form-group">
                                             <label for="correo">Correo (*)</label>
@@ -112,10 +117,24 @@
                                             <label for="habitacion">Habitacion (#)</label>
                                         </div>
                                         <div class="form-group">                                            
-                                            <div class="col-xs-12 col-sm-6 col-md-8"> <asp:TextBox ID="habitacion" runat="server" class="form-control" placeholder="seleccione" ReadOnly="true"></asp:TextBox></div>
+                                            <div class="col-xs-12 col-sm-6 col-md-8">
+                                                <div>
+                                                  <input type="text" id="ha" name="ha" class="form-control" placeholder="Seleccione" readonly runat="server" />
+                                                </div>
+                                            </div>
                                             <div class="col-xs-6 col-md-4"><button type="button" class="btn btn-primary btn-circle" onclick="abrirVentana()"><i class="fa fa-list"></i></button></div>                                                                                 
                                             <br>
                                             <br>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tiempo">Tiempo de Hospedaje (*)</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:DropDownList ID="tiempo" class="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="tiempo_SelectedIndexChanged">
+                                                <asp:ListItem Enabled="true" Text="Seleccione" Value="0"></asp:ListItem>
+                                                <asp:ListItem  Text="Una noche" Value="Una noche"></asp:ListItem>
+                                                <asp:ListItem  Text="Uno o mas dias" Value="Uno o mas dias"></asp:ListItem>
+                                            </asp:DropDownList>
                                         </div>
                                         <div class="form-group">
                                             <label for="entrada">Fecha de Entrada (*)</label>
@@ -128,6 +147,21 @@
                                         </div>
                                         <div class="form-group">
                                            <asp:TextBox TextMode="Date" ID="fechaSa" autocomplete="off" runat="server" Cssclass="form-control" parent="dd-MM-yyyy"> </asp:TextBox>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tl">Total por Recepcion (*)</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-xs-6 col-sm-4">
+                                                <asp:Label ID="to" runat="server" Text="Total $"/>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4">
+                                                <asp:Label ID="totalG" runat="server" Text=""/>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4">
+                                                <asp:Button ID="totalizar" runat="server" class="btn btn-info btn-sm" Text="Totalizar" OnClick="totalizar_Click" /> 
+                                            </div>
+                                            <br>
                                         </div>
                                         <div class="form-group">
                                              <br>                                                       

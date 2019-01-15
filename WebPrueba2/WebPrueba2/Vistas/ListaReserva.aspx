@@ -59,13 +59,16 @@
                     <div class="row">
                         <div class="col-lg-12"> 
                             <form id="form" runat="server">
+                                <asp:Label ID="ver" runat="server" Text=""/>
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"    >
                                     <Columns>   
-                                        <asp:BoundField DataField="codigo" HeaderText="Codigo" />
                                         <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                                         <asp:BoundField DataField="fechareserva" HeaderText="Fecha de Reserva" />
-                                        <asp:TemplateField ItemStyle-Width="10%" HeaderText="Opciones">
+                                        <asp:TemplateField ItemStyle-Width="20%" HeaderText="Opciones">
                                             <ItemTemplate>
+                                            <asp:LinkButton ID="agregarc" CommandArgument='<%# Eval("idreserva") %>' CssClass="btn btn-primary btn-sm btn-primary" OnClick="agregarc_Click" runat="server">
+                                               <i class="ace-icon fa fa-sign-out  bigger-120"></i>
+                                            </asp:LinkButton>
                                             <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idreserva") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </asp:LinkButton>

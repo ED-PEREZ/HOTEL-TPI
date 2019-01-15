@@ -218,6 +218,7 @@
     <Content Include="vendor\raphael\raphael.min.js" />
     <Content Include="Vistas\AgregarCatalogo.aspx" />
     <Content Include="Vistas\AgregarCliente.aspx" />
+    <Content Include="Vistas\AgregarClienteReserva.aspx" />
     <Content Include="Vistas\AgregarContenido.aspx" />
     <Content Include="Vistas\AgregarEntrega.aspx" />
     <Content Include="Vistas\Agregarhabitacion.aspx" />
@@ -274,6 +275,13 @@
     </Compile>
     <Compile Include="Vistas\AgregarCliente.aspx.designer.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\AgregarClienteReserva.aspx.cs">
+      <DependentUpon>AgregarClienteReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\AgregarClienteReserva.aspx.designer.cs">
+      <DependentUpon>AgregarClienteReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\AgregarContenido.aspx.cs">
       <DependentUpon>AgregarContenido.aspx</DependentUpon>

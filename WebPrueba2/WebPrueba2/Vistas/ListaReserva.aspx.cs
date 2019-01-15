@@ -31,8 +31,12 @@ namespace WebPrueba2.Vistas
                 int i= ds.Fill(dt);
                 gvTipo.DataSource = dt;
                 gvTipo.DataBind();
-                if (i>0) {
+                if (i > 0)
+                {
                     gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+                else {
+                    ver.Text = "No hay ningun registro";
                 }
             }
         }
@@ -67,6 +71,12 @@ namespace WebPrueba2.Vistas
                 }
                 sqlCOn.Close();
             }
+        }
+
+        protected void agregarc_Click(object sender, EventArgs e)
+        {
+            reservaID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+            Response.Redirect("AgregarClienteReserva.aspx?id=" + reservaID);
         }
     }
 }

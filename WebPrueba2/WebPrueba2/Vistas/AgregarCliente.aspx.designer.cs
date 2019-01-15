@@ -31,6 +31,15 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.HiddenField idha;
         
         /// <summary>
+        /// Control numha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField numha;
+        
+        /// <summary>
         /// Control nombre.
         /// </summary>
         /// <remarks>
@@ -47,15 +56,6 @@ namespace WebPrueba2.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox dui;
-        
-        /// <summary>
-        /// Control usuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usuario;
         
         /// <summary>
         /// Control correo.
@@ -85,13 +85,13 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.DropDownList region;
         
         /// <summary>
-        /// Control habitacion.
+        /// Control ha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox habitacion;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ha;
         
         /// <summary>
         /// Control tiempo.
