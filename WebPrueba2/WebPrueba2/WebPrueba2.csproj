@@ -229,6 +229,7 @@
     <Content Include="Vistas\BuscarCatalogo.aspx" />
     <Content Include="Vistas\BuscarEmpleado.aspx" />
     <Content Include="Vistas\BuscarHabitacion.aspx" />
+    <Content Include="Vistas\BuscarHabitacionVer.aspx" />
     <Content Include="Vistas\BuscarProducto.aspx" />
     <Content Include="Vistas\BuscarTipo.aspx" />
     <Content Include="Vistas\CancelarRecibo.aspx" />
@@ -244,6 +245,7 @@
     <Content Include="Vistas\ListaCatalogo.aspx" />
     <Content Include="Vistas\ListaCliente.aspx" />
     <Content Include="Vistas\ListaEmpleado.aspx" />
+    <Content Include="Vistas\ListaFactura.aspx" />
     <Content Include="Vistas\ListaHabitacion.aspx" />
     <Content Include="Vistas\ListaProducto.aspx" />
     <Content Include="Vistas\ListaReserva.aspx" />
@@ -353,6 +355,13 @@
     <Compile Include="Vistas\BuscarHabitacion.aspx.designer.cs">
       <DependentUpon>BuscarHabitacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\BuscarHabitacionVer.aspx.cs">
+      <DependentUpon>BuscarHabitacionVer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\BuscarHabitacionVer.aspx.designer.cs">
+      <DependentUpon>BuscarHabitacionVer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\BuscarProducto.aspx.cs">
       <DependentUpon>BuscarProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -457,6 +466,13 @@
     </Compile>
     <Compile Include="Vistas\ListaEmpleado.aspx.designer.cs">
       <DependentUpon>ListaEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ListaFactura.aspx.cs">
+      <DependentUpon>ListaFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ListaFactura.aspx.designer.cs">
+      <DependentUpon>ListaFactura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ListaHabitacion.aspx.cs">
       <DependentUpon>ListaHabitacion.aspx</DependentUpon>

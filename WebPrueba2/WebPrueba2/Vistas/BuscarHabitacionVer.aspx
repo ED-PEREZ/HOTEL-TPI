@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarHabitacion.aspx.cs" Inherits="WebPrueba2.Vistas.BuscarHabitacion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarHabitacionVer.aspx.cs" Inherits="WebPrueba2.Vistas.BuscarHabitacionVer" %>
 
 <!DOCTYPE html>
 
@@ -33,15 +33,9 @@
     <![endif]-->
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
-        function selecciona(tipo,id) {
-            window.opener.document.getElementById('ContentPlaceHolder1_numha').value = tipo;
-            window.opener.document.getElementById('ContentPlaceHolder1_ha').value = tipo;
-            window.opener.document.getElementById('ContentPlaceHolder1_idha').value = id;
-            window.close();
+        function volver() {
+            document.location.href = 'BuscarHabitacion.aspx';
         }
-        function ver(id) {
-            document.location.href = 'BuscarHabitacionVer.aspx?id=' + id;
-}
     </script>
 </head>
 <body>
@@ -55,21 +49,11 @@
                     <div class="row">
                         <div class="col-lg-12"> 
                             <form id="form" runat="server">
+                                <button type="button" class="btn btn-info" onclick="volver()" >Volver</button>
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"    >
                                     <Columns>   
-                                        <asp:BoundField DataField="numhabitacion" HeaderText="Numero de Habitacion #" />
-                                        <asp:BoundField DataField="tipohabitacion" HeaderText="Tipo de Habitacion #" />
-                                        <asp:TemplateField HeaderText="Foto">
-                                        <ItemTemplate>       
-                                            <asp:Image ID="imagen" runat="server" Width="100px" Height="100px" ImageUrl='<%#"data:image/jpg;base64,"+ Convert.ToBase64String((byte[])Eval("foto")) %>' />
-                                        </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Opciones">
-                                        <ItemTemplate> 
-                                            <button type="button" class="btn btn-primary" onclick="selecciona('<%# Eval("numhabitacion") %>','<%# Eval("idhabitacion") %>')" >Retornar</button>
-                                            <button type="button" class="btn btn-success" onclick="ver('<%# Eval("idtipohabitacion") %>')" >Ver mas</button>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                        <asp:BoundField DataField="cantidad" HeaderText="Cantidad" />
+                                        <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />
                                     </Columns>
                                  </asp:GridView> 
                             </form>
