@@ -258,6 +258,7 @@
     <Content Include="Vistas\Reportes\ReporteHabitacione.aspx" />
     <Content Include="Vistas\Reportes\ReporteHabitaciones.aspx" />
     <Content Include="Vistas\Reportes\ReportePorductos.aspx" />
+    <Content Include="Vistas\Reserva.aspx" />
     <Content Include="Vistas\VerMasTH.aspx" />
     <Content Include="Vistas\WebForm1.aspx" />
     <Content Include="Vistas\WebForm2.aspx" />
@@ -559,6 +560,13 @@
     </Compile>
     <Compile Include="Vistas\Reportes\ReportePorductos.aspx.designer.cs">
       <DependentUpon>ReportePorductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Reserva.aspx.cs">
+      <DependentUpon>Reserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Reserva.aspx.designer.cs">
+      <DependentUpon>Reserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\VerMasTH.aspx.cs">
       <DependentUpon>VerMasTH.aspx</DependentUpon>

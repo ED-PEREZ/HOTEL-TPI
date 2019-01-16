@@ -58,7 +58,7 @@ namespace WebPrueba2.Vistas
                     sqlCOn.Open();
                     MySqlCommand hmd = sqlCOn.CreateCommand();
                     hmd.CommandType = CommandType.Text;
-                    hmd.CommandText = "SELECT * FROM reserva WHERE idcliente=" + reservaID + "";
+                    hmd.CommandText = "SELECT * FROM reserva WHERE idreserva=" + reservaID + "";
                     hmd.ExecuteNonQuery();
                     MySqlDataReader dr = hmd.ExecuteReader();
                     if (dr.Read() == true)

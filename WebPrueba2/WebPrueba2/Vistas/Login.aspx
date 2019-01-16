@@ -64,11 +64,19 @@
 
         <div class="form-group">
             <asp:TextBox ID="pass" runat="server" type="password" class="form-control"  placeholder="CONTRASEÑA"></asp:TextBox>
-
         </div>
-
-        <asp:Button ID="boton1" runat="server" class="btn btn-primary" Text="INICIAR SESION" OnClick="boton1_Click" />
-
+        <div class="form-group">
+            <asp:Button ID="boton1" runat="server" class="btn btn-primary" Text="INICIAR SESION" OnClick="boton1_Click" />
+        </div>
+        <div class="form-group">
+            <a href="Reserva.aspx">
+                            <div class="panel-footer">
+                                <span class="pull-left">¿Quiere hacer una reserva?</span>
+                                <span class="pull-right"></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+        </div>
     </form>
     </div>
 </div></div>

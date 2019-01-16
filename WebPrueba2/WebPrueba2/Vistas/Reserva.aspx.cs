@@ -9,33 +9,34 @@ using System.Web.UI.WebControls;
 
 namespace WebPrueba2.Vistas
 {
-    public partial class AgregarReserva : System.Web.UI.Page
+    public partial class Reserva : System.Web.UI.Page
     {
         MySqlConnection con = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
 
         protected void agregar_Click(object sender, EventArgs e)
         {
             con.Open();
-            string idhab = idha.Value.ToString();
-            if (!(nombre.Text == "" || adelanto.Text=="" || fecha.Text=="" || 
-                idhab==""))
+            string idhab = ContentPlaceHolder1_idha.Value.ToString();
+            if (!(nombre.Text == "" || adelanto.Text == "" || fecha.Text == "" ||
+                idhab == ""))
             {
                 if (validarfecha(fecha.Text))
                 {
                     MySqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "INSERT INTO reserva (nombre,adelanto,fechareserva,idhabitacion) VALUES ('" + nombre.Text + "'," + adelanto.Text + ",'" + fecha.Text + "'," + idhab + ")";
-                    int i = cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                     con.Close();
 
                     con.Open();
                     MySqlCommand hmd = con.CreateCommand();
                     hmd.CommandType = CommandType.Text;
-                    hmd.CommandText = "UPDATE habitacion SET estado=true WHERE idhabitacion="+ idhab;
-                    hmd.ExecuteNonQuery();
+                    hmd.CommandText = "UPDATE habitacion SET estado=true WHERE idhabitacion=" + idhab;
+                    int i=hmd.ExecuteNonQuery();
                     con.Close();
 
                     if (i > 0)
@@ -47,7 +48,8 @@ namespace WebPrueba2.Vistas
                         ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
                     }
                 }
-                else {
+                else
+                {
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "fecha()", true);
                 }
             }
@@ -59,6 +61,11 @@ namespace WebPrueba2.Vistas
             con.Close();
         }
 
+        protected void cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
+
         private bool validarfecha(string text)
         {
             DateTime reserva = Convert.ToDateTime(text);
@@ -68,14 +75,10 @@ namespace WebPrueba2.Vistas
             {
                 return true;
             }
-            else {
+            else
+            {
                 return false;
             }
-        }
-
-        protected void cancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Home.aspx");
         }
     }
 }
