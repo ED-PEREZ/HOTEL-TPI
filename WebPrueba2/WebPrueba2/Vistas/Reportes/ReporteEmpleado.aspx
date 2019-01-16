@@ -5,44 +5,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>REPORTE EMPLEADO</title>
+    <title>REPORTE DE HABITACIONES</title>
     <link href="../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <script src="../../vendor/bootstrap/js/bootstrap.js"></script>
     <script src="../../vendor/jquery/jquery.js"></script>
-    <script src="../../js/jspdf.min.js"></script>
-    <script>
-        function DescargarPDF(ContenidoID, nombre) {
-            var pdf = new jsPDF('p', 'mm', 'letter');
-            pdf.page = 1;
-            html = $('#' + ContenidoID).html();
-            pdf.setFont("Century-Gothic", "Normal");
-            margins = { top: 10, bottom: 20, left: 20, width: 600 };
-            pdf.fromHTML(html, margins.left, margins.top, { 'width': margins.width }, function (dispose) { pdf.save(nombre + '.pdf'); }, margins);
-
+    <style type="text/css">
+        .ftabla {
+            font-family: 'Century Gothic', Courier, monospace;
+            font-size: 13px;
+        }
+    </style>
+    <style type="text/css">
+        .titulotabla {
+            font-family: Century,Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+    <script type="text/javascript">
+        function ocultar() {
+            document.formulario.boton.style.visibility = "hidden";
+            print();
+            document.formulario.boton.style.visibility = "visible";
         }
     </script>
 </head>
 <body>
-    <div id="bt">
-        <input type="button" onclick="DescargarPDF('Reporte', 'ReporteEmpleado')" value="Decargar Reporte" />
-    </div>
+    <center>
+     <form id="formulario" name="formulario" method="post" action="">
+        <div align="center">
+            <input type="button" name="boton" id="boton" class="btn btn-primary btn-sm btn-success" value="Imprimir" onclick="ocultar()" />
+        </div>
+    </form>
     <div id="Reporte" class="Rows" style="width: 80%; font-family:'Century Gothic'" >
         <div class="col-xs-12">
             <form class="form-horizontal" role="form" id="formE" name="formE">
-                <table style="border:0px;font-family:'Century Gothic'">
-                    <thead>EMPLEADO</thead>
+                <table class="ftabla" style="width:100%">
+                    <thead class="titulotabla">EMPLEADO</thead>
                     <tbody>
                         <tr>
                         <td>
-                           <label  for="idE" style="width:30;height:20px" >Id. Empleado</label>
+                           <label  for="idE" style="width:30%" >Id. Empleado</label>
                         </td>
                             <td>
-                                <asp:Label width="70%" height="20px" id="idE" runat="server" Text="ID. DEL EMPLEADO" style="margin-left: 98px"/>
+                                <asp:Label width="70%" id="idE" runat="server" Text="ID. DEL EMPLEADO" />
                             </td>
                        </tr>
                         <tr>
                             <td>
-                                <label style="width:30" for="cod">CODIGO:</label>
+                                <label style="width:30%" for="cod">CODIGO:</label>
                             </td>
                             <td>
                                 <asp:Label  width="70%" id="cod" runat="server" Text="CODIGO DEL EMPLEADO"/>
@@ -53,104 +62,99 @@
                                  <label style="width:30%" for="nomb">NOMBRE:</label>
                             </td>
                             <td>
-                                <asp:Label width="60%" id="nomb" runat="server" Text="NOMBRE DEL EMPLEADO"/>
+                                <asp:Label width="70%" id="nomb" runat="server" Text="NOMBRE DEL EMPLEADO"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label style="width:30" for="sexo">SEXO:</label>
+                                <label style="width:30%" for="sexo">SEXO:</label>
                             </td>
                             <td>
-                                <asp:Label width="60%" id="sexo" runat="server" Text="SEXO DEL EMPLEADO"/>
+                                <asp:Label width="70%" id="sexo" runat="server" Text="SEXO DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="fnac">FECHA DE NACIMIENTO:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="fnac" runat="server" Text="NACIMIENTO DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="dir">DIRECCION:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="dir" runat="server" Text="DIRECCION DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="tel">TELEFONO:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="tel" runat="server" Text="TELEFONO DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="dui">DUI:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="dui" runat="server" Text="DUI DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="nit">NIT:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="nit" runat="server" Text="NIT DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="seg">SEGURO SOCIAL:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="seg" runat="server" Text="SEGURO SOCIAL DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="afp">AFP:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="afp" runat="server" Text="AFP DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="fcon">FECHA DEL CONTRATO:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="fcon" runat="server" Text="FECHA DE CONTRATO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="carg">CARGO:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="carg" runat="server" Text="CARGO DEL EMPLEADO"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="width:30%" for="suel">SUELDO:</label>
+                            </td>
+                            <td>
+                                <asp:Label width="70%" id="suel" runat="server" Text="SUE DEL EMPLEADO"/>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div><h1></h1></div>
-                <div class="form-group">
-                    
-                    	<div class="col-sm-9">
-							
-						</div>
-                 </div>
-                <div class="form-group">
-                    
-                    	<div class="col-sm-9">
-							
-						</div>
-                 </div>
-                <div class="form-group">
-                   
-                    	<div class="col-sm-9">
-							
-						</div>
-                 </div>
-                <div class="form-group">
-                    
-                    	<div class="col-sm-9">
-							
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="fnac">FECHA DE NACIMIENTO:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="fnac" runat="server" Text="NACIMIENTO DEL EMPLEADO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="dir">DIRECCION:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="dir" runat="server" Text="DIRECCION DEL EMPLEADO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="tel">TELEFONO:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="tel" runat="server" Text="TELEFONO DEL EMPLEADO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="dui">DUI:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="dui" runat="server" Text="DUI DEL EMPLEADO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="nit">NIT:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="nit" runat="server" Text="NIT DEL EMPLEADO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="seg">SEGURO SOCIAL:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="seg" runat="server" Text="SEGURO SOCIAL DEL EMPLEADO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="afp">AFP:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="afp" runat="server" Text="AFP DEL EMPLEADO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="fcon">FECHA DEL CONTRATO:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="fcon" runat="server" Text="FECHA DE CONTRATO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="carg">CARGO:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="carg" runat="server" Text="CARGO DEL EMPLEADO"/>
-						</div>
-                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="suel">SUELDO DEL EMPLEADO:</label>
-                    	<div class="col-sm-9">
-							<asp:Label  cssClass="col-xs-10 col-sm-5" id="suel" runat="server" Text="SUELDO DEL EMPLEADO"/>
-						</div>
-                 </div>
             </form>
         </div>
     </div>

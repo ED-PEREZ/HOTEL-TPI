@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace WebPrueba2.Vistas.Reportes
 {
-    public partial class ReporteHabitaciones1 : System.Web.UI.Page
+    public partial class ReporteHabitaciones : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

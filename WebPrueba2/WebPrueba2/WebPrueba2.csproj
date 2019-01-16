@@ -252,8 +252,10 @@
     <Content Include="Vistas\listaTipoHabitacion.aspx" />
     <Content Include="Vistas\Login.aspx" />
     <Content Include="Vistas\ListaVerPedidos.aspx" />
+    <Content Include="Vistas\Reportes\ReporteEmp.html" />
     <Content Include="Vistas\Reportes\ReporteEmpleados.aspx" />
     <Content Include="Vistas\Reportes\ReporteEmpleado.aspx" />
+    <Content Include="Vistas\Reportes\ReporteHabitacione.aspx" />
     <Content Include="Vistas\Reportes\ReporteHabitaciones.aspx" />
     <Content Include="Vistas\Reportes\ReportePorductos.aspx" />
     <Content Include="Vistas\VerMasTH.aspx" />
@@ -536,6 +538,13 @@
     </Compile>
     <Compile Include="Vistas\Reportes\ReporteEmpleado.aspx.designer.cs">
       <DependentUpon>ReporteEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReporteHabitacione.aspx.cs">
+      <DependentUpon>ReporteHabitacione.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReporteHabitacione.aspx.designer.cs">
+      <DependentUpon>ReporteHabitacione.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Reportes\ReporteHabitaciones.aspx.cs">
       <DependentUpon>ReporteHabitaciones.aspx</DependentUpon>

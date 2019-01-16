@@ -6,54 +6,46 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>REPORTE DE EMPLEADOS</title>
-    
+
     <link href="../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <script src="../../vendor/jquery/jquery.js"></script>
-    <script src="../../js/jspdf.js"></script>
-    <script>
-         function DescargarPDF(ContenidoID, nombre) {
-            var pdf = new jsPDF('p', 'pt', 'letter');
-            source = $('#' + ContenidoID)[0];
-            specialElementHandlers = {
-                '#bypassme': function (element, renderer) {
-                    return true
-                }
-            };
-             margins = {
-                 top: 30, bottom: 30, left: 30, rigth: 30, width: 2000
-            };
-
-            pdf.fromHTML(
-                source, margins.left, margins.top, { 'width': margins.width,
-                    'elementHandlers': specialElementHandlers
-                },
-
-                function (dispose) {
-
-                    pdf.save(nombre + '.pdf');
-                }
-                , margins);
+    <style type="text/css">
+        .ftabla {
+            font-family: 'Century Gothic', Courier, monospace;
+            font-size: 13px;
+        }
+    </style>
+    <style type="text/css">
+        .titulotabla {
+            font-family: Century,Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+    <script type="text/javascript">
+        function ocultar() {
+            document.formulario.boton.style.visibility = "hidden";
+            print();
+            document.formulario.boton.style.visibility = "visible";
         }
     </script>
 </head>
 <body>
     <center>
-    <form id="form1" runat="server">
-        <div id="bt">
-            <input type="button" class="btn btn-primary btn-sm btn-success" onclick="DescargarPDF('Reporte', 'ReporteEmpleados')" value="Decargar Reporte" />
+     <form id="formulario" name="formulario" method="post" action="">
+        <div align="center">
+            <input type="button" name="boton" id="boton" class="btn btn-primary btn-sm btn-success" value="Imprimir" onclick="ocultar()" />
         </div>
+    </form>
+    <form id="form1" runat="server">
         <div id="Reporte" style="width:80%">
-            
-                <h1><center>REPORTE DE EMPLEADOS</center></h1>
+            <h1>REPORTE DE EMPLEADOS</h1>
             <asp:GridView ID="gvEmpleados" runat="server" AutoGenerateColumns="False" Width="100%">
                 <Columns>
-                    <asp:BoundField DataField="codigoemp" HeaderText="CODIGO" ItemStyle-Width="5%" />
-                    <asp:BoundField DataField="nombre" HeaderText="NOMBRE" ItemStyle-Width="37%" />
-                    <asp:BoundField DataField="dui" HeaderText="DUI" ItemStyle-Width="10%" />
-                    <asp:BoundField DataField="nit" HeaderText="NIT" ItemStyle-Width="15%" />
-                    <asp:BoundField DataField="nafp" HeaderText="AFP" ItemStyle-Width="10%" />
-                    <asp:BoundField DataField="nseguro" HeaderText="SEGURO" ItemStyle-Width="10%" />
-                    <asp:BoundField DataField="cargo" HeaderText="CARGO" ItemStyle-Width="13%" />
+                    <asp:BoundField DataField="codigoemp" HeaderText="CODIGO" HeaderStyle-CssClass="titulotabla" ItemStyle-Width="5%" ItemStyle-CssClass="ftabla" />
+                    <asp:BoundField DataField="nombre" HeaderText="NOMBRE" HeaderStyle-CssClass="titulotabla" ItemStyle-Width="30%" ItemStyle-CssClass="ftabla"/>
+                    <asp:BoundField DataField="dui" HeaderText="DUI" HeaderStyle-CssClass="titulotabla" ItemStyle-Width="10%" ItemStyle-CssClass="ftabla"/>
+                    <asp:BoundField DataField="nit" HeaderText="NIT" HeaderStyle-CssClass="titulotabla" ItemStyle-Width="20%" ItemStyle-CssClass="ftabla"/>
+                    <asp:BoundField DataField="cargo" HeaderText="CARGO" HeaderStyle-CssClass="titulotabla" ItemStyle-Width="15%" ItemStyle-CssClass="ftabla"/>
                 </Columns>
             </asp:GridView>
            

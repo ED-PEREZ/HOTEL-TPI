@@ -10,7 +10,7 @@
 namespace WebPrueba2.Vistas.Reportes {
     
     
-    public partial class ReporteHabitaciones1 {
+    public partial class ReporteHabitaciones {
         
         /// <summary>
         /// Control form1.

@@ -164,6 +164,9 @@ namespace WebPrueba2.Vistas
                 if (!ExistenciasV())
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos('DATOS YA EXISTEN')", true);
+                }else if (!Edad())
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos('EMPLEADO MENOR DE EDAD')", true);
                 }
                 ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "completeCampos('COMPLETE LOS DATOS')", true);
             }
@@ -245,7 +248,7 @@ namespace WebPrueba2.Vistas
                 }
                 else
                 {
-                    if (ExistenciasV())
+                    if (ExistenciasV() && Edad())
                     {
                         return true;
                     }
@@ -256,6 +259,26 @@ namespace WebPrueba2.Vistas
                 System.Console.WriteLine(e);
             }
             return false;
+        }
+
+        private bool Edad()
+        {
+            string naci = Fecha(nacimiento.Text);
+            string cntr = Fecha(contrato.Text);
+            string[] nci = naci.Split('-');
+            string[] ctr = cntr.Split('-');
+            int aa = int.Parse(ctr[2]) - int.Parse(nci[2]);
+            int am = int.Parse(ctr[1]) - int.Parse(nci[1]);
+            int ad = int.Parse(ctr[0]) - int.Parse(nci[0]);
+            if (am < 0 || (am == 0 && ad < 0))
+            {
+                aa = aa - 1;
+            }
+            if (aa < 18)
+            {
+                return false;
+            }
+            return true;
         }
 
         protected void agregarm_Click(object sender, EventArgs e)
