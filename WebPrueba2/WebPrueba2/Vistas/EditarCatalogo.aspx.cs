@@ -16,26 +16,37 @@ namespace WebPrueba2.Vistas
         {
             if (!IsPostBack)
             {
-                String idh = "";
-                if (Request.Params["id"] != null)
+                
+                if (Session.Count != 0)
                 {
-                    idh = Request.Params["id"];
-                    using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                    if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "2")
                     {
-                        sqlCOn.Open();
-                        MySqlCommand cmd = sqlCOn.CreateCommand();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "select * from catalogo WHERE idcatalogo=" + idh + "";
-                        cmd.ExecuteNonQuery();
-                        MySqlDataReader dr = cmd.ExecuteReader();
-
-                        if (dr.Read() == true)
+                        String idh = "";
+                        if (Request.Params["id"] != null)
                         {
-                            detalle.Text = dr["descripcion"].ToString();
-                            cantidad.Text = dr["cantidad"].ToString();
-                            hf.Value = dr["idcatalogo"].ToString();
+                            idh = Request.Params["id"];
+                            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                            {
+                                sqlCOn.Open();
+                                MySqlCommand cmd = sqlCOn.CreateCommand();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.CommandText = "select * from catalogo WHERE idcatalogo=" + idh + "";
+                                cmd.ExecuteNonQuery();
+                                MySqlDataReader dr = cmd.ExecuteReader();
+
+                                if (dr.Read() == true)
+                                {
+                                    detalle.Text = dr["descripcion"].ToString();
+                                    cantidad.Text = dr["cantidad"].ToString();
+                                    hf.Value = dr["idcatalogo"].ToString();
+                                }
+                                sqlCOn.Close();
+                            }
                         }
-                        sqlCOn.Close();
+                    }
+                    else
+                    {
+                        Response.Redirect("Home.aspx");
                     }
                 }
             }

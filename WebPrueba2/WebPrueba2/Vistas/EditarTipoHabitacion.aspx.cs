@@ -17,25 +17,36 @@ namespace WebPrueba2.Vistas
         {
             if (!IsPostBack)
             {
-                if (Request.Params["id"] != null)
+                
+                if (Session.Count != 0)
                 {
-                    idh = Request.Params["id"];
-                    using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                    if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "3")
                     {
-                        sqlCOn.Open();
-                        MySqlCommand cmd = sqlCOn.CreateCommand();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "select * from tipo_habitacion WHERE idtipohabitacion=" + idh + "";
-                        cmd.ExecuteNonQuery();
-                        MySqlDataReader dr = cmd.ExecuteReader();
-
-                        if (dr.Read() == true)
+                        if (Request.Params["id"] != null)
                         {
-                            tipo.Text = dr["tipohabitacion"].ToString();
-                            precio.Text = dr["precio"].ToString();
-                            hf.Value = dr["idtipohabitacion"].ToString();
+                            idh = Request.Params["id"];
+                            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                            {
+                                sqlCOn.Open();
+                                MySqlCommand cmd = sqlCOn.CreateCommand();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.CommandText = "select * from tipo_habitacion WHERE idtipohabitacion=" + idh + "";
+                                cmd.ExecuteNonQuery();
+                                MySqlDataReader dr = cmd.ExecuteReader();
+
+                                if (dr.Read() == true)
+                                {
+                                    tipo.Text = dr["tipohabitacion"].ToString();
+                                    precio.Text = dr["precio"].ToString();
+                                    hf.Value = dr["idtipohabitacion"].ToString();
+                                }
+                                sqlCOn.Close();
+                            }
                         }
-                        sqlCOn.Close();
+                    }
+                    else
+                    {
+                        Response.Redirect("Home.aspx");
                     }
                 }
             }

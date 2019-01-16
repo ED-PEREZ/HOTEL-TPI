@@ -16,46 +16,58 @@ namespace WebPrueba2.Vistas
         {
             if (!IsPostBack)
             {
-                if (Request.Params["id"] != null)
+                
+                if (Session.Count != 0)
                 {
-                    idh = Request.Params["id"];
-                    using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                    if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "3")
                     {
-                        sqlCOn.Open();
-                        MySqlCommand cmd = sqlCOn.CreateCommand();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "SELECT a.nombre, a.dui, a.fechaentrada, a.fechasalida," +
-                            " a.idhabitacion, a.correo, a.region, a.celular, a.usuario, b.idhabitacion," +
-                            " b.numhabitacion, a.idcliente,a.ndias,a.totalp FROM cliente a " +
-                            "INNER JOIN habitacion b ON a.idhabitacion = b.idhabitacion" +
-                            " WHERE a.idcliente=" + idh + "";
-                        cmd.ExecuteNonQuery();
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        string auxi = "";
-                        if (dr.Read() == true)
+                        if (Request.Params["id"] != null)
                         {
-                            nombre.Text = dr["nombre"].ToString();
-                            dui.Text = dr["dui"].ToString();
-                            tiempo.Text = dr["ndias"].ToString();
-                            auxi = dr["ndias"].ToString();
-                            totalG.Text = dr["totalp"].ToString();
-                            correo.Text = dr["correo"].ToString();
-                            region.Text = dr["region"].ToString();
-                            cell.Text = dr["celular"].ToString();
-                            fechaIn.Text = dr["fechaentrada"].ToString();
-                            fechaSa.Text = dr["fechasalida"].ToString();
-                            idha.Value = dr["idhabitacion"].ToString();
-                            //si se cambia lahabitacion este mantendrar el valor del anterior
-                            hfidha.Value = dr["idhabitacion"].ToString();
-                            ha.Value = dr["numhabitacion"].ToString();
-                            numha.Value = dr["numhabitacion"].ToString();
-                            hf.Value = dr["idcliente"].ToString();
+                            idh = Request.Params["id"];
+                            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                            {
+                                sqlCOn.Open();
+                                MySqlCommand cmd = sqlCOn.CreateCommand();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.CommandText = "SELECT a.nombre, a.dui, a.fechaentrada, a.fechasalida," +
+                                    " a.idhabitacion, a.correo, a.region, a.celular, a.usuario, b.idhabitacion," +
+                                    " b.numhabitacion, a.idcliente,a.ndias,a.totalp FROM cliente a " +
+                                    "INNER JOIN habitacion b ON a.idhabitacion = b.idhabitacion" +
+                                    " WHERE a.idcliente=" + idh + "";
+                                cmd.ExecuteNonQuery();
+                                MySqlDataReader dr = cmd.ExecuteReader();
+                                string auxi = "";
+                                if (dr.Read() == true)
+                                {
+                                    nombre.Text = dr["nombre"].ToString();
+                                    dui.Text = dr["dui"].ToString();
+                                    tiempo.Text = dr["ndias"].ToString();
+                                    auxi = dr["ndias"].ToString();
+                                    totalG.Text = dr["totalp"].ToString();
+                                    correo.Text = dr["correo"].ToString();
+                                    region.Text = dr["region"].ToString();
+                                    cell.Text = dr["celular"].ToString();
+                                    fechaIn.Text = dr["fechaentrada"].ToString();
+                                    fechaSa.Text = dr["fechasalida"].ToString();
+                                    idha.Value = dr["idhabitacion"].ToString();
+                                    //si se cambia lahabitacion este mantendrar el valor del anterior
+                                    hfidha.Value = dr["idhabitacion"].ToString();
+                                    ha.Value = dr["numhabitacion"].ToString();
+                                    numha.Value = dr["numhabitacion"].ToString();
+                                    hf.Value = dr["idcliente"].ToString();
+                                }
+                                sqlCOn.Close();
+                                if (auxi == "Una noche")
+                                {
+                                    fechaIn.Enabled = false;
+                                    fechaSa.Enabled = false;
+                                }
+                            }
                         }
-                        sqlCOn.Close();
-                        if (auxi=="Una noche") {
-                            fechaIn.Enabled = false;
-                            fechaSa.Enabled = false;
-                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("Home.aspx");
                     }
                 }
             }

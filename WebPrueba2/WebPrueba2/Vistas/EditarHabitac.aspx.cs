@@ -17,26 +17,37 @@ namespace WebPrueba2.Vistas
             idtipoh.Visible = false;
             if (!IsPostBack)
             {
-                if (Request.Params["id"] != null)
+                
+                if (Session.Count != 0)
                 {
-                    idh = Request.Params["id"];
-                    using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                    if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "2")
                     {
-                        sqlCOn.Open();
-                        MySqlCommand cmd = sqlCOn.CreateCommand();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "SELECT a.numhabitacion,a.idhabitacion, b.tipohabitacion,b.idtipohabitacion FROM habitacion a INNER JOIN tipo_habitacion b ON a.idtipohabitacion = b.idtipohabitacion WHERE idhabitacion=" + idh+"";
-                        cmd.ExecuteNonQuery();
-                        MySqlDataReader dr = cmd.ExecuteReader();
-
-                        if (dr.Read() == true)
+                        if (Request.Params["id"] != null)
                         {
-                            numero.Text = dr["numhabitacion"].ToString();
-                            tipo.Text = dr["tipohabitacion"].ToString();
-                            idth.Value = dr["idtipohabitacion"].ToString();
-                            hf.Value = dr["idhabitacion"].ToString();
+                            idh = Request.Params["id"];
+                            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                            {
+                                sqlCOn.Open();
+                                MySqlCommand cmd = sqlCOn.CreateCommand();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.CommandText = "SELECT a.numhabitacion,a.idhabitacion, b.tipohabitacion,b.idtipohabitacion FROM habitacion a INNER JOIN tipo_habitacion b ON a.idtipohabitacion = b.idtipohabitacion WHERE idhabitacion=" + idh + "";
+                                cmd.ExecuteNonQuery();
+                                MySqlDataReader dr = cmd.ExecuteReader();
+
+                                if (dr.Read() == true)
+                                {
+                                    numero.Text = dr["numhabitacion"].ToString();
+                                    tipo.Text = dr["tipohabitacion"].ToString();
+                                    idth.Value = dr["idtipohabitacion"].ToString();
+                                    hf.Value = dr["idhabitacion"].ToString();
+                                }
+                                sqlCOn.Close();
+                            }
                         }
-                        sqlCOn.Close();
+                    }
+                    else
+                    {
+                        Response.Redirect("Home.aspx");
                     }
                 }
             }
