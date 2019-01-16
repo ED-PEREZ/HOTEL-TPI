@@ -252,7 +252,6 @@
     <Content Include="Vistas\listaTipoHabitacion.aspx" />
     <Content Include="Vistas\Login.aspx" />
     <Content Include="Vistas\ListaVerPedidos.aspx" />
-    <Content Include="Vistas\Reportes\ReporteEmp.html" />
     <Content Include="Vistas\Reportes\ReporteEmpleados.aspx" />
     <Content Include="Vistas\Reportes\ReporteEmpleado.aspx" />
     <Content Include="Vistas\Reportes\ReporteHabitacione.aspx" />

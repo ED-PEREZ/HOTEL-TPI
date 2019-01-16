@@ -58,7 +58,7 @@
         
         <div class="form-group">
 
-            <asp:TextBox ID="user" runat="server" class="form-control" placeholder="USUARIO"></asp:TextBox>
+            <asp:TextBox ID="user" runat="server" class="form-control" placeholder="USUARIO" autocomplete="off"></asp:TextBox>
 
         </div>
 

@@ -6,44 +6,38 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>REPORTE PRODUCTOS</title>
-    <script src="../../vendor/jquery/jquery.js"></script>
     <link href="../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <script src="../../js/jspdf.js"></script>
-    <script>
-        function DescargarPDF(ContenidoID, nombre) {
-            var pdf = new jsPDF('p', 'pt', 'letter');
-            pdf.setFontSize(12);
-            source = $('#' + ContenidoID)[0];
-            specialElementHandlers = {
-                '#bypassme': function (element, renderer) {
-                    return true
-                }
-            };
-            margins = {
-                top: 30, bottom: 40, left: 40, rigth:40, width: 1300
-            };
-
-            pdf.fromHTML(
-                source, margins.left, margins.top, {
-                    'elementHandlers': specialElementHandlers
-                },
-
-                function (dispose) {
-
-                    pdf.save(nombre + '.pdf');
-                }
-                , margins);
+    <script src="../../vendor/jquery/jquery.js"></script>
+    <style type="text/css">
+        .ftabla {
+            font-family: 'Century Gothic', Courier, monospace;
+            font-size: 13px;
+        }
+    </style>
+    <style type="text/css">
+        .titulotabla {
+            font-family: Century,Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+    <script type="text/javascript">
+        function ocultar() {
+            document.formulario.boton.style.visibility = "hidden";
+            print();
+            document.formulario.boton.style.visibility = "visible";
         }
     </script>
 </head>
 <body>
     <center>
-    <form id="form1" runat="server">
-        <div id="bt">
-            <input type="button" class="btn btn-primary btn-sm btn-success" onclick="DescargarPDF('Reporte', 'ReporteProductos')" value="Decargar Reporte" />
-            <br/><br />
+     <form id="formulario" name="formulario" method="post" action="">
+        <div align="center">
+            <input type="button" name="boton" id="boton" class="btn btn-primary btn-sm btn-success" value="Imprimir" onclick="ocultar()" />
         </div>
-        <div id="Reporte">
+    </form>
+    <form id="form1" runat="server">
+        <div id="Reporte" style="width:80%">
+            <h1>REPORTE DE PRODUCTOS</h1>
             <asp:GridView ID="gvTipo" runat="server" AutoGenerateColumns="False" Width="50%">
                  <Columns>
                     <asp:BoundField DataField="descripcion" HeaderText="Tipo" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="40%"/>
@@ -57,6 +51,5 @@
             </asp:GridView>
         </div>
     </form>
-        </center>
 </body>
 </html>

@@ -80,7 +80,8 @@ namespace WebPrueba2.Vistas
         protected void Reporte_Click(Object sender, EventArgs e)
         {
             empleadoID = Convert.ToInt32((sender as LinkButton).CommandArgument);
-            Response.Redirect("Reportes/ReporteEmpleado.aspx?id=" + empleadoID);
+            //Response.Redirect("Reportes/ReporteEmpleado.aspx?id=" + empleadoID);
+            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana("+empleadoID+")", true);
         }
     }
 }

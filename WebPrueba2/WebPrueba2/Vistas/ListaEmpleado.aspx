@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     EMPLEADOS
     <script type="text/javascript">
+        function abrirVentana(id){
+        var url = "Reportes/ReporteEmpleado.aspx?id="+id;
+            window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,resizable=no,width=500,height=600,location=no");           
+        }
         function eliminar() {
             swal({
                 tittle: 'CONFIRME SI',

@@ -23,7 +23,9 @@
     <script type="text/javascript">
         function ocultar() {
             document.formulario.boton.style.visibility = "hidden";
+            document.formulario.cerrar.style.visibility = "hidden";
             print();
+            document.formulario.boton.style.visibility = "visible";
             document.formulario.boton.style.visibility = "visible";
         }
     </script>
@@ -33,6 +35,8 @@
      <form id="formulario" name="formulario" method="post" action="">
         <div align="center">
             <input type="button" name="boton" id="boton" class="btn btn-primary btn-sm btn-success" value="Imprimir" onclick="ocultar()" />
+            
+            <input type="button" name="cerrar" id="cerrar" class="btn btn-primary btn-sm btn-warning" value="Cancelar" onclick="cerrar()" />
         </div>
     </form>
     <div id="Reporte" class="Rows" style="width: 80%; font-family:'Century Gothic'" >
