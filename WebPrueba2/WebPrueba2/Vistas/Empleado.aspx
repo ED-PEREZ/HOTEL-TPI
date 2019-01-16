@@ -50,7 +50,7 @@
                 }
             } else if (f == 3) {
                 var tel1 = document.getElementById("<%=telefono.ClientID%>").value;
-                if (tel.length == 4) {
+                if (tel1.length == 4) {
                     document.getElementById("<%=telefono.ClientID%>").value = tel1 + "-";
                 }
             }
@@ -101,7 +101,7 @@
                                     <label for="telefono">Telefono</label>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" autocomplete="off" class="form-control" id="telefono" name="telefono" max="79999999" min="60000000" oninput="formato(3);" maxlength="9" runat="server" />
+                                    <input type="text" autocomplete="off" class="form-control" id="telefono" name="telefono" placeholder="2255-6677" oninput="formato(3);" maxlength="9" runat="server" />
                                 </div>
                                 <div class="form-group">
                                     <label for="dui">DUI (*)</label>
@@ -119,13 +119,13 @@
                                     <label for="seguro">Nro. de Seguro Social (*)</label>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox ID="seguro" runat="server" autocomplete="off" CssClass="form-control" placeholder="7534298601" MaxLength="10"></asp:TextBox>
+                                    <asp:TextBox ID="seguro" TextMode="Number" max="9999999999" min="0" runat="server" autocomplete="off" CssClass="form-control" placeholder="7534298601" MaxLength="10"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label for="afp">Nro. de APF (*)</label>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox ID="afp" runat="server" autocomplete="off" class="form-control" placeholder="147534298601" MaxLength="12"></asp:TextBox>
+                                    <asp:TextBox ID="afp" TextMode="Number" max="999999999999" min="0" runat="server" autocomplete="off" class="form-control" placeholder="147534298601" MaxLength="12"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label for="contrato">Fecha de Contrato (*)</label>
