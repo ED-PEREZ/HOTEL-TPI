@@ -15,11 +15,22 @@ namespace WebPrueba2.Vistas
         string idservicio="";
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-                if (Request.Params["idservicio"] != null)
+
+            if (Session.Count != 0)
+            {
+                if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "3")
                 {
-                    idservicio = Request.Params["idservicio"];
+                    if (Request.Params["idservicio"] != null)
+                    {
+                        idservicio = Request.Params["idservicio"];
+                    }
                 }
+                else
+                {
+                    Response.Redirect("Home.aspx");
+                }
+            }
+            
             
                   
         }

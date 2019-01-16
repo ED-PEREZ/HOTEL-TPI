@@ -15,10 +15,21 @@ namespace WebPrueba2.Vistas
         string idtipo = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Params["id"] != null)
+            if (Session.Count != 0)
             {
-                idtipo = Request.Params["id"];
+                if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "2")
+                {
+                    if (Request.Params["id"] != null)
+                    {
+                        idtipo = Request.Params["id"];
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Home.aspx");
+                }
             }
+
         }
 
         protected void agregar_Click(object sender, EventArgs e)

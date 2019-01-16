@@ -14,8 +14,18 @@ namespace WebPrueba2.Vistas
         MySqlConnection con = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session.Count != 0)
+                {
+                if (Session["USUARIO"].ToString() == "1"|| Session["USUARIO"].ToString() == "2")
+                {
+                }
+                else
+                {
+                    Response.Redirect("Home.aspx");
+                }
+            }
         }
+
 
         protected void agregar_Click(object sender, EventArgs e)
         {

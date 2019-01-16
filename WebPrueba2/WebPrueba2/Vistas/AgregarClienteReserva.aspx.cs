@@ -16,35 +16,47 @@ namespace WebPrueba2.Vistas
         {
             if (!IsPostBack)
             {
-                if (Request.Params["id"] != null)
+                
+                if (Session.Count != 0)
                 {
-                    idr = Request.Params["id"];
-                    using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                    if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "3")
                     {
-                        sqlCOn.Open();
-                        MySqlCommand cmd = sqlCOn.CreateCommand();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "SELECT a.idreserva, a.nombre, a.fechareserva, a.adelanto, a.idhabitacion, b.numhabitacion" +
-                            " FROM reserva a INNER JOIN habitacion b ON a.idhabitacion = b.idhabitacion WHERE a.idreserva=" + idr + "";
-                        cmd.ExecuteNonQuery();
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        
-                        if (dr.Read() == true)
+                        if (Request.Params["id"] != null)
                         {
-                            nombre.Text = dr["nombre"].ToString();
-                            idre.Value = dr["idreserva"].ToString();
-                            ade.Value = dr["adelanto"].ToString();
-                            fechaIn.Text = dr["fechareserva"].ToString();
-                            numha.Value = dr["numhabitacion"].ToString();
-                            idha.Value = dr["idhabitacion"].ToString();
-                            ////si se cambia lahabitacion este mantendrar el valor del anterior
-                            hfidha.Value = dr["idhabitacion"].ToString();
-                            nuhar.Value= dr["numhabitacion"].ToString();
-                            ha.Value = dr["numhabitacion"].ToString();
+                            idr = Request.Params["id"];
+                            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                            {
+                                sqlCOn.Open();
+                                MySqlCommand cmd = sqlCOn.CreateCommand();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.CommandText = "SELECT a.idreserva, a.nombre, a.fechareserva, a.adelanto, a.idhabitacion, b.numhabitacion" +
+                                    " FROM reserva a INNER JOIN habitacion b ON a.idhabitacion = b.idhabitacion WHERE a.idreserva=" + idr + "";
+                                cmd.ExecuteNonQuery();
+                                MySqlDataReader dr = cmd.ExecuteReader();
+
+                                if (dr.Read() == true)
+                                {
+                                    nombre.Text = dr["nombre"].ToString();
+                                    idre.Value = dr["idreserva"].ToString();
+                                    ade.Value = dr["adelanto"].ToString();
+                                    fechaIn.Text = dr["fechareserva"].ToString();
+                                    numha.Value = dr["numhabitacion"].ToString();
+                                    idha.Value = dr["idhabitacion"].ToString();
+                                    ////si se cambia lahabitacion este mantendrar el valor del anterior
+                                    hfidha.Value = dr["idhabitacion"].ToString();
+                                    nuhar.Value = dr["numhabitacion"].ToString();
+                                    ha.Value = dr["numhabitacion"].ToString();
+                                }
+                                sqlCOn.Close();
+                            }
                         }
-                        sqlCOn.Close();
+                    }
+                    else
+                    {
+                        Response.Redirect("Home.aspx");
                     }
                 }
+
             }
         }
 
