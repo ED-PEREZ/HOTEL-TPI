@@ -13,15 +13,6 @@ namespace WebPrueba2.Vistas {
     public partial class CancelarRecibo {
         
         /// <summary>
-        /// Control registrarCatalogo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm registrarCatalogo;
-        
-        /// <summary>
         /// Control hf.
         /// </summary>
         /// <remarks>

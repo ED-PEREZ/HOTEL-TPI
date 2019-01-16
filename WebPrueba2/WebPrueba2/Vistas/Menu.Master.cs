@@ -11,8 +11,12 @@ namespace WebPrueba2.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Count == 0) {
+            if (Session.Count == 0)
+            {
                 Response.Redirect("Login.aspx");
+            }
+            else {
+                user.Value = Session["USUARIO"].ToString();
             }
         }
 

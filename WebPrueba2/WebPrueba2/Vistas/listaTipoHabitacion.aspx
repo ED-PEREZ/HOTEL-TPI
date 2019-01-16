@@ -60,7 +60,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12"> 
-                              <form id="form" runat="server">
+
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"    >
                                 <Columns>
                                    <asp:BoundField DataField="tipohabitacion" HeaderText="Tipo" />
@@ -85,7 +85,7 @@
                                         </asp:TemplateField>
                                </Columns>
                           </asp:GridView>                    
-       </form>
+
  </div>
                             </div>
                         </div>

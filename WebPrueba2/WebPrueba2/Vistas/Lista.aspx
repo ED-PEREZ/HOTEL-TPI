@@ -4,7 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form" runat="server">   
+
     <div class="row">
             <div class="col-lg-6">
             <div class="panel panel-default">
@@ -64,7 +64,7 @@
              </div>
          </div>
     </div>
-        </form>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="final" runat="server">

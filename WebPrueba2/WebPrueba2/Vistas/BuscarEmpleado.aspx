@@ -53,8 +53,8 @@
                             <form id="form" runat="server">
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"    >
                                     <Columns>   
-                                        <asp:BoundField DataField="codigoemp" HeaderText="Numero de Habitacion #" />
-                                        <asp:BoundField DataField="nombre" HeaderText="Tipo de Habitacion #" />                                      
+                                        <asp:BoundField DataField="codigoemp" HeaderText="Codigo del empleado #" />
+                                        <asp:BoundField DataField="nombre" HeaderText="Nombre del empleado #" />                                      
                                         <asp:TemplateField HeaderText="Opciones">
                                         <ItemTemplate> 
                                             <button type="button" class="btn btn-primary" onclick="selecciona('<%# Eval("nombre") %>','<%# Eval("idempleado") %>')" >Retornar</button>

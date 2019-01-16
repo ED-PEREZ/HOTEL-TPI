@@ -57,7 +57,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form id="registrarReserva" role="form" runat="server">
+
                                         <asp:HiddenField ID="hf" runat="server" />
                                         <asp:HiddenField ID="hfidha" runat="server" />
                                         <asp:HiddenField ID="idha" runat="server" />
@@ -98,7 +98,7 @@
                                             <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" OnClick="cancelar_Click" />   
                                             <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Modificar" OnClick="agregar_Click" />
                                         </div>                     
-                                    </form>
+
                                </div>
                             </div>
                         </div>

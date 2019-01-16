@@ -59,7 +59,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12"> 
-                            <form id="form" runat="server">
+
                                 <asp:TextBox ID="algo" runat="server" />
                                  <asp:TextBox ID="contenedor" runat="server" />
                                 <asp:TextBox ID="ja" runat="server" />
@@ -86,7 +86,7 @@
                                         </asp:TemplateField>
                                     </Columns>
                                  </asp:GridView> 
-                            </form>
+
                          </div>
                      </div>
                  </div>

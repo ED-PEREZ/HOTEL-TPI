@@ -50,7 +50,7 @@
                 }
             } else if (f == 3) {
                 var tel1 = document.getElementById("<%=telefono.ClientID%>").value;
-                if (tel1.length == 4) {
+                if (tel.length == 4) {
                     document.getElementById("<%=telefono.ClientID%>").value = tel1 + "-";
                 }
             }
@@ -68,7 +68,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <form id="registrarEmpleado" role="form" runat="server">
+                            
                                 <div class="form-group">
                                     <label for="nombre">Nombre (*)</label>
                                 </div>
@@ -101,7 +101,7 @@
                                     <label for="telefono">Telefono</label>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" autocomplete="off" class="form-control" id="telefono" name="telefono" placeholder="2255-6677" oninput="formato(3);" maxlength="9" runat="server" />
+                                    <input type="text" autocomplete="off" class="form-control" id="telefono" name="telefono" max="79999999" min="60000000" oninput="formato(3);" maxlength="9" runat="server" />
                                 </div>
                                 <div class="form-group">
                                     <label for="dui">DUI (*)</label>
@@ -119,13 +119,13 @@
                                     <label for="seguro">Nro. de Seguro Social (*)</label>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox ID="seguro" TextMode="Number" max="9999999999" min="0" runat="server" autocomplete="off" CssClass="form-control" placeholder="7534298601" MaxLength="10"></asp:TextBox>
+                                    <asp:TextBox ID="seguro" runat="server" autocomplete="off" CssClass="form-control" placeholder="7534298601" MaxLength="10"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label for="afp">Nro. de APF (*)</label>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox ID="afp" TextMode="Number" max="999999999999" min="0" runat="server" autocomplete="off" class="form-control" placeholder="147534298601" MaxLength="12"></asp:TextBox>
+                                    <asp:TextBox ID="afp" runat="server" autocomplete="off" class="form-control" placeholder="147534298601" MaxLength="12"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label for="contrato">Fecha de Contrato (*)</label>
@@ -179,7 +179,7 @@
                                     <asp:Button ID="agregar" runat="server" class="btn btn-primary btn-lg btn-success" Text="Guardar" OnClick="agregar_Click" />
                                     <asp:Button ID="agregarm" Visible="false" runat="server" class="btn btn-primary btn-lg btn-success" Text="Guardar" OnClick="agregarm_Click" />
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>

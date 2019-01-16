@@ -16,24 +16,31 @@ namespace WebPrueba2.Vistas
         {
             if (!IsPostBack)
             {
-                String idc = "";
-                if (Request.Params["idcli"] != null)
+                if (Session.Count != 0)
                 {
-                    idc = Request.Params["idcli"];
-                    using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                    String idc = "";
+                    if (Session["USUARIO"].ToString() == "6")
                     {
-                        sqlCOn.Open();
-                        MySqlCommand cmd = sqlCOn.CreateCommand();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "SELECT * FROM recibo WHERE idcliente=" + idc;
-                        cmd.ExecuteNonQuery();
-                        MySqlDataReader dr = cmd.ExecuteReader();
-
-                        if (dr.Read() == true)
+                        idc = Session["CLIENTE"].ToString();
+                        using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
                         {
-                            idreci.Value = dr["idrecibo"].ToString();
+                            sqlCOn.Open();
+                            MySqlCommand cmd = sqlCOn.CreateCommand();
+                            cmd.CommandType = CommandType.Text;
+                            cmd.CommandText = "SELECT * FROM recibo WHERE idcliente=" + idc;
+                            cmd.ExecuteNonQuery();
+                            MySqlDataReader dr = cmd.ExecuteReader();
+
+                            if (dr.Read() == true)
+                            {
+                                idreci.Value = dr["idrecibo"].ToString();
+                            }
+                            sqlCOn.Close();
                         }
-                        sqlCOn.Close();
+                    }
+                    else
+                    {
+                        Response.Redirect("Home.aspx");
                     }
                 }
             }
@@ -48,7 +55,7 @@ namespace WebPrueba2.Vistas
             {
                 MySqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO servicio_cuarto (idrecibo,idproducto) VALUES (" + idr + "," + idp + ")";
+                cmd.CommandText = "INSERT INTO servicio_cuarto (idrecibo,idproducto,estado) VALUES (" + idr + "," + idp + ",false)";
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {

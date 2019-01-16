@@ -44,7 +44,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form id="registrarProducto" role="form" runat="server">
+
                                         <asp:HiddenField ID="hf" runat="server" />
                                         <div class="form-group">
                                             <label for="descripcion">Descripcion (*)</label>
@@ -69,7 +69,7 @@
                                             <asp:Button ID="boton2" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" OnClick="boton2_Click" />   
                                             <asp:Button ID="boton1" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="boton1_Click" />
                                         </div>                      
-                                    </form>
+
                                </div>
                             </div>
                         </div>

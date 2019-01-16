@@ -13,15 +13,6 @@ namespace WebPrueba2.Vistas {
     public partial class ListaCatalogo {
         
         /// <summary>
-        /// Control form.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form;
-        
-        /// <summary>
         /// Control gvTipo.
         /// </summary>
         /// <remarks>

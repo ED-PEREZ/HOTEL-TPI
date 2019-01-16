@@ -13,15 +13,6 @@ namespace WebPrueba2.Vistas {
     public partial class Agregarhabitacion {
         
         /// <summary>
-        /// Control registrarHabitacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm registrarHabitacion;
-        
-        /// <summary>
         /// Control idth.
         /// </summary>
         /// <remarks>

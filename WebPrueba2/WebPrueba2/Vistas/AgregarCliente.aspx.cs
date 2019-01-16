@@ -54,7 +54,7 @@ namespace WebPrueba2.Vistas
 
                     con.Open();
                     ucd.CommandType = CommandType.Text;
-                    ucd.CommandText = "INSERT INTO usuario (usuario, contra, cargo) VALUES ('"+usert.Value+"','"+passt.Value+"',6)";
+                    ucd.CommandText = "INSERT INTO usuario (usuario, contra, cargo,idcliente) VALUES ('"+usert.Value+"','"+passt.Value+"',6,"+idclient+")";
                     ucd.ExecuteNonQuery();
                     con.Close();
 

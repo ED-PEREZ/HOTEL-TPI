@@ -22,15 +22,6 @@ namespace WebPrueba2.Vistas {
         protected global::System.Web.UI.WebControls.Label lhe;
         
         /// <summary>
-        /// Control registrarEmpleado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm registrarEmpleado;
-        
-        /// <summary>
         /// Control nombre.
         /// </summary>
         /// <remarks>

@@ -45,7 +45,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form id="registrarTipo" role="form" runat="server">
+
                                         <div class="form-group">
                                             <label for="tipo">Tipo de Habitacion (*)</label>
                                         </div>
@@ -70,7 +70,7 @@
                                             <asp:Button ID="boton1" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Guardar" OnClick="boton1_Click1" />
                                         </div>
                                         
-                                    </form>
+
                                </div>
                             </div>
                         </div>

@@ -16,6 +16,7 @@ namespace WebPrueba2.Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
         }
 
         protected void boton1_Click(object sender, EventArgs e)

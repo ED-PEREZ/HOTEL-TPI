@@ -13,15 +13,6 @@ namespace WebPrueba2.Vistas {
     public partial class EditarProducto {
         
         /// <summary>
-        /// Control registrarProducto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm registrarProducto;
-        
-        /// <summary>
         /// Control hf.
         /// </summary>
         /// <remarks>

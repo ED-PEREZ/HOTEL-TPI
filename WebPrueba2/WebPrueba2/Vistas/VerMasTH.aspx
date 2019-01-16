@@ -58,7 +58,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12"> 
-                              <form id="form" runat="server">
+
                                   <asp:HiddenField ID="hf" runat="server" />
                                   <div class="form-group">  
                                       <asp:Button ID="pagar" runat="server" class="btn btn-primary btn-lg btn-success"  Text="Insertar" OnClick="pagar_Click" /> 
@@ -77,7 +77,7 @@
                                         </asp:TemplateField>
                                </Columns>
                           </asp:GridView>                    
-       </form>
+
  </div>
                             </div>
                         </div>

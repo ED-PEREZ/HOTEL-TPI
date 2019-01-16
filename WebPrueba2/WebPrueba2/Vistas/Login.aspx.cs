@@ -13,6 +13,7 @@ namespace WebPrueba2.Vistas
     {
         MySqlConnection con = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none");
         string id = "";
+        string nivel = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.Params["id"] != null)
@@ -44,8 +45,13 @@ namespace WebPrueba2.Vistas
                     
                     foreach (DataRow dr in dt.Rows)
                     {
-                        this.id = dt.Rows[0][0].ToString();
-                        Session.Add("USUARIO",this.id);
+
+                        this.nivel = dt.Rows[0][3].ToString();
+                        Session.Add("USUARIO",this.nivel);
+                        if (nivel=="6") {
+                            this.id =dt.Rows[0][4].ToString();
+                            Session.Add("CLIENTE", this.id);
+                        }
                         ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
                     }
                 }

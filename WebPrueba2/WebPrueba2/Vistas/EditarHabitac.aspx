@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     
-                                    <form id="registrarHabitacion" role="form" runat="server">
+
                                         <asp:HiddenField ID="hf" runat="server" />
                                         <asp:HiddenField ID="idth" runat="server" />
                                         <div class="form-group">
@@ -78,7 +78,7 @@
                                             <asp:Button ID="cancelar" runat="server" class="btn btn-primary btn-lg btn-warning" Text="Cancelar" OnClick="cancelar_Click" />   
                                             <asp:Button ID="agregar"  runat="server" class="btn btn-primary btn-lg btn-success"  Text="Modificar" OnClick="agregar_Click" />
                                         </div>
-                                    </form>
+
                                </div>
                             </div>
                         </div>

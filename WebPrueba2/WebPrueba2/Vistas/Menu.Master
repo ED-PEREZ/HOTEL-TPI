@@ -38,10 +38,10 @@
 </head>
 
 <body>
-
+            <form id="menuInicio" role="form" runat="server">
        
 <div id="wrapper">
-
+    
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -266,6 +266,7 @@
             </ul>
             <!-- /.navbar-top-links -->
 
+            <asp:HiddenField ID="user" runat="server" />
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -284,6 +285,7 @@
                         <li>
                             <a href="Home.aspx"><i class="fa fa-home fa-fw "></i> Inicio</a>
                         </li>
+                        <%if (user.Value.ToString()=="1"||user.Value.ToString()=="2"){ %>
                         <li>
                             <a href="#"><i class="fa fa-building-o fa-fw"></i> Habitaciones<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -308,6 +310,8 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                       <%} %>
+                        <%if (user.Value.ToString()=="1"||user.Value.ToString()=="3"){ %>
                         <li>
                             <a href="#"><i class="fa fa-group fa-fw"></i>Recepcion<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -328,32 +332,45 @@
                                 </li>
                             </ul>
                         </li>
+                        <%} %>
+                         <%if (user.Value.ToString()=="6"){ %>
                         <li>
                             <a href="#"><i class="fa fa-cutlery fa-fw"></i>Servicio al Cuarto <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                  <li>
-                                    <a href="AgregarPedido.aspx?idcli=13">Nuevo Pedido</a>
+                                    <a href="AgregarPedido.aspx">Nuevo Pedido</a>
                                 </li>
                                  <li>
-                                    <a href="Lista.aspx?idcli=13">Lista</a>
+                                    <a href="Lista.aspx">Lista</a>
                                 </li>
                              </ul>
                         </li>
+                         <%} %>
+                        <%if (user.Value.ToString() == "1" || user.Value.ToString() == "2" || user.Value.ToString() == "3")
+                                                       { %>
                         <li>
                             <a href="#"><i class="fa fa-shopping-cart fa-fw"></i>Inventario y Pedidos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                <%if (user.Value.ToString() != "3")
+                                                       {  %>
                                 <li>
                                     <a href="AgregarProducto.aspx">Nuevo Producto</a>
                                 </li>
                                 <li>
                                     <a href="ListaProducto.aspx">Lista Productos</a>
                                 </li>
+                                <%} %>
+                                <% if(user.Value.ToString() != "2"){%>
                                 <li>
                                     <a href="ListaVerPedidos.aspx">Ver Pedidos</a>
-                                </li>                                
+                                </li> 
+                                <%} %>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+                         <%} %>
+                         <%if (user.Value.ToString() == "1" || user.Value.ToString() == "2" ){ %>
                         <li>
                             <a href="#"><i class="fa fa-group fa-fw"></i>Empleados<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -364,14 +381,16 @@
                                     <a href="ListaEmpleado.aspx">Lista Empleado</a>
                                 </li>
                             </ul>
-                        </li>                        
+                        </li>  
+                         <%} %>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
+           
             <!-- /.navbar-static-side -->
         </nav>
-
+        
         <div id="page-wrapper">
             <div class="row">
 
@@ -420,7 +439,7 @@
 
     <asp:ContentPlaceHolder ID="final" runat="server">
     </asp:ContentPlaceHolder>
-    
+     </form>
 </body>
 
 </html>

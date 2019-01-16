@@ -43,7 +43,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form id="registrarProducto" role="form" runat="server">
+                                     
                                         <div class="form-group">
                                             <label for="descripcion">Descripcion (*)</label>
                                         </div>
@@ -70,7 +70,7 @@
                                         
                                             
                                       
-                                    </form>
+
                                </div>
                             </div>
                         </div>
