@@ -71,8 +71,12 @@
                                         <asp:BoundField DataField="fechasalida" DataFormatString="{0:d}"  HeaderText="Fecha de Reserva" />
                                         <asp:BoundField DataField="correo" HeaderText="E-Mail" />
                                         <asp:BoundField DataField="celular" HeaderText="Celular" />
-                                        <asp:TemplateField HeaderText="Opciones">
+                                        <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="20%">
                                         <ItemTemplate>
+                                            <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idcliente") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                                                <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
+                                            </asp:LinkButton>
+                                            </nav>
                                             <asp:LinkButton ID="Cancelar" CommandArgument='<%# Eval("idcliente") %>' CssClass="btn btn-primary btn-sm btn-primary" OnClick="Cancelar_Click" runat="server">
                                                 <i class="ace-icon fa fa-credit-card bigger-120"></i>
                                             </asp:LinkButton>

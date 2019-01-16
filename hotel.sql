@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2019 a las 05:20:29
+-- Tiempo de generación: 16-01-2019 a las 18:12:26
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -76,10 +76,11 @@ INSERT INTO `cliente` (`idcliente`, `nombre`, `dui`, `fechaentrada`, `fechasalid
 (10, 'asff', '22222222-2', '2019-01-09', '2019-01-02', 3, 'fghh', 'Guatemala', '4444-4444', '22a', '0', NULL, NULL, NULL),
 (11, 'addd', '22222222-2', '2019-01-18', '2019-01-17', 3, 'qwerr', 'Guatemala', '5555-5555', 'dfff', '0', NULL, NULL, NULL),
 (12, 'aaaa', '33333333-3', '2019-01-12', '2019-01-09', 2, '1qsddddd', 'Guatemala', '3333-3333', 'ddddddddd', '0', 0, NULL, NULL),
-(13, 'poncho', '66666666-6', '2019-01-17', '2019-01-24', 3, 'dsssd', 'Costa Rica', '5555-5555', 'qerg', '0', 1, NULL, NULL),
-(14, 'ffrr', '22222222-2', '2019-01-08', '2019-01-15', 2, 'fddff', 'Costa Rica', '3445-5555', '2sddd', '0', NULL, NULL, NULL),
+(13, 'poncho', '66666666-6', '2019-01-16', '2019-01-16', 3, 'dsssd', 'Costa Rica', '5555-5555', 'b', 'b', 1, 'Una noche', 300),
+(14, 'ffrr', '22222222-2', '2019-01-08', '2019-01-15', 2, 'fddff', 'Costa Rica', '3445-5555', '2sddd', '0', NULL, NULL, 300),
 (15, 'Juan Viola', '88888888-8', '2019-01-14', '2019-01-19', 2, '5tg', 'Guatemala', '3455-5555', 'mqDtd', 'OTlaa', 1, 'Uno o mas dias', 450),
-(16, 'algo', '33333333-3', '2019-01-14', '2019-01-15', 2, 'aaaaaaaa', 'Costa Rica', '8888-8888', '87a20', 'wuNfj', 1, 'Uno o mas dias', 330);
+(16, 'algo', '33333333-3', '2019-01-14', '2019-01-15', 2, 'aaaaaaaa', 'Costa Rica', '8888-8888', '87a20', 'wuNfj', 1, 'Uno o mas dias', 330),
+(17, 'Duarte', '23423432-4', '2019-01-16', '2019-01-16', 4, 'dsfd@gmail.com', 'El Salvador', '2423-4353', 'LX2c/', '=qXHv', 1, 'Una noche', 300);
 
 -- --------------------------------------------------------
 
@@ -92,6 +93,13 @@ CREATE TABLE `contenido_habitacion` (
   `idtipo` int(11) DEFAULT NULL,
   `idcatalogo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `contenido_habitacion`
+--
+
+INSERT INTO `contenido_habitacion` (`idcontenido`, `idtipo`, `idcatalogo`) VALUES
+(4, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -124,7 +132,8 @@ CREATE TABLE `empleado` (
 
 INSERT INTO `empleado` (`idempleado`, `codigoemp`, `nombre`, `sexo`, `fechanacimiento`, `direccion`, `dui`, `nit`, `nseguro`, `nafp`, `telefono`, `fechacontrato`, `cargo`, `sueldo`, `usuario`, `contra`) VALUES
 (3, 'BEIjf', 'juan sad', 'MASCULINO', '2000-12-15', 'sad', '23333333-3', '3332-333333-333-3', '2333333333', '233333333333', '23', '2019-01-18', 1, 220, 'BEIjf', 'W3TRS'),
-(4, 'wDKTG', 'asd', 'FEMENINO', '2000-12-08', 'asd', '32423423-4', '2342-342352-346-3', '3425223452', '324534252345', '232342342', '2019-01-25', 2, 435, 'wDKTG', 'U4=Wg');
+(4, 'wDKTG', 'asd', 'FEMENINO', '2000-12-08', 'asd', '32423423-4', '2342-342352-346-3', '3425223452', '324534252345', '232342342', '2019-01-25', 2, 435, 'wDKTG', 'U4=Wg'),
+(5, 'lIK9i', 'FAfas', 'MASCULINO', '2000-12-19', 'sad', '12121212-1', '1222-222222-222-2', '1212121323', '234234342343', '121222222', '2019-01-15', 4, 234, 'lIK9i', 'HBEBw');
 
 -- --------------------------------------------------------
 
@@ -146,7 +155,7 @@ CREATE TABLE `habitacion` (
 INSERT INTO `habitacion` (`idhabitacion`, `numhabitacion`, `estado`, `idtipohabitacion`) VALUES
 (2, 2, 1, 1),
 (3, 12, 0, 1),
-(4, 4, 0, 1);
+(4, 4, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -190,7 +199,8 @@ CREATE TABLE `recibo` (
 INSERT INTO `recibo` (`idrecibo`, `codigo`, `formapago`, `idcliente`, `fecha`, `total`) VALUES
 (1, 0, 'Efectivo', 13, '13/01/2019', 313),
 (2, 1, NULL, 14, NULL, NULL),
-(3, 2, NULL, 16, NULL, NULL);
+(3, 2, NULL, 16, NULL, NULL),
+(4, 3, NULL, 17, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -232,7 +242,11 @@ CREATE TABLE `servicio_cuarto` (
 --
 
 INSERT INTO `servicio_cuarto` (`idservicio`, `idrecibo`, `idempleado`, `idproducto`, `estado`) VALUES
-(3, 1, 4, 2, 1);
+(3, 1, 4, 2, 1),
+(4, 1, 3, 2, 1),
+(5, 1, NULL, 2, NULL),
+(6, 1, NULL, 2, 0),
+(7, 4, NULL, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -264,18 +278,22 @@ CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL,
   `usuario` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `contra` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `cargo` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL
+  `cargo` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `idcliente` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idusuario`, `usuario`, `contra`, `cargo`) VALUES
-(1, 'admin', 'admin', NULL),
-(2, 'a', 'a', NULL),
-(5, 'BEIjf', 'W3TRS', '1'),
-(6, 'wDKTG', 'U4=Wg', '2');
+INSERT INTO `usuario` (`idusuario`, `usuario`, `contra`, `cargo`, `idcliente`) VALUES
+(1, 'admin', 'admin', '1', NULL),
+(2, 'a', 'a', '3', NULL),
+(5, 'BEIjf', 'W3TRS', '1', NULL),
+(6, 'wDKTG', 'U4=Wg', '2', NULL),
+(7, 'b', 'b', '6', 13),
+(8, 'lIK9i', 'HBEBw', '4', NULL),
+(9, 'LX2c/', '=qXHv', '6', 17);
 
 --
 -- Índices para tablas volcadas
@@ -370,19 +388,19 @@ ALTER TABLE `catalogo`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `contenido_habitacion`
 --
 ALTER TABLE `contenido_habitacion`
-  MODIFY `idcontenido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcontenido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `idempleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idempleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `habitacion`
@@ -400,7 +418,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `recibo`
 --
 ALTER TABLE `recibo`
-  MODIFY `idrecibo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idrecibo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
@@ -412,7 +430,7 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT de la tabla `servicio_cuarto`
 --
 ALTER TABLE `servicio_cuarto`
-  MODIFY `idservicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idservicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_habitacion`
@@ -424,7 +442,7 @@ ALTER TABLE `tipo_habitacion`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

@@ -71,34 +71,44 @@ namespace WebPrueba2.Vistas
 
         protected void btEli_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
-            {
-                tipoHabitacionID = Convert.ToInt32((sender as LinkButton).CommandArgument);
-                sqlCOn.Open();
-                MySqlCommand cmd = sqlCOn.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "delete from tipo_habitacion WHERE idtipohabitacion=" + tipoHabitacionID + "";
-
-                if (cmd.ExecuteNonQuery() > 0)
+            try {
+                using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
                 {
-                    sqlCOn.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                    tipoHabitacionID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+                    sqlCOn.Open();
+                    MySqlCommand cmd = sqlCOn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "delete from tipo_habitacion WHERE idtipohabitacion=" + tipoHabitacionID + "";
 
-                }
-                else
-                {
-                    sqlCOn.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        sqlCOn.Close();
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
 
+                    }
+                    else
+                    {
+                        sqlCOn.Close();
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+
+                    }
+                    sqlCOn.Close();
                 }
-                sqlCOn.Close();
+            } catch (Exception x) {
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
             }
+            
         }
 
         protected void insertar_Click(object sender, EventArgs e)
         {
             tipoHabitacionID = Convert.ToInt32((sender as LinkButton).CommandArgument);
             Response.Redirect("VerMasTH.aspx?id=" + tipoHabitacionID);
+        }
+
+        protected void btRep_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

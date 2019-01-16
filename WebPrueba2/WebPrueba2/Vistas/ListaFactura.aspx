@@ -22,9 +22,12 @@
                                         <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                                         <asp:BoundField DataField="dui" HeaderText="DUI" />
                                         <asp:BoundField DataField="total" HeaderText="E-Mail" />
-                                        <asp:TemplateField HeaderText="Opciones">
+                                        <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="15%">
                                         <ItemTemplate>
-                                           
+                                           <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idcliente") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                                                <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
+                                            </asp:LinkButton>
+                                            </nav>
                                         </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

@@ -18,6 +18,25 @@
                 }
             })
         }
+        function datosCorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Eliminacion completada!!',
+                showConfirmButton: false,
+                timer: 5000
+            });
+             setTimeout ("document.location.href = 'ListaEmpleado.aspx'",1500);
+        }
+       function datosIncorrectos() {
+            Swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'No pudo eliminarse el registro!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

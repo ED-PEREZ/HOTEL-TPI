@@ -42,26 +42,36 @@ namespace WebPrueba2.Vistas
 
         protected void btEli_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
-            {
-                clienteID = Convert.ToInt32((sender as LinkButton).CommandArgument);
-                sqlCOn.Open();
-                MySqlCommand cmd = sqlCOn.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "delete from catalogo WHERE idcatalogo=" + clienteID + "";
+            try {
+                using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
+                {
+                    clienteID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+                    sqlCOn.Open();
+                    MySqlCommand cmd = sqlCOn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "delete from catalogo WHERE idcatalogo=" + clienteID + "";
 
-                if (cmd.ExecuteNonQuery() > 0)
-                {
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        sqlCOn.Close();
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                    }
+                    else
+                    {
+                        sqlCOn.Close();
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+                    }
                     sqlCOn.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
                 }
-                else
-                {
-                    sqlCOn.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
-                }
-                sqlCOn.Close();
+            } catch (Exception x) {
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
             }
+            
+        }
+
+        protected void btRep_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

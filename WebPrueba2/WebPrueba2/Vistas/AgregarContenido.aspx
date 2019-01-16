@@ -34,7 +34,7 @@
                 showConfirmButton: false,
                 timer: 5000
             });
-             setTimeout ("document.location.href = 'Home.aspx'",1500);
+             setTimeout ("document.location.href = 'listaTipoHabitacion.aspx'",1500);
         }
        function datosIncorrectos() {
             Swal({

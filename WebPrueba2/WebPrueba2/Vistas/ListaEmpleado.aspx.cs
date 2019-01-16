@@ -49,26 +49,32 @@ namespace WebPrueba2.Vistas
 
         protected void Eliminar_Click(object sender, EventArgs e)
         {
-            empleadoID = Convert.ToInt32((sender as LinkButton).CommandArgument);
-            sqlCon.Open();
-            MySqlCommand cmd = sqlCon.CreateCommand();
-            cmd.CommandType = CommandType.Text;
+            try {
+                empleadoID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+                sqlCon.Open();
+                MySqlCommand cmd = sqlCon.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "SELECT usuario from empleado where idempleado ='" + empleadoID + "'";
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
+                ds.Fill(dt);
+                String usuario = dt.Rows[0][0].ToString();
+
+                cmd.CommandText = "delete from empleado where idempleado = " + empleadoID;
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "delete from usuario where usuario = '" + usuario + "';";
+                cmd.ExecuteNonQuery();
+
+                sqlCon.Close();
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+               // Response.Redirect("ListaEmpleado.aspx");
+            } catch (Exception x) {
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+            }
             
-            cmd.CommandText = "SELECT usuario from empleado where idempleado ='" + empleadoID + "'";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
-            ds.Fill(dt);
-            String usuario = dt.Rows[0][0].ToString();
-
-            cmd.CommandText = "delete from empleado where idempleado = " + empleadoID;
-            cmd.ExecuteNonQuery();
-
-            cmd.CommandText = "delete from usuario where usuario = '" + usuario+"';";
-            cmd.ExecuteNonQuery();
-
-            sqlCon.Close();
-            Response.Redirect("ListaEmpleado.aspx");
         }
 
         protected void Reporte_Click(Object sender, EventArgs e)

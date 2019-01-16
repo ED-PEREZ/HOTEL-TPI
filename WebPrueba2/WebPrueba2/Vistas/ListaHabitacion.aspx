@@ -64,8 +64,12 @@
                                     <Columns>   
                                         <asp:BoundField DataField="numhabitacion" HeaderText="Numero de Habitacion #" />
                                         <asp:BoundField DataField="estado" HeaderText="Estado" />
-                                        <asp:TemplateField HeaderText="Opciones">
-                                        <ItemTemplate>       
+                                        <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="20%">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idhabitacion") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                                                <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
+                                            </asp:LinkButton>
+                                            </nav>
                                             <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idhabitacion") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </asp:LinkButton>

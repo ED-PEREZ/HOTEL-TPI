@@ -111,10 +111,37 @@ namespace WebPrueba2.Vistas
                     sqlCOn.Close();
 
                     sqlCOn.Open();
+                    MySqlCommand imd = sqlCOn.CreateCommand();
+                    imd.CommandType = CommandType.Text;
+                    imd.CommandText = "SELECT * FROM cliente ORDER WEHRE idcliente="+id;
+                    imd.ExecuteNonQuery();
+                    MySqlDataReader dc = imd.ExecuteReader();
+                    int idhab = 0;
+                    if (dc.Read() == true)
+                    {
+                        idhab = int.Parse(dc["idhabitacion"].ToString());
+                    }
+                    sqlCOn.Close();
+
+                    sqlCOn.Open();
+                    MySqlCommand hmd = sqlCOn.CreateCommand();
+                    hmd.CommandType = CommandType.Text;
+                    hmd.CommandText = "UPDATE habitacion SET estado=false WHERE idhabitacion=" + idhab;
+                    hmd.ExecuteNonQuery();
+                    sqlCOn.Close();
+
+                    sqlCOn.Open();
                     MySqlCommand amd = sqlCOn.CreateCommand();
                     amd.CommandType = CommandType.Text;
                     amd.CommandText = "UPDATE cliente SET estadoc=false idhabitacion=null WHERE idcliente=" + id;
                     int i=amd.ExecuteNonQuery();
+                    sqlCOn.Close();
+
+                    sqlCOn.Open();
+                    MySqlCommand ucd = sqlCOn.CreateCommand();
+                    ucd.CommandType = CommandType.Text;
+                    ucd.CommandText = "DELETE FROM usuario WHERE idcliente="+id;
+                    ucd.ExecuteNonQuery();
                     sqlCOn.Close();
 
                     if (i>0) {

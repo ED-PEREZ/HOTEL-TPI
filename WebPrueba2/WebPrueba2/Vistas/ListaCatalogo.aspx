@@ -63,8 +63,12 @@
                                     <Columns>   
                                         <asp:BoundField DataField="descripcion" HeaderText="Tipo" />
                                         <asp:BoundField DataField="cantidad" HeaderText="Precio" />
-                                        <asp:TemplateField HeaderText="Opciones">
-                                        <ItemTemplate>    
+                                        <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="20%">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idcatalogo") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                                                <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
+                                            </asp:LinkButton>
+                                            </nav>
                                             <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idcatalogo") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btMod_Click" runat="server">
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </asp:LinkButton>

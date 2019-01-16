@@ -70,8 +70,12 @@
                                             <asp:Image ID="imagen" runat="server" Width="100px" Height="100px" ImageUrl='<%#"data:image/jpg;base64,"+ Convert.ToBase64String((byte[])Eval("foto")) %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Opciones">
+                                    <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="20%">
                                         <ItemTemplate> 
+                                            <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idtipohabitacion") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                                                <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
+                                            </asp:LinkButton>
+                                            </nav>
                                             <asp:LinkButton ID="insertar" CommandArgument='<%# Eval("idtipohabitacion") %>' CssClass="btn btn-primary btn-sm btn-primary" OnClick="insertar_Click" runat="server">
                                                <i class="ace-icon fa fa-eye bigger-120"></i>
                                             </asp:LinkButton>   

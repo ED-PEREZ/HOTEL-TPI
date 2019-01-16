@@ -50,60 +50,76 @@ namespace WebPrueba2.Vistas
 
         protected void btEli_Click(object sender, EventArgs e)
         {
-           //ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "eliminar()", true);
-            using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
-            {
-                
-                //contenedor.Text = "" + Convert.ToInt32((sender as LinkButton).CommandArgument);
-                //if (algo.Text == "eliminar" && !(contenedor.Text==""))
-                //{
-                // contenedor.Text = "" + Convert.ToInt32((sender as LinkButton).CommandArgument)
-                    clienteID = Convert.ToInt32((sender as LinkButton).CommandArgument);
-                string idhabitacion = "";
-
-                sqlCOn.Open();
-                MySqlCommand hmd = sqlCOn.CreateCommand();
-                hmd.CommandType = CommandType.Text;
-                hmd.CommandText = "SELECT * FROM cliente WHERE idcliente=" + clienteID + "";
-                hmd.ExecuteNonQuery();
-                MySqlDataReader dr = hmd.ExecuteReader();
-                if (dr.Read() == true)
+            try {
+                //ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "eliminar()", true);
+                using (MySqlConnection sqlCOn = new MySqlConnection("server=localhost; database=hotel; Uid=root; pwd=; SslMode = none"))
                 {
-                    idhabitacion = dr["idhabitacion"].ToString();
-                }
-                sqlCOn.Close();
 
-                sqlCOn.Open();
+                    //contenedor.Text = "" + Convert.ToInt32((sender as LinkButton).CommandArgument);
+                    //if (algo.Text == "eliminar" && !(contenedor.Text==""))
+                    //{
+                    // contenedor.Text = "" + Convert.ToInt32((sender as LinkButton).CommandArgument)
+                    clienteID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+                    string idhabitacion = "";
+
+                    sqlCOn.Open();
+                    MySqlCommand hmd = sqlCOn.CreateCommand();
+                    hmd.CommandType = CommandType.Text;
+                    hmd.CommandText = "SELECT * FROM cliente WHERE idcliente=" + clienteID + "";
+                    hmd.ExecuteNonQuery();
+                    MySqlDataReader dr = hmd.ExecuteReader();
+                    if (dr.Read() == true)
+                    {
+                        idhabitacion = dr["idhabitacion"].ToString();
+                    }
+                    sqlCOn.Close();
+
+                    sqlCOn.Open();
                     MySqlCommand cmd = sqlCOn.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "delete from cliente WHERE idcliente="+clienteID+"";
+                    cmd.CommandText = "delete from cliente WHERE idcliente=" + clienteID + "";
                     int i = cmd.ExecuteNonQuery();
                     sqlCOn.Close();
-                if (i > 0)
-                {
-                    sqlCOn.Open();
-                    MySqlCommand dmd = sqlCOn.CreateCommand();
-                    dmd.CommandType = CommandType.Text;
-                    dmd.CommandText = "UPDATE habitacion SET estado=false WHERE idhabitacion=" + idhabitacion + "";
-                    dmd.ExecuteNonQuery();
-                    sqlCOn.Close();
+                    if (i > 0)
+                    {
+                        sqlCOn.Open();
+                        MySqlCommand dmd = sqlCOn.CreateCommand();
+                        dmd.CommandType = CommandType.Text;
+                        dmd.CommandText = "UPDATE habitacion SET estado=false WHERE idhabitacion=" + idhabitacion + "";
+                        dmd.ExecuteNonQuery();
+                        sqlCOn.Close();
 
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
-                }
-                else
-                {
+                        sqlCOn.Open();
+                        MySqlCommand ucd = sqlCOn.CreateCommand();
+                        ucd.CommandType = CommandType.Text;
+                        ucd.CommandText = "DELETE FROM usuario WHERE idcliente=" + clienteID;
+                        ucd.ExecuteNonQuery();
+                        sqlCOn.Close();
+
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                    }
+                    else
+                    {
+                        sqlCOn.Close();
+                        ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+                    }
                     sqlCOn.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+                    //}
                 }
-                sqlCOn.Close();
-                //}
-            }
+            } catch (Exception x) {
+                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
+            }          
         }
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {
             clienteID = Convert.ToInt32((sender as LinkButton).CommandArgument);
             Response.Redirect("CancelarRecibo.aspx?idcli=" + clienteID);
+        }
+
+        protected void btRep_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

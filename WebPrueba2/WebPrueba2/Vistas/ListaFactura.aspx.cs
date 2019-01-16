@@ -40,5 +40,10 @@ namespace WebPrueba2.Vistas
                 }
             }
         }
+
+        protected void btRep_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

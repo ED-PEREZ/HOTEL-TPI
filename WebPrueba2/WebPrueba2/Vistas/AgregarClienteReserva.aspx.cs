@@ -65,7 +65,46 @@ namespace WebPrueba2.Vistas
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = "INSERT INTO cliente (nombre,dui,usuario,celular,fechaentrada,fechasalida,region,correo,idhabitacion,contra,estadoc,ndias,totalp) VALUES" +
                             " ('" + nombre.Text + "','" + dui.Text + "','" + usert.Value + "','" + cell.Text + "','" + fechaIn.Text + "','" + fechaSa.Text + "','" + region.SelectedItem.Value + "','" + correo.Text + "'," + idhabi + ",'" + passt.Value + "',true,'" + tiempo.SelectedItem.Text + "'," + totalG.Text + ")";
-                        int i=cmd.ExecuteNonQuery();
+                        int j=cmd.ExecuteNonQuery();
+                        sqlCOn.Close();
+
+                        sqlCOn.Open();
+                        MySqlCommand imd = sqlCOn.CreateCommand();
+                        imd.CommandType = CommandType.Text;
+                        imd.CommandText = "SELECT * FROM cliente ORDER by cliente.idcliente DESC LIMIT 1";
+                        imd.ExecuteNonQuery();
+                        MySqlDataReader dc = imd.ExecuteReader();
+                        int idclient = 0;
+                        if (dc.Read() == true)
+                        {
+                            idclient = int.Parse(dc["idcliente"].ToString());
+                        }
+                        sqlCOn.Close();
+
+                        sqlCOn.Open();
+                        MySqlCommand ucd = sqlCOn.CreateCommand();
+                        ucd.CommandType = CommandType.Text;
+                        ucd.CommandText = "INSERT INTO usuario (usuario, contra, cargo,idcliente) VALUES ('" + usert.Value + "','" + passt.Value + "',6," + idclient + ")";
+                        ucd.ExecuteNonQuery();
+                        sqlCOn.Close();
+
+                        sqlCOn.Open();
+                        MySqlCommand mcd = sqlCOn.CreateCommand();
+                        mcd.CommandType = CommandType.Text;
+                        mcd.CommandText = "SELECT COUNT(recibo.idrecibo) as cantidad FROM recibo";
+                        mcd.ExecuteNonQuery();
+                        MySqlDataReader dr = mcd.ExecuteReader();
+                        int i = 0;
+                        if (dr.Read() == true)
+                        {
+                            i = int.Parse(dr["cantidad"].ToString());
+                        }
+                        sqlCOn.Close();
+
+                        sqlCOn.Open();
+                        MySqlCommand rcd = sqlCOn.CreateCommand();
+                        rcd.CommandType = CommandType.Text;
+                        rcd.CommandText = "INSERT INTO recibo(codigo,idcliente) VALUES(" + i + "," + idclient + ")";
                         sqlCOn.Close();
 
                         sqlCOn.Open();
@@ -92,7 +131,7 @@ namespace WebPrueba2.Vistas
                             sqlCOn.Close();
                         }
 
-                        if (i > 0)
+                        if (j > 0)
                         {
                             ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
                         }
