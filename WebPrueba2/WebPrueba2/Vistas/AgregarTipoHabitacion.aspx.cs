@@ -45,11 +45,11 @@ namespace WebPrueba2.Vistas
                 }
                 MySqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO tipo_habitacion (tipohabitaccion,precio,foto) VALUES (@tipo,@precio,@foto)";
+                cmd.CommandText = "INSERT INTO tipo_habitacion (tipohabitacion,precio,foto) VALUES (@tipo,@precio,@foto)";
                 cmd.Parameters.Add("@tipo", MySqlDbType.Text).Value = tipo.Text;
                 cmd.Parameters.Add("@precio", MySqlDbType.Double).Value = costo;
                 cmd.Parameters.Add("@foto", MySqlDbType.Binary).Value = fot;
-                //cmd.ExecuteNonQuery();
+                int i=cmd.ExecuteNonQuery();
 
                 String b = "data:image/jpg;base64," + Convert.ToBase64String(fot);
       
@@ -57,7 +57,7 @@ namespace WebPrueba2.Vistas
                 precio.Text = "";
                 foto = null;
 
-                if (cmd.ExecuteNonQuery() > 0)
+                if (i > 0)
                 {
                     con.Close();
                     ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);

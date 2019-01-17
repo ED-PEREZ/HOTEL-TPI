@@ -62,7 +62,7 @@
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"    >
                                     <Columns>   
                                         <asp:BoundField DataField="descripcion" HeaderText="Tipo" />
-                                        <asp:BoundField DataField="precio" HeaderText="Precio" />
+                                        <asp:BoundField DataField="precio" HeaderText="Precio $" />
                                         <asp:TemplateField HeaderText="Foto">
                                             <ItemTemplate>
                                                 <asp:Image ID="imagen" runat="server" Width="100px" Height="100px" ImageUrl='<%#"data:image/jpg;base64,"+ Convert.ToBase64String((byte[])Eval("foto")) %>' />
@@ -74,10 +74,10 @@
                                                 <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
                                             </asp:LinkButton>
                                             </nav>
-                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idproducto") %>' CssClass="btn btn-primary btn-sm btn-info" OnClick="btMod_Click" runat="server">
+                                            <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idproducto") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btMod_Click" runat="server">
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </asp:LinkButton>
-                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idproducto") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btEli_Click" runat="server">
+                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idproducto") %>' CssClass="btn btn-primary btn-sm btn-danger" OnClick="btEli_Click" runat="server">
                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                             </asp:LinkButton>
                                         </ItemTemplate>

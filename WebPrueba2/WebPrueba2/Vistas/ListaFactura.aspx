@@ -21,7 +21,7 @@
                                     <Columns>   
                                         <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                                         <asp:BoundField DataField="dui" HeaderText="DUI" />
-                                        <asp:BoundField DataField="total" HeaderText="E-Mail" />
+                                        <asp:BoundField DataField="total" HeaderText="Total Cancelado $" />
                                         <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="15%">
                                         <ItemTemplate>
                                            <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idcliente") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">

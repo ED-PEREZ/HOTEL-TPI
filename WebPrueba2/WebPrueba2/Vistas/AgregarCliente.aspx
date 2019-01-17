@@ -97,7 +97,7 @@
                                             <asp:TextBox ID="nombre" runat="server" class="form-control" placeholder="Juan Perez"></asp:TextBox>
                                         </div>                                        
                                         <div class="form-group">
-                                            <label for="dui">DUI (*)</label>
+                                            <label for="dui">DUI o Identificacion(*)</label>
                                         </div>
                                         <div class="form-group">
                                             <asp:TextBox ID="dui" runat="server" class="form-control" placeholder="02123442-9" oninput="formato(1);" maxlength="10"></asp:TextBox>
