@@ -3,7 +3,6 @@
 Inicio
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    Contenido
     <div class="row">
                 <div class="col-xs-6 col-sm-4">
                     <div class="panel panel-primary">
