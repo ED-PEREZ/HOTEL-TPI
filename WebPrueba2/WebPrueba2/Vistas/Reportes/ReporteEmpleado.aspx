@@ -11,7 +11,7 @@
     <style type="text/css">
         .ftabla {
             font-family: 'Century Gothic', Courier, monospace;
-            font-size: 13px;
+            font-size: 12px;
         }
     </style>
     <style type="text/css">
@@ -26,7 +26,7 @@
             document.formulario.cerrar.style.visibility = "hidden";
             print();
             document.formulario.boton.style.visibility = "visible";
-            document.formulario.boton.style.visibility = "visible";
+            document.formulario.cerrar.style.visibility = "visible";
         }
         function cerrar() {
             window.close();

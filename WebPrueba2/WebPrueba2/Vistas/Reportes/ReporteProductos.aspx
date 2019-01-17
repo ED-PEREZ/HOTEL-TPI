@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportePorductos.aspx.cs" Inherits="WebPrueba2.Vistas.Reportes.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteProductos.aspx.cs" Inherits="WebPrueba2.Vistas.Reportes.WebForm1" %>
 
 <!DOCTYPE html>
 
@@ -23,8 +23,10 @@
     <script type="text/javascript">
         function ocultar() {
             document.formulario.boton.style.visibility = "hidden";
+            document.formulario.cerrar.style.visibility = "hidden";
             print();
             document.formulario.boton.style.visibility = "visible";
+            document.formulario.cerrar.style.visibility = "visible";
         }
              function cerrar() {
             window.close();

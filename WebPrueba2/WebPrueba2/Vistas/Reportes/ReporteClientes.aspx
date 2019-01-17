@@ -11,7 +11,7 @@
     <style type="text/css">
         .ftabla {
             font-family: 'Century Gothic', Courier, monospace;
-            font-size: 13px;
+            font-size: 12px;
         }
     </style>
     <style type="text/css">
@@ -23,8 +23,10 @@
     <script type="text/javascript">
         function ocultar() {
             document.formulario.boton.style.visibility = "hidden";
+            document.formulario.cerrar.style.visibility = "hidden";
             print();
             document.formulario.boton.style.visibility = "visible";
+            document.formulario.cerrar.style.visibility = "visible";
         }
         function cerrar() {
             window.close();
@@ -47,10 +49,10 @@
                  <Columns>
                    <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                    <asp:BoundField DataField="dui" HeaderText="DUI" />
-                   <asp:BoundField DataField="fechaentrada" DataFormatString="{0:d}" HeaderText="Fecha de Reserva" />
-                   <asp:BoundField DataField="fechasalida" DataFormatString="{0:d}" HeaderText="Fecha de Reserva" />
-                   <asp:BoundField DataField="correo" HeaderText="E-Mail" />
-                   <asp:BoundField DataField="celular" HeaderText="Celular" />
+                   <asp:BoundField DataField="region" HeaderText="Region"/>
+                   <asp:BoundField DataField="habitacion" HeaderText="Habitacion"/>
+                   <asp:BoundField DataField="fechaentrada" DataFormatString="{0:d}" HeaderText="Reserva" />
+                   <asp:BoundField DataField="fechasalida" DataFormatString="{0:d}" HeaderText="Salida" />
                  </Columns>
            </asp:GridView>
         </div>

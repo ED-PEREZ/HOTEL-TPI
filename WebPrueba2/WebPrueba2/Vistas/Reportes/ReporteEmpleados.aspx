@@ -27,7 +27,7 @@
             document.formulario.cerrar.style.visibility = "hidden";
             print();
             document.formulario.boton.style.visibility = "visible";
-            document.formulario.boton.style.visibility = "visible";
+            document.formulario.cerrar.style.visibility = "visible";
         }
 
         function cerrar() {

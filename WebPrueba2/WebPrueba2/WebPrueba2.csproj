@@ -255,9 +255,8 @@
     <Content Include="Vistas\Reportes\ReporteClientes.aspx" />
     <Content Include="Vistas\Reportes\ReporteEmpleados.aspx" />
     <Content Include="Vistas\Reportes\ReporteEmpleado.aspx" />
-    <Content Include="Vistas\Reportes\ReporteHabitacione.aspx" />
     <Content Include="Vistas\Reportes\ReporteHabitaciones.aspx" />
-    <Content Include="Vistas\Reportes\ReportePorductos.aspx" />
+    <Content Include="Vistas\Reportes\ReporteProductos.aspx" />
     <Content Include="Vistas\Reserva.aspx" />
     <Content Include="Vistas\VerMasTH.aspx" />
     <Content Include="Vistas\WebForm1.aspx" />
@@ -547,13 +546,6 @@
     <Compile Include="Vistas\Reportes\ReporteEmpleado.aspx.designer.cs">
       <DependentUpon>ReporteEmpleado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Reportes\ReporteHabitacione.aspx.cs">
-      <DependentUpon>ReporteHabitacione.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Reportes\ReporteHabitacione.aspx.designer.cs">
-      <DependentUpon>ReporteHabitacione.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\Reportes\ReporteHabitaciones.aspx.cs">
       <DependentUpon>ReporteHabitaciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -561,12 +553,12 @@
     <Compile Include="Vistas\Reportes\ReporteHabitaciones.aspx.designer.cs">
       <DependentUpon>ReporteHabitaciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Reportes\ReportePorductos.aspx.cs">
-      <DependentUpon>ReportePorductos.aspx</DependentUpon>
+    <Compile Include="Vistas\Reportes\ReporteProductos.aspx.cs">
+      <DependentUpon>ReporteProductos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\Reportes\ReportePorductos.aspx.designer.cs">
-      <DependentUpon>ReportePorductos.aspx</DependentUpon>
+    <Compile Include="Vistas\Reportes\ReporteProductos.aspx.designer.cs">
+      <DependentUpon>ReporteProductos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Reserva.aspx.cs">
       <DependentUpon>Reserva.aspx</DependentUpon>
