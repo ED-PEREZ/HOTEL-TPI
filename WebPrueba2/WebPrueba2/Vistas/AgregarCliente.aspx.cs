@@ -18,6 +18,10 @@ namespace WebPrueba2.Vistas
             {
                 if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "3")
                 {
+                    if (tiempo.SelectedItem.Text== "Seleccione") {
+                        fechaIn.Enabled = false;
+                        fechaSa.Enabled = false;
+                    }
                 }
                 else
                 {
@@ -32,7 +36,7 @@ namespace WebPrueba2.Vistas
             con.Open();
             string idhabi = idha.Value.ToString();
             if (!(nombre.Text == "" || dui.Text == "" || correo.Text == "" || cell.Text == "" || fechaIn.Text == ""
-                || fechaSa.Text == "" || region.SelectedItem.Text == "0" || idhabi=="" || totalG.Text== "" || tiempo.SelectedItem.Text== "0"
+                || fechaSa.Text == "" || region.SelectedItem.Text == "Seleccione" || idhabi=="" || totalG.Text== "" || tiempo.SelectedItem.Text== "Seleccione"
                 || usert.Value == "" || passt.Value=="") && validar()) {
 
                 string totalaux= total(tiempo.SelectedItem.Text, fechaIn.Text, fechaSa.Text);

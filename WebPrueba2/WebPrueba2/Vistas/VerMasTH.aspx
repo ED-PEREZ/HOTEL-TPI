@@ -70,7 +70,7 @@
                                    <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />
                                     <asp:TemplateField HeaderText="Opciones">
                                         <ItemTemplate> 
-                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idtipohabitacion") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btEli_Click" runat="server">
+                                            <asp:LinkButton ID="btEli" CommandArgument='<%# Eval("idcontenido") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btEli_Click" runat="server">
                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                             </asp:LinkButton>
                                         </ItemTemplate>

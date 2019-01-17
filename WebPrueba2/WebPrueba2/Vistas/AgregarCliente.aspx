@@ -124,6 +124,7 @@
                                                 <asp:ListItem  Text="Guatemala" Value="Guatemala"></asp:ListItem>
                                                 <asp:ListItem  Text="Honduras" Value="Honduras"></asp:ListItem>
                                                 <asp:ListItem  Text="Costa Rica" Value="Costa Rica"></asp:ListItem>
+                                                <asp:ListItem  Text="Otro" Value="Otro"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="form-group">

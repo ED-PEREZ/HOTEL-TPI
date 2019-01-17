@@ -29,7 +29,7 @@ namespace WebPrueba2.Vistas
                         sqlCOn.Open();
                         MySqlCommand smd = sqlCOn.CreateCommand();
                         smd.CommandType = CommandType.Text;
-                        smd.CommandText = "SELECT b.descripcion, b.cantidad, c.idtipohabitacion FROM contenido_habitacion a " +
+                        smd.CommandText = "SELECT b.descripcion, b.cantidad, c.idtipohabitacion, a.idcontenido FROM contenido_habitacion a " +
                             "INNER JOIN catalogo b ON a.idcatalogo = b.idcatalogo INNER JOIN tipo_habitacion c ON a.idtipo = c.idtipohabitacion " +
                             "WHERE c.idtipohabitacion=" + tipoHabitacionID;
                         smd.ExecuteNonQuery();
@@ -75,7 +75,7 @@ namespace WebPrueba2.Vistas
                 sqlCOn.Open();
                 MySqlCommand cmd = sqlCOn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "delete from contenido_habitacion WHERE idtipo=" + id + "";
+                cmd.CommandText = "delete from contenido_habitacion WHERE idcontenido=" + id + "";
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
