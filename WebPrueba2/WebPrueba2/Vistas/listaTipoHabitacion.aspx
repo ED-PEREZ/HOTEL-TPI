@@ -4,6 +4,7 @@
     Habitaciones
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
+         function abrirVentana(id){
         var url = id;
             window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,"+
                 "resizable = no, width = 800, height = 400, location = no");           
