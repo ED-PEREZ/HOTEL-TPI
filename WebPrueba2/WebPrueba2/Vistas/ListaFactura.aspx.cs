@@ -11,6 +11,7 @@ namespace WebPrueba2.Vistas
 {
     public partial class ListaFactura : System.Web.UI.Page
     {
+        int fact;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session.Count != 0)
@@ -37,7 +38,7 @@ namespace WebPrueba2.Vistas
                 MySqlCommand cmd = sqlCOn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT a.idcliente, a.nombre, a.dui, a.fechaentrada, a.fechasalida, a.idhabitacion, a.correo, a.region, a.celular, " +
-                    "a.usuario, a.contra, a.estadoc, a.ndias, a.totalp, b.total FROM cliente a " +
+                    "a.usuario, a.contra, a.estadoc, a.ndias, a.totalp, b.total, b.idrecibo FROM cliente a " +
                     "INNER JOIN recibo b ON b.idcliente = a.idcliente WHERE a.estadoc =false";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
@@ -57,7 +58,13 @@ namespace WebPrueba2.Vistas
 
         protected void btRep_Click(object sender, EventArgs e)
         {
+            fact = Convert.ToInt32((sender as LinkButton).CommandArgument);
+            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana('Reportes/ReporteFactura.aspx?id=" + fact + "')", true);
+        }
 
+        protected void btRepm_Click(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana('Reportes/ReporteFacturas.aspx')", true);
         }
     }
 }

@@ -23,7 +23,6 @@
     <script type="text/javascript">
         function ocultar() {
             document.formulario.boton.style.visibility = "hidden";
-            document.formulario.cerrar.style.visibility = "hidden";
             print();
             document.formulario.boton.style.visibility = "visible";
         }
@@ -92,7 +91,7 @@
                                 <asp:Label id="thab" runat="server" Text="FECHA DE RESERVACION"/>
                             </td>
                             <td>
-                                <label for="fent">TOTAL DE DIAS:</label>
+                                <label for="fent">PRECIO:</label>
                                 <asp:Label id="tpre" runat="server" Text="FECHA DE RESERVACION"/>
                             </td>
                         </tr>

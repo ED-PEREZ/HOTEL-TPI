@@ -2,7 +2,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Recepcion
-
+    <script type="text/javascript">
+        function abrirVentana(id){
+        var url = id;
+            window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,"+
+                "resizable = no, width = 800, height = 400, location = no");           
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -11,6 +17,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Lista de Facturas 
+                    <div class="left">
+                        <asp:LinkButton ID="btRepm" ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRepm_Click" runat="server">
+                               <i class="ace-icon fa fa-file-pdf-o bigger-120">IMPRIMIR</i>
+                        </asp:LinkButton>
+                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -24,7 +35,7 @@
                                         <asp:BoundField DataField="total" HeaderText="Total Cancelado $" />
                                         <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="15%">
                                         <ItemTemplate>
-                                           <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idcliente") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                                           <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idrecibo") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
                                                 <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
                                             </asp:LinkButton>
                                             </nav>
