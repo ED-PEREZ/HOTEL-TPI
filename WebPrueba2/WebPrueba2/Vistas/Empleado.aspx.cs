@@ -280,9 +280,9 @@ namespace WebPrueba2.Vistas
             string cntr = Fecha(contrato.Text);
             string[] nci = naci.Split('-');
             string[] ctr = cntr.Split('-');
-            int aa = int.Parse(ctr[2]) - int.Parse(nci[2]);
+            int aa = int.Parse(ctr[0]) - int.Parse(nci[0]);
             int am = int.Parse(ctr[1]) - int.Parse(nci[1]);
-            int ad = int.Parse(ctr[0]) - int.Parse(nci[0]);
+            int ad = int.Parse(ctr[2]) - int.Parse(nci[2]);
             if (am < 0 || (am == 0 && ad < 0))
             {
                 aa = aa - 1;

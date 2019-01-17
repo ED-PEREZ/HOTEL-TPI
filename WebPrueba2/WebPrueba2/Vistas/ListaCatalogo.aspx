@@ -68,7 +68,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12"> 
-
+                            <asp:Label ID="ver" runat="server" Text=""></asp:Label>
                                 <asp:GridView ID="gvTipo"  class="table table-striped table-bordered table-hover" runat="server" AutoGenerateColumns="False"    >
                                     <Columns>   
                                         <asp:BoundField DataField="descripcion" HeaderText="Tipo" />

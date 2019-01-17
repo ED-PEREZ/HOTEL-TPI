@@ -25,7 +25,8 @@ namespace WebPrueba2.Vistas
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT idempleado, codigoemp, nombre, dui, nit, nafp, nseguro, IF(cargo = 1, 'ADMINISTRADOR', "
                     + "IF(cargo = 2, 'GERENTE', IF(cargo = 3, 'RECEPCIONISTA',"
-                    + "IF(empleado.cargo=4,'RECEPCIONISTA','OTRO')))) AS cargo FROM empleado";
+                    + "IF(empleado.cargo=4,'RECEPCIONISTA',IF(empleado.cargo = 5, 'CAMARERO','OTRO'))))) " +
+                    "AS cargo FROM empleado";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);

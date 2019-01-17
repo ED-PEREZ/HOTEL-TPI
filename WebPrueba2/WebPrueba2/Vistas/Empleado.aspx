@@ -119,13 +119,13 @@
                                     <label for="seguro">Nro. de Seguro Social (*)</label>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox ID="seguro" TextMode="Number" max="9999999999" min="0" runat="server" autocomplete="off" CssClass="form-control" placeholder="7534298601" MaxLength="10"></asp:TextBox>
+                                    <asp:TextBox ID="seguro" max="9999999999" min="0" runat="server" autocomplete="off" CssClass="form-control" placeholder="7534298601" MaxLength="10"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label for="afp">Nro. de APF (*)</label>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox ID="afp" TextMode="Number" max="999999999999" min="0" runat="server" autocomplete="off" class="form-control" placeholder="147534298601" MaxLength="12"></asp:TextBox>
+                                    <asp:TextBox ID="afp" max="999999999999" min="0" runat="server" autocomplete="off" class="form-control" placeholder="147534298601" MaxLength="12"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label for="contrato">Fecha de Contrato (*)</label>
@@ -144,7 +144,7 @@
                                         <asp:ListItem Text="RECEPCIONISTA" Value="3"></asp:ListItem>
                                         <asp:ListItem Text="MANTENIMIENTO" Value="4"></asp:ListItem>
                                         <asp:ListItem Text="CAMARERO" Value="5"></asp:ListItem>
-                                        <asp:ListItem Text="OTRO" Value="6"></asp:ListItem>
+                                        <asp:ListItem Text="OTRO" Value="10"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                                 <div class="form-group">

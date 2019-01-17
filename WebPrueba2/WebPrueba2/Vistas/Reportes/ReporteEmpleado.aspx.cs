@@ -31,8 +31,9 @@ namespace WebPrueba2.Vistas.Reportes
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT idempleado, codigoemp, nombre, sexo, fechanacimiento, " +
                 "direccion, dui, nit, nseguro, nafp, telefono, fechacontrato, IF(cargo = 1, 'ADMINISTRADOR'," +
-                "IF(cargo = 2, 'GERENTE', IF(cargo = 3, 'RECEPCIONISTA', IF(cargo=4,'RECEPCIONISTA','OTRO')))) " +
-                "AS cargoT, sueldo FROM empleado where idempleado ='" + valor + "'";
+                "IF(cargo = 2, 'GERENTE', IF(cargo = 3, 'RECEPCIONISTA', " +
+                "IF(cargo=4,'RECEPCIONISTA',IF(empleado.cargo = 5, 'CAMARERO','OTRO'))))) " +
+                    "AS cargo, sueldo FROM empleado where idempleado ='" + valor + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
@@ -58,7 +59,7 @@ namespace WebPrueba2.Vistas.Reportes
         {
             string subs = v.Substring(0, 10);
             string[] sc = subs.Split('-');
-            return (sc[0] + " DE " + mes(sc[1]) + " DEL " + sc[2]);
+            return (sc[2] + " DE " + mes(sc[1]) + " DEL " + sc[0]);
         }
 
         private string mes(string v)

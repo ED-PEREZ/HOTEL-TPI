@@ -41,10 +41,17 @@ namespace WebPrueba2.Vistas
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
-                ds.Fill(dt);
+                int i = ds.Fill(dt);
                 gvTipo.DataSource = dt;
                 gvTipo.DataBind();
-                gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+                if (i > 0)
+                {
+                    gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+                else
+                {
+                    //ver.Text = "No hay ningun registro";
+                }
             }
         }
 

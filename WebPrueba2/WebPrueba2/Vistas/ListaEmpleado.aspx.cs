@@ -40,7 +40,8 @@ namespace WebPrueba2.Vistas
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT idempleado, codigoemp, nombre, dui, IF(cargo = 1, 'ADMINISTRADOR', "
                     + "IF(cargo = 2, 'GERENTE', IF(cargo = 3, 'RECEPCIONISTA',"
-                    + "IF(empleado.cargo=4,'MANTENIMIENTO','OTRO')))) AS cargo FROM empleado";
+                    + "IF(empleado.cargo=4,'MANTENIMIENTO', IF(empleado.cargo = 5, 'CAMARERO','OTRO'))))) " +
+                    "AS cargo FROM empleado";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
@@ -83,8 +84,8 @@ namespace WebPrueba2.Vistas
                 cmd.ExecuteNonQuery();
 
                 sqlCon.Close();
-                ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
-               // Response.Redirect("ListaEmpleado.aspx");
+                //ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosCorrectos()", true);
+                Response.Redirect("ListaEmpleado.aspx");
             } catch (Exception x) {
                 ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "datosIncorrectos()", true);
             }
