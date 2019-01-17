@@ -35,13 +35,6 @@
 </head>
 <body>
     <center>
-     <form id="formulario" name="formulario" method="post" action="">
-        <div align="center">
-            <input type="button" name="boton" id="boton" class="btn btn-primary btn-sm btn-success" value="Imprimir" onclick="ocultar()" />
-            
-            <input type="button" name="cerrar" id="cerrar" class="btn btn-primary btn-sm btn-warning" value="Cancelar" onclick="cerrar()" />
-        </div>
-    </form>
     <div id="Reporte" class="Rows" style="width: 80%; font-family:'Century Gothic'" >
         <div class="col-xs-12">
             <form class="form-horizontal" role="form" id="formE" name="formE">
@@ -163,6 +156,13 @@
                     </tbody>
                 </table>
             </form>
+            <form id="formulario" name="formulario" method="post" action="">
+        <div align="center">
+            <input type="button" name="boton" id="boton" class="btn btn-primary btn-sm btn-success" value="Imprimir" onclick="ocultar()" />
+            
+            <input type="button" name="cerrar" id="cerrar" class="btn btn-primary btn-sm btn-warning" value="Cancelar" onclick="cerrar()" />
+        </div>
+    </form>
         </div>
     </div>
 </body>
