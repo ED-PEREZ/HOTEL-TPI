@@ -125,7 +125,7 @@ namespace WebPrueba2.Vistas
                     sqlCOn.Open();
                     MySqlCommand imd = sqlCOn.CreateCommand();
                     imd.CommandType = CommandType.Text;
-                    imd.CommandText = "SELECT * FROM cliente ORDER WEHRE idcliente="+id;
+                    imd.CommandText = "SELECT * FROM cliente  WHERE idcliente=" + id;
                     imd.ExecuteNonQuery();
                     MySqlDataReader dc = imd.ExecuteReader();
                     int idhab = 0;
@@ -145,7 +145,7 @@ namespace WebPrueba2.Vistas
                     sqlCOn.Open();
                     MySqlCommand amd = sqlCOn.CreateCommand();
                     amd.CommandType = CommandType.Text;
-                    amd.CommandText = "UPDATE cliente SET estadoc=false idhabitacion=null WHERE idcliente=" + id;
+                    amd.CommandText = "UPDATE cliente SET estadoc=false, idhabitacion=null WHERE idcliente=" + id;
                     int i=amd.ExecuteNonQuery();
                     sqlCOn.Close();
 
