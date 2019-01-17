@@ -1,12 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteCliente.aspx.cs" Inherits="WebPrueba2.Vistas.Reportes.ReporteCliente" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteFactura.aspx.cs" Inherits="WebPrueba2.Vistas.Reportes.ReporteFactura" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>REPORTE CLIENTE</title>
-    <link href="../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>FACTURA</title>
+<link href="../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <script src="../../vendor/jquery/jquery.js"></script>
     <style type="text/css">
         .ftabla {
@@ -37,7 +37,9 @@
     <center>
      
     <div id="Reporte" class="Rows" style="width: 80%; font-family:'Century Gothic'" >
-        <h1>REPORTE DE CLIENTE</h1>
+        <h1>FACTURA #
+            <asp:Label width="70%" id="fact" runat="server" Text="FACTURA"/>
+        </h1>
             <form class="form-horizontal" role="form" id="formE" name="formE">
                 <table class="ftabla" style="width:100%">
                     <tbody class="ftabla">
