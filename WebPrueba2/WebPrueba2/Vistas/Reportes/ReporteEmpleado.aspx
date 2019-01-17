@@ -28,6 +28,9 @@
             document.formulario.boton.style.visibility = "visible";
             document.formulario.boton.style.visibility = "visible";
         }
+        function cerrar() {
+            window.close();
+        }
     </script>
 </head>
 <body>

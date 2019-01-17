@@ -26,6 +26,9 @@
             print();
             document.formulario.boton.style.visibility = "visible";
         }
+             function cerrar() {
+            window.close();
+        }
     </script>
 </head>
 <body>
@@ -33,6 +36,8 @@
      <form id="formulario" name="formulario" method="post" action="">
         <div align="center">
             <input type="button" name="boton" id="boton" class="btn btn-primary btn-sm btn-success" value="Imprimir" onclick="ocultar()" />
+            
+            <input type="button" name="cerrar" id="cerrar" class="btn btn-primary btn-sm btn-warning" value="Cancelar" onclick="cerrar()" />
         </div>
     </form>
     <form id="form1" runat="server">
