@@ -22,7 +22,7 @@ namespace WebPrueba2.Vistas
                 sqlCOn.Open();
                 MySqlCommand cmd = sqlCOn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT * FROM empleado";
+                cmd.CommandText = "SELECT * FROM empleado WHERE cargo=5";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);

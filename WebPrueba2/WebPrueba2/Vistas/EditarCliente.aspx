@@ -160,7 +160,7 @@
                                                 <asp:Label ID="totalG" runat="server" Text=""/>
                                             </div>
                                             <div class="col-xs-6 col-sm-4">
-                                                <asp:Button ID="totalizar" runat="server" class="btn btn-info btn-sm" Text="Totalizar" OnClick="totalizar_Click" /> 
+                                                <asp:Button ID="totalizar" runat="server" class="btn btn-info btn-lg" Text="Totalizar" OnClick="totalizar_Click" /> 
                                             </div>
                                             <br>
                                         </div>
