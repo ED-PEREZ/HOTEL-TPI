@@ -31,7 +31,12 @@ namespace WebPrueba2.Vistas.Reportes
                 MySqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 DataTable dt = new DataTable();
-                cmd.CommandText = "SELECT c.nombre  , c.dui , c.region , c.correo, c.celular,h.numhabitacion , c.fechaentrada, c.fechasalida ,r.codigo , r.formapago , r.fecha , r.total , t.tipohabitacion, t.precio, if((fechasalida-fechaentrada<=0),1,fechasalida-fechaentrada) as dias FROM cliente AS c INNER JOIN habitacion AS h ON c.idhabitacion = h.idhabitacion INNER JOIN recibo AS r ON r.idcliente = c.idcliente INNER JOIN tipo_habitacion as t ON h.idtipohabitacion = t.idtipohabitacion where r.idrecibo =" + valor;
+                cmd.CommandText = "SELECT c.nombre  , c.dui , c.region , c.correo, c.celular,h.numhabitacion , " +
+                    "c.fechaentrada, c.fechasalida ,r.codigo , r.formapago , r.fecha , r.total , t.tipohabitacion, " +
+                    "t.precio, if((fechasalida-fechaentrada<=0),1,fechasalida-fechaentrada) as dias FROM cliente AS " +
+                    "c INNER JOIN habitacion AS h ON c.idhabitacion = h.idhabitacion INNER JOIN recibo AS r ON r.idcliente " +
+                    "= c.idcliente INNER JOIN tipo_habitacion as t ON h.idtipohabitacion = t.idtipohabitacion where " +
+                    "r.idrecibo =" + valor;
                 cmd.ExecuteNonQuery();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);
                 ds.Fill(dt);

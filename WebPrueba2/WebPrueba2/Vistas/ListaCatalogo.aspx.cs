@@ -85,7 +85,7 @@ namespace WebPrueba2.Vistas
 
         protected void btRep_Click(object sender, EventArgs e)
         {
-
+            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana('Reportes/ReporteCatalogo.aspx')", true);
         }
     }
 }

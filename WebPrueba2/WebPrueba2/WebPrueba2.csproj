@@ -253,13 +253,18 @@
     <Content Include="Vistas\listaTipoHabitacion.aspx" />
     <Content Include="Vistas\Login.aspx" />
     <Content Include="Vistas\ListaVerPedidos.aspx" />
+    <Content Include="Vistas\Reportes\ReporteCatalogo.aspx" />
     <Content Include="Vistas\Reportes\ReporteCliente.aspx" />
     <Content Include="Vistas\Reportes\ReporteClientes.aspx" />
     <Content Include="Vistas\Reportes\ReporteEmpleados.aspx" />
     <Content Include="Vistas\Reportes\ReporteEmpleado.aspx" />
     <Content Include="Vistas\Reportes\ReporteFactura.aspx" />
+    <Content Include="Vistas\Reportes\ReporteFacturas.aspx" />
     <Content Include="Vistas\Reportes\ReporteHabitaciones.aspx" />
+    <Content Include="Vistas\Reportes\ReportePedidos.aspx" />
     <Content Include="Vistas\Reportes\ReporteProductos.aspx" />
+    <Content Include="Vistas\Reportes\ReporteReservas.aspx" />
+    <Content Include="Vistas\Reportes\ReporteTiposHabitacion.aspx" />
     <Content Include="Vistas\Reserva.aspx" />
     <Content Include="Vistas\VerMasTH.aspx" />
     <Content Include="Vistas\WebForm1.aspx" />
@@ -528,6 +533,13 @@
     <Compile Include="Vistas\ListaVerPedidos.aspx.designer.cs">
       <DependentUpon>ListaVerPedidos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Reportes\ReporteCatalogo.aspx.cs">
+      <DependentUpon>ReporteCatalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReporteCatalogo.aspx.designer.cs">
+      <DependentUpon>ReporteCatalogo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Reportes\ReporteCliente.aspx.cs">
       <DependentUpon>ReporteCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -563,6 +575,13 @@
     <Compile Include="Vistas\Reportes\ReporteFactura.aspx.designer.cs">
       <DependentUpon>ReporteFactura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Reportes\ReporteFacturas.aspx.cs">
+      <DependentUpon>ReporteFacturas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReporteFacturas.aspx.designer.cs">
+      <DependentUpon>ReporteFacturas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Reportes\ReporteHabitaciones.aspx.cs">
       <DependentUpon>ReporteHabitaciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -570,12 +589,33 @@
     <Compile Include="Vistas\Reportes\ReporteHabitaciones.aspx.designer.cs">
       <DependentUpon>ReporteHabitaciones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Reportes\ReportePedidos.aspx.cs">
+      <DependentUpon>ReportePedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReportePedidos.aspx.designer.cs">
+      <DependentUpon>ReportePedidos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Reportes\ReporteProductos.aspx.cs">
       <DependentUpon>ReporteProductos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\Reportes\ReporteProductos.aspx.designer.cs">
       <DependentUpon>ReporteProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReporteReservas.aspx.cs">
+      <DependentUpon>ReporteReservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReporteReservas.aspx.designer.cs">
+      <DependentUpon>ReporteReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReporteTiposHabitacion.aspx.cs">
+      <DependentUpon>ReporteTiposHabitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Reportes\ReporteTiposHabitacion.aspx.designer.cs">
+      <DependentUpon>ReporteTiposHabitacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Reserva.aspx.cs">
       <DependentUpon>Reserva.aspx</DependentUpon>

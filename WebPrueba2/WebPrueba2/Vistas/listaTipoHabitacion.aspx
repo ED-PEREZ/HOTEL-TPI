@@ -4,6 +4,10 @@
     Habitaciones
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
+        var url = id;
+            window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,"+
+                "resizable = no, width = 800, height = 400, location = no");           
+        }
          function completeCampos() {
             Swal({
                 position: 'top-end',
@@ -56,6 +60,11 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                         Lista de Tipos de Habitacion
+                            <div class="left">
+                        <asp:LinkButton ID="btRep" ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                               <i class="ace-icon fa fa-file-pdf-o bigger-120">IMPRIMIR</i>
+                        </asp:LinkButton>
+                     </div>
                         </div>
                         <div class="panel-body">
           
@@ -71,10 +80,6 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="20%">
                                         <ItemTemplate> 
-                                            <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idtipohabitacion") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
-                                                <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
-                                            </asp:LinkButton>
-                                            </nav>
                                             <asp:LinkButton ID="insertar" CommandArgument='<%# Eval("idtipohabitacion") %>' CssClass="btn btn-primary btn-sm btn-primary" OnClick="insertar_Click" runat="server">
                                                <i class="ace-icon fa fa-eye bigger-120"></i>
                                             </asp:LinkButton>   

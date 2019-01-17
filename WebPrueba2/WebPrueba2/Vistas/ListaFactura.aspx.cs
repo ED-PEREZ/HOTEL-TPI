@@ -39,7 +39,7 @@ namespace WebPrueba2.Vistas
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT a.idcliente, a.nombre, a.dui, a.fechaentrada, a.fechasalida, a.idhabitacion, a.correo, a.region, a.celular, " +
                     "a.usuario, a.contra, a.estadoc, a.ndias, a.totalp, b.total, b.idrecibo FROM cliente a " +
-                    "INNER JOIN recibo b ON b.idcliente = a.idcliente WHERE a.estadoc =false";
+                    "INNER JOIN recibo b ON b.idcliente = a.idcliente WHERE a.estadoc = false";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 MySqlDataAdapter ds = new MySqlDataAdapter(cmd);

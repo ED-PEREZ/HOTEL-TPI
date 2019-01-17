@@ -3,6 +3,11 @@
     Inventario y Pedidos  
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
+        function abrirVentana(id){
+        var url = id;
+            window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,"+
+                "resizable = no, width = 800, height = 400, location = no");           
+        }
         function completeCampos() {
             Swal({
                 position: 'top-end',
@@ -54,6 +59,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Lista del Inventario
+                    <div class="left">
+                        <asp:LinkButton ID="btRep" ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                               <i class="ace-icon fa fa-file-pdf-o bigger-120">IMPRIMIR</i>
+                        </asp:LinkButton>
+                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -70,10 +80,6 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Opciones" ItemStyle-Width="20%">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idproducto") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
-                                                <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
-                                            </asp:LinkButton>
-                                            </nav>
                                             <asp:LinkButton ID="btMod" CommandArgument='<%# Eval("idproducto") %>' CssClass="btn btn-primary btn-sm btn-warning" OnClick="btMod_Click" runat="server">
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </asp:LinkButton>

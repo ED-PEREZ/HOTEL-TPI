@@ -143,7 +143,8 @@
                                         <asp:ListItem Text="GERENTE" Value="2"></asp:ListItem>
                                         <asp:ListItem Text="RECEPCIONISTA" Value="3"></asp:ListItem>
                                         <asp:ListItem Text="MANTENIMIENTO" Value="4"></asp:ListItem>
-                                        <asp:ListItem Text="OTRO" Value="5"></asp:ListItem>
+                                        <asp:ListItem Text="CAMARERO" Value="5"></asp:ListItem>
+                                        <asp:ListItem Text="OTRO" Value="6"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                                 <div class="form-group">

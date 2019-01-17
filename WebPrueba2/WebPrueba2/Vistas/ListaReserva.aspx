@@ -3,6 +3,11 @@
     Recepcion  
     <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
+        function abrirVentana(id){
+        var url = id;
+            window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,"+
+                "resizable = no, width = 800, height = 400, location = no");           
+        }
          function completeCampos() {
             Swal({
                 position: 'top-end',
@@ -54,6 +59,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Lista de Reserva
+                    <div class="left">
+                        <asp:LinkButton ID="btRep" ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
+                               <i class="ace-icon fa fa-file-pdf-o bigger-120">IMPRIMIR</i>
+                        </asp:LinkButton>
+                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -66,10 +76,6 @@
                                         <asp:BoundField DataField="fechareserva" HeaderText="Fecha de Reserva" />
                                         <asp:TemplateField ItemStyle-Width="20%" HeaderText="Opciones">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="btRep" target="_blank"  CommandArgument='<%# Eval("idreserva") %>' ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRep_Click" runat="server">
-                                                <i class="ace-icon fa fa-file-pdf-o bigger-120"></i>
-                                            </asp:LinkButton>
-                                            </nav>
                                             <asp:LinkButton ID="agregarc" CommandArgument='<%# Eval("idreserva") %>' CssClass="btn btn-primary btn-sm btn-primary" OnClick="agregarc_Click" runat="server">
                                                <i class="ace-icon fa fa-sign-out  bigger-120"></i>
                                             </asp:LinkButton>

@@ -9,25 +9,10 @@ using System.Web.UI.WebControls;
 
 namespace WebPrueba2.Vistas.Reportes
 {
-    public partial class ListaVerPedidos : System.Web.UI.Page
+    public partial class ReportePedidos : System.Web.UI.Page
     {
-        int servicioID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Count != 0)
-            {
-                if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "3")
-                {
-                }
-                else
-                {
-                    Response.Redirect("Home.aspx");
-                }
-            }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
             GridFill();
         }
 
@@ -48,27 +33,7 @@ namespace WebPrueba2.Vistas.Reportes
                 int i = ds.Fill(dt);
                 gvTipo.DataSource = dt;
                 gvTipo.DataBind();
-                if (i > 0)
-                {
-                    gvTipo.HeaderRow.TableSection = TableRowSection.TableHeader;
-                }
-                else
-                {
-                    valida.Text = "No hay pedidos pendientes";
-                }
             }
-        }
-
-        protected void btMod_Click(object sender, EventArgs e)
-        {
-            servicioID = Convert.ToInt32((sender as LinkButton).CommandArgument);
-            Response.Redirect("AgregarEntrega.aspx?idservicio=" + servicioID);
-        }
-
-        protected void btRep_Click(object sender, EventArgs e)
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana('Reportes/ReportePedidos.aspx')", true);
-
         }
     }
 }
