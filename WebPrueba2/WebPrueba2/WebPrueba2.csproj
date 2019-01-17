@@ -110,6 +110,7 @@
     <Content Include="Estilos\EstiloLogin.css" />
     <Content Include="Estilos\Sweetalert.js" />
     <Content Include="gulpfile.js" />
+    <Content Include="images\265-swimming-pool-22-hotel-barcelo-costa-cancun_tcm7-126728.jpg" />
     <Content Include="images\icono-calendario.png" />
     <Content Include="index.html" />
     <Content Include="js\jspdf.js" />

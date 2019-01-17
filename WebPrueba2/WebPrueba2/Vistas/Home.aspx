@@ -72,7 +72,8 @@ Inicio
                     </div>
                 </div>
             </div>
-    <div class="row">
-
+    <div class="row" align="center">
+        
+        <asp:Image ID="image" runat="server" ImageUrl="~/images/265-swimming-pool-22-hotel-barcelo-costa-cancun_tcm7-126728.jpg" Height="322px" Width="751px"/>
     </div>
 </asp:Content>

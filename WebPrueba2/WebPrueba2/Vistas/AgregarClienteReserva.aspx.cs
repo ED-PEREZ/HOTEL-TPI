@@ -117,6 +117,7 @@ namespace WebPrueba2.Vistas
                         MySqlCommand rcd = sqlCOn.CreateCommand();
                         rcd.CommandType = CommandType.Text;
                         rcd.CommandText = "INSERT INTO recibo(codigo,idcliente) VALUES(" + i + "," + idclient + ")";
+                        rcd.ExecuteNonQuery();
                         sqlCOn.Close();
 
                         sqlCOn.Open();
