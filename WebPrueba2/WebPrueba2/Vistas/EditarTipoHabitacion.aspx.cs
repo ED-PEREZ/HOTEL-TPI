@@ -20,7 +20,7 @@ namespace WebPrueba2.Vistas
                 
                 if (Session.Count != 0)
                 {
-                    if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "3")
+                    if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "2")
                     {
                         if (Request.Params["id"] != null)
                         {

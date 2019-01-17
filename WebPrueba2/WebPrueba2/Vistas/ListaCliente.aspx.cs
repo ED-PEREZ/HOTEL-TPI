@@ -15,6 +15,20 @@ namespace WebPrueba2.Vistas
         int clienteID;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session.Count != 0)
+            {
+                if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "3")
+                {
+                }
+                else
+                {
+                    Response.Redirect("Home.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
             contenedor.Visible = false;
             algo.Visible = false;
             ja.Visible = false;

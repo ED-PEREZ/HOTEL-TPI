@@ -15,6 +15,20 @@ namespace WebPrueba2.Vistas
         int empleadoID;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session.Count != 0)
+            {
+                if (Session["USUARIO"].ToString() == "1" || Session["USUARIO"].ToString() == "2")
+                {
+                }
+                else
+                {
+                    Response.Redirect("Home.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
             GridFill();
         }
 
