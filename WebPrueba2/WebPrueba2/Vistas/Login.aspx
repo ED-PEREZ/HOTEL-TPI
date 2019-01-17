@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>HOTEL TPI ADMIN || LOGIN</title>
+<link rel="icon" type="image/png" href="/images/LOGO-HOTEL-TPI.png" />
       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrapcss" />
     <link rel="stylesheet" type="text/css" href="../Estilos/EstiloLogin.css" media="screen" />
 
@@ -41,7 +43,6 @@
             document.location.href = 'Home.aspx';
         }
     </script>
-    <title></title>
 
 </head>
 <body>
