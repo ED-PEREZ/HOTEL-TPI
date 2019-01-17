@@ -95,7 +95,12 @@ namespace WebPrueba2.Vistas
         {
             empleadoID = Convert.ToInt32((sender as LinkButton).CommandArgument);
             //Response.Redirect("Reportes/ReporteEmpleado.aspx?id=" + empleadoID);
-            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana("+empleadoID+")", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana('Reportes/ReporteEmpleado.aspx?id=" + empleadoID+"')", true);
+        }
+
+        protected void btRepm_Click(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana('Reportes/ReporteEmpleados.aspx')", true);
         }
     }
 }

@@ -133,7 +133,13 @@ namespace WebPrueba2.Vistas
 
         protected void btRep_Click(object sender, EventArgs e)
         {
+            clienteID = Convert.ToInt32((sender as LinkButton).CommandArgument);
+            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana('Reportes/ReporteCliente.aspx?id=" + clienteID + "')", true);
+        }
 
+        protected void btRepm_Click(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "ramdomtext", "abrirVentana('Reportes/ReporteClientes.aspx')", true);
         }
     }
 }

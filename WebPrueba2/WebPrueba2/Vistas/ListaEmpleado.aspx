@@ -4,8 +4,9 @@
     EMPLEADOS
     <script type="text/javascript">
         function abrirVentana(id){
-        var url = "Reportes/ReporteEmpleado.aspx?id="+id;
-            window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,resizable=no,width=500,height=600,location=no");           
+        var url = id;
+            window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,"+
+                "resizable = no, width = 800, height = 400, location = no");           
         }
         function eliminar() {
             swal({
@@ -49,6 +50,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Lista de Empleados
+                    <div class="left">
+                        <asp:LinkButton ID="btRep" ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRepm_Click" runat="server">
+                               <i class="ace-icon fa fa-file-pdf-o bigger-120">IMPRIMIR</i>
+                        </asp:LinkButton>
+                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">

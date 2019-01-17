@@ -4,6 +4,11 @@
     Recepcion
    <script src="../Estilos/Sweetalert.js"></script>
     <script type="text/javascript">
+        function abrirVentana(id){
+        var url = id;
+            window.open(url, "Nuevo", "alwaysRaised=no,toolbar=no,menubar=no,status=no,"+
+                "resizable = no, width = 800, height = 400, location = no");           
+        }
         function completeCampos() {
             Swal({
                 position: 'top-end',
@@ -56,6 +61,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Lista de Clientes
+                    <div class="left">
+                        <asp:LinkButton ID="btRepm" target="_blank" ToolTip="REPORTE" CssClass="btn btn-primary btn-sm btn-success" OnClick="btRepm_Click" runat="server">
+                             <i class="ace-icon fa fa-file-pdf-o bigger-120">IMPRIMIR</i>
+                        </asp:LinkButton>
+
+                    </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
